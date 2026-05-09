@@ -1,0 +1,1248 @@
+{
+  "siteOwner": {
+    "name": "Saren",
+    "handle": "@nekomatasaren",
+    "motd": "Can't believe this website is generated using my own hardware and a local LLM. What has science done?",
+    "avatarUrl": "https://secure.gravatar.com/avatar/cef640b4420bd65002ea8919bd9693d6?s=256&r=g",
+    "motdZH": "這個網站是用我自己的硬體和本地LLM生成的，真難以置信。這就是科學的力量。"
+  },
+  "bgCount": 4,
+  "bgMapping": {
+    "1": "/art/ai/clipspace-mask-12193852.png",
+    "2": "/art/comms/TOOMIRO/toomiro.png",
+    "3": "/art/ai/city-4.png",
+    "4": "/art/photos/Gale021/IMG_1475.JPG"
+  },
+  "servers": [
+    {
+      "name": "WTAKO",
+      "description": "Router / Primary Server",
+      "monitorUrl": "https://monitor.wtako.net/",
+      "descriptionZH": "路由器 / 主要伺服器"
+    },
+    {
+      "name": "Magi",
+      "description": "AI Core",
+      "monitorUrl": "https://magi-monitor.wtako.net/",
+      "descriptionZH": "AI 核心"
+    }
+  ],
+  "characters": [
+    {
+      "name": "Saren",
+      "nameZH": "沙雲",
+      "species": "Lynx",
+      "speciesZH": "大山貓 (猞猁)",
+      "sex": "Male",
+      "sexZH": "男",
+      "description": "The Crown Prince of a remote desert tribe. He became an adventurer to gather life experience.",
+      "traits": [],
+      "image": "/saren.avif",
+      "refArt": "/art/comms/laiyishin02/cheetah-ref2-name.png",
+      "order": 10,
+      "descriptionZH": "遙遠沙漠部落的皇儲。他成為冒險家以積累人生經驗。"
+    },
+    {
+      "name": "Kokumo",
+      "nameZH": "刻雲",
+      "species": "Furred Dragon",
+      "speciesZH": "毛龍",
+      "sex": "Male",
+      "sexZH": "男",
+      "description": "A furred dragon with a warm heart and adventurous spirit. He is loyal, and does not speak too much.",
+      "traits": [],
+      "image": "/kokumo.avif",
+      "refArt": "/art/comms/furyRaptor23/ref/Kokumo Fursona_CN_SFW.png",
+      "order": 8,
+      "descriptionZH": "擁有溫暖之心和冒險精神的毛龍。他忠誠，話不多。"
+    }
+  ],
+  "services": [
+    {
+      "name": "Dropzone",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/droppy.png",
+      "url": "https://drop.wtako.net",
+      "type": "PUBLIC"
+    },
+    {
+      "name": "太鼓さん次郎",
+      "iconUrl": "https://i.scdn.co/image/ab67616d00001e027c23138d0345879bce7dac3f",
+      "url": "https://jiro.wtako.net",
+      "type": "PUBLIC"
+    },
+    {
+      "name": "Arch Linux Mirror",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/archlinux.svg",
+      "url": "https://arch-mirror.wtako.net/",
+      "type": "PUBLIC"
+    },
+    {
+      "name": "CachyOS Mirror",
+      "iconUrl": "https://cachyos.org/_astro/logo.DuMERIP6.svg",
+      "url": "https://cachy-mirror.wtako.net/",
+      "type": "PUBLIC"
+    },
+    {
+      "name": "ArozOS",
+      "iconUrl": "https://drop.wtako.net/file/3bc7fd8cf044e0ffe350c4b108eabbbac3805598.png",
+      "url": "https://aroz.wtako.net",
+      "type": "PRIVATE"
+    },
+    {
+      "name": "Jellyfin",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg",
+      "url": "https://jellyfin.wtako.net",
+      "lanUrl": "https://jellyfin-direct.wtako.net",
+      "type": "PRIVATE"
+    },
+    {
+      "name": "Immich",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/immich-frame-light.svg",
+      "url": "https://immich.wtako.net/",
+      "lanUrl": "http://100.64.0.1:2283",
+      "type": "PRIVATE"
+    },
+    {
+      "name": "Beszel",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/beszel-light.svg",
+      "url": "https://beszel.wtako.net",
+      "type": "PRIVATE"
+    },
+    {
+      "name": "Unifi Controller",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/unifi.svg",
+      "url": "https://unifi.wtako.net/",
+      "lanUrl": "https://100.64.0.1:8443",
+      "type": "PRIVATE"
+    },
+    {
+      "name": "Bambu Studio",
+      "iconUrl": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bambustudio-logo.png",
+      "url": "https://bambu.wtako.net/",
+      "lanUrl": "http://192.168.0.1:31110",
+      "type": "PRIVATE"
+    },
+    {
+      "name": "Home Assistant",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/home-assistant-alt.svg",
+      "url": "https://ha.wtako.net/",
+      "lanUrl": "http://100.64.0.1:8123",
+      "type": "PRIVATE"
+    },
+    {
+      "name": "Aria2",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/nextcloud-ncdownloader.png",
+      "url": "https://aria2.wtako.net",
+      "lanUrl": "https://aria2-direct.wtako.net",
+      "type": "PRIVATE"
+    }
+  ],
+  "music": [
+    {
+      "title": "神祈世界賛歌",
+      "url": "/music/神祈世界賛歌.mp3",
+      "description": "This Hymn is about praising our beautiful world and discarding our pain. Inspired by Shikata Akiko. Lyrics by me. https://onlinesequencer.net/5321766 (2026-04-04). Arranged using Suno v5.5.",
+      "urlType": "FILE",
+      "coverUrl": "/music/神祈世界賛歌.avif",
+      "date": "20260406",
+      "order": 1000,
+      "descriptionZH": "這首聖歌讚頌我們美麗的世界，拋棄我們的痛苦。受志方晶子啟發。歌詞由我創作。https://onlinesequencer.net/5321766 （2026-04-04）。使用 Suno v5.5 編曲。"
+    },
+    {
+      "title": "精霊ノ都",
+      "url": "/music/精霊ノ都.mp3",
+      "description": "Elven City. Inspired by Shikata Akiko. https://onlinesequencer.net/1385791 (Late 2019). Arranged using Suno v5.5.",
+      "urlType": "FILE",
+      "coverUrl": "/music/精霊ノ都.avif",
+      "date": "20260406",
+      "order": 990,
+      "descriptionZH": "精靈之都。受志方晶子啟發。https://onlinesequencer.net/1385791 （2019 年末）。使用 Suno v5.5 編曲。"
+    },
+    {
+      "title": "80s",
+      "url": "/music/80s.mp3",
+      "description": "80s inspired retro synthwave track. https://onlinesequencer.net/4016837 (Mid 2024). Arranged using Suno v5.5.",
+      "urlType": "FILE",
+      "coverUrl": "/music/80s.avif",
+      "date": "20260405",
+      "order": 980,
+      "descriptionZH": "80 年代啟發的復古合成波曲目。https://onlinesequencer.net/4016837 （2024 年中）。使用 Suno v5.5 編曲。"
+    },
+    {
+      "title": "Adventure",
+      "url": "/music/Adventure.mp4",
+      "description": "Adventure by Airship in a RPG world. Melody and arranged by me. REAPER and EWQLSO. (No AI involved)",
+      "urlType": "FILE",
+      "coverUrl": "/music/Adventure.avif",
+      "date": "20241007",
+      "order": 970,
+      "descriptionZH": "RPG 世界中飛空艇冒險。旋律和編曲由我創作。使用 REAPER 和 EWQLSO。（不涉及 AI）"
+    },
+    {
+      "title": "Ambition",
+      "url": "/music/Ambition.mp3",
+      "description": "I can hum Celtic melodies well in realtime speed. Arranged using Suno v4.5.",
+      "urlType": "FILE",
+      "coverUrl": "/music/Ambition.avif",
+      "date": "20260123",
+      "order": 960,
+      "descriptionZH": "我能以實時速度哼唱凱爾特旋律。使用 Suno v4.5 編曲。"
+    },
+    {
+      "title": "Oriental",
+      "url": "/music/Eastern.mp3",
+      "description": "The first 12 seconds is by me, but then the rest is a vibe masterpiece from Suno v4.5.",
+      "urlType": "FILE",
+      "coverUrl": "/music/Eastern.avif",
+      "date": "20260228",
+      "order": 950,
+      "descriptionZH": "前 12 秒由我創作，其餘部分則是來至 Suno v4.5 的傑作。"
+    },
+    {
+      "title": "Fireworks",
+      "url": "/music/Fireworks.mp3",
+      "description": "Eastern style fireworks themed music. 220BPM Power Metal. https://onlinesequencer.net/374462 (Late 2016). Arranged using Suno v4.5.",
+      "urlType": "FILE",
+      "coverUrl": "/music/Fireworks.avif",
+      "date": "20260222",
+      "order": 965,
+      "descriptionZH": "東洋風格煙火主題音樂。220BPM 力量金屬。https://onlinesequencer.net/374462 （2016 年末）。使用 Suno v4.5 編曲。"
+    },
+    {
+      "title": "Journey",
+      "url": "/music/Journey.mp3",
+      "description": "Celtic themed epic adventure cartoon opening. Lyrics by me. https://onlinesequencer.net/374449 (Late 2016). Arranged using Suno v4.5.",
+      "urlType": "FILE",
+      "coverUrl": "/music/Journey.avif",
+      "date": "20251108",
+      "order": 987,
+      "descriptionZH": "凱爾特主題史詩冒險卡通開場。歌詞由我創作。https://onlinesequencer.net/374449 （2016 年末）。使用 Suno v4.5 編曲。"
+    },
+    {
+      "title": "Soar",
+      "url": "/music/Soar.mp3",
+      "description": "Soaring through the sky. https://onlinesequencer.net/5274355 (2026-03-13). Arranged using Suno v4.5.",
+      "urlType": "FILE",
+      "coverUrl": "/music/Soar.avif",
+      "date": "20260316",
+      "order": 985,
+      "descriptionZH": "翱翔天空。https://onlinesequencer.net/5274355 （2026-03-13）。使用 Suno v4.5 編曲。"
+    },
+    {
+      "title": "Festival",
+      "url": "/music/pj2.mp3",
+      "description": "Eastern style track for school project. I still don't know why a Computer Science course taught us compose music. Cubase and EWQLSO. (No AI involved)",
+      "urlType": "FILE",
+      "coverUrl": "/music/pj2.avif",
+      "date": "20190410",
+      "order": 910,
+      "descriptionZH": "學校專案的東洋風格曲目。我仍然不明白為什麼計算機科學課程會教我們作曲。使用 Cubase 和 EWQLSO。（不涉及 AI）"
+    },
+    {
+      "title": "Festival (Arranged)",
+      "url": "/music/pj2-suno.mp3",
+      "description": "\"Festival\" enhanced and arranged by Suno v5.5.",
+      "urlType": "FILE",
+      "coverUrl": "/music/pj2-suno.avif",
+      "date": "20260406",
+      "order": 900,
+      "descriptionZH": "「Festival」經 Suno v5.5 增強和編曲。"
+    },
+    {
+      "title": "Sky Tree",
+      "url": "/music/8%20Aug_v2a.mp3",
+      "description": "An uplifting and bright adventure opening theme inspired by Made in Abyss. https://onlinesequencer.net/1577052 (Late 2020). Remixed by Rex Music Chamber. (No AI involved)",
+      "urlType": "FILE",
+      "coverUrl": "/music/8%20Aug_v2a.avif",
+      "date": "20200801",
+      "order": 895,
+      "descriptionZH": "受《來自深淵》啟發的激昂明亮冒險開場主題曲。https://onlinesequencer.net/1577052 （2020 年末）。由 Rex Music Chamber 重新混音。（不涉及 AI）"
+    },
+    {
+      "title": "Star Trail",
+      "url": "/music/Star%20Trail.mp4",
+      "description": "A very short melancholy track that gives a mood watching starry night alone. https://onlinesequencer.net/3533661 (Mid 2023). MIDI Rhodes. (No AI involved)",
+      "urlType": "FILE",
+      "coverUrl": "/music/Star%20Trail.avif",
+      "date": "20230801",
+      "order": 890,
+      "descriptionZH": "一首非常短的憂鬱曲目，營造獨自凝視星空的氛圍。https://onlinesequencer.net/3533661 （2023 年中）。MIDI Rhodes。（不涉及 AI）"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Saren Gaming Monitor",
+      "description": "Hardware & IoT Monitoring Server with real-time Linux hardware monitoring and IoT device tracking via WebSocket. Collects CPU, memory, temperatures, fan speeds, storage health, and network statistics.",
+      "status": "ACTIVE",
+      "tags": [
+        "TypeScript",
+        "Bun",
+        "WebSocket",
+        "Redis",
+        "Linux"
+      ],
+      "url": "https://github.com/Saren-Arterius/saren-gaming-monitor",
+      "cover": {
+        "imageUrl": "/projects/monitor.avif"
+      },
+      "date": "20251217",
+      "order": 15,
+      "descriptionZH": "硬體與 IoT 監控伺服器，透過 WebSocket 進行即時 Linux 硬體監控和 IoT 裝置追蹤。收集 CPU、記憶體、溫度、風扇轉速、儲存健康狀態和網路統計資料。"
+    },
+    {
+      "title": "Home Assistant Cantonese LLM Voice Assistant",
+      "description": "Cantonese-speaking LLM voice assistant for Home Assistant with natural conversation, tool calling for KMB/HKO APIs, and AI radar analysis. Features ~0.15s STT latency and persistent memory via HA todo. See it in action: https://www.threads.com/@nekomata.saren/post/DXV4Z-AkXp4",
+      "status": "ACTIVE",
+      "tags": [
+        "Node.js",
+        "Docker",
+        "LLM",
+        "Home Assistant",
+        "Cantonese"
+      ],
+      "url": "https://github.com/Saren-Arterius/home-assistant-cantonese-llm-voice-assistant",
+      "cover": {
+        "imageUrl": "/projects/cantonese.avif"
+      },
+      "date": "20260422",
+      "order": 12,
+      "descriptionZH": "廣東話驅動的 LLM 語音助手，適用於 Home Assistant，具有自然對話能力、KMB/HKO API 的工具呼叫，以及 AI 雷達分析。具備約 0.15 秒語音識別延遲，並透過 HA 待辦清單實現持久記憶。觀看實際應用：https://www.threads.com/@nekomata.saren/post/DXV4Z-AkXp4"
+    },
+    {
+      "title": "WTAKO ASR IME",
+      "description": "Real-time Speech-to-Text system optimized for Cantonese with hotkey-triggered recording, VAD, and automatic typing. Supports GLM-ASR, SenseVoice, Whisper, and Qwen ASR backends. Includes SRT generation/translate workflow.",
+      "status": "ACTIVE",
+      "tags": [
+        "Python",
+        "ASR",
+        "Speech-to-Text",
+        "Linux",
+        "Cantonese"
+      ],
+      "url": "https://github.com/Saren-Arterius/WTAKO-ASR-IME",
+      "cover": {
+        "imageUrl": "/projects/asr.avif"
+      },
+      "date": "20260420",
+      "order": 10,
+      "descriptionZH": "優化廣東話的即時語音轉文字系統，具有熱鍵觸發錄音、語音活動檢測（VAD）和自動打字功能。支援 GLM-ASR、SenseVoice、Whisper 和 Qwen ASR 後端。包含 SRT 生成/翻譯工作流程。"
+    },
+    {
+      "title": "Google Chinese Handwriting IME",
+      "description": "Chinese handwriting input method exploiting Google Translate via Electron. Features macOS-style touchpad support for gesture-based character input. Designed for Linux X11 desktops.",
+      "status": "ARCHIVED",
+      "tags": [
+        "Electron",
+        "JavaScript",
+        "IMM",
+        "Linux",
+        "Chinese"
+      ],
+      "url": "https://github.com/Saren-Arterius/google-chinese-handwriting-ime",
+      "cover": {
+        "imageUrl": "/projects/ime.avif"
+      },
+      "date": "20201201",
+      "order": 5,
+      "descriptionZH": "透過 Electron 利用 Google 翻譯的中文手寫輸入法。具有類似 macOS 的觸控板支援，用於手勢式文字輸入。專為 Linux X11 桌面設計。"
+    },
+    {
+      "title": "datHKG",
+      "description": "Android forum reader app for browsing and participating in online discussions.",
+      "status": "ARCHIVED",
+      "tags": [
+        "Android",
+        "Java",
+        "Forum"
+      ],
+      "url": "https://apkpure.com/dathkg/net.wtako.dathkg_reborn",
+      "cover": {
+        "imageUrl": "/projects/dathkg.avif"
+      },
+      "date": "20150301",
+      "order": 1,
+      "descriptionZH": "Android 論壇閱讀器應用程式，用於瀏覽和參與線上討論。"
+    }
+  ],
+  "art": [
+    {
+      "title": "Regal Saren in Traditional Japanese Garb",
+      "description": "Saren depicted as a regal lynx character with tan fur, white mane, and striking blue eyes, wearing elaborate green and gold traditional Japanese-style robes with diamond patterns. The pose shows one paw held to the face in an elegant gesture. Ornate accessories include golden horn-like headwear, beaded chains, a large green gem pendant, and intricate jewelry. Dramatic lighting highlights the luxurious textures of the clothing with a softly blurred background.",
+      "type": "AI",
+      "imageUrl": "/art/ai/00284-2323943974.webp",
+      "extraVideoUrl": "/art/ai/out.mp4",
+      "date": "20231115",
+      "order": 0,
+      "width": 1280,
+      "height": 960,
+      "thumbImageUrl": "/art/ai/00284-2323943974.webp.avif",
+      "descriptionZH": "Saren 被描繪為一隻高貴的猞猁角色，擁有棕褐色毛髮、白色鬃毛和引人注目的藍色眼睛，身穿精美的綠色與金色傳統日式長袍，飾有菱形圖案。姿態展示一隻爪子優雅地舉至臉龐旁。華麗的配飾包括金色角狀頭飾、串珠鏈條、大顆綠色寶石吊墜和精緻首飾。戲劇性的照明突顯服裝的豪華質感，背景柔和模糊。"
+    },
+    {
+      "title": "Grand Fantasy Courtyard",
+      "description": "An elaborate multi-level fantasy building with bluish tones and ornate architecture. Yellow pennant banners strung across balconies. Saren walking through a grand courtyard below, with an underwater or celestial sky visible through a circular opening above.",
+      "type": "AI",
+      "imageUrl": "/art/ai/01836.png",
+      "date": "20230327",
+      "order": 47,
+      "width": 1536,
+      "height": 2048,
+      "thumbImageUrl": "/art/ai/01836.png.avif",
+      "descriptionZH": "精緻的多層奇幻建築，帶有藍灰色調和華麗的建築。黃色三角旗橫跨陽樓懸掛。Saren 穿過下方宏偉的庭院，上方圓形開口可見海底或天體天空。"
+    },
+    {
+      "title": "Saren Fursuit Bathroom Pose",
+      "description": "3D rendered photorealistic Saren fursuit in a modern bathroom with ocean view. Tan and golden lynx character with bright blue eyes, muscular build, large paws with claws. Standing on dark wooden floor with shower fixtures visible. Natural lighting from the ocean window.",
+      "type": "AI",
+      "imageUrl": "/art/ai/20251125_194929.jpg",
+      "date": "20251126",
+      "order": 0,
+      "width": 768,
+      "height": 1376,
+      "thumbImageUrl": "/art/ai/20251125_194929.jpg.avif",
+      "descriptionZH": "現代浴室中的 3D 渲染超寫實 Saren 毛絨服，配以海景。棕褐色與金色的猞猁角色，亮藍色眼睛，肌肉健壯，帶有爪子的大型雙爪。站在深色木地板上，淋浴設備清晰可見。來自海景窗戶的自然光照明。"
+    },
+    {
+      "title": "Tribal Warrior Saren Flexing",
+      "description": "Cheerful Saren flexing his bicep with orange-tan fur, white mane, and bright blue eyes. Wearing a colorful tribal-style top with geometric patterns in blue and orange, fringed edges, beaded necklaces, and woven wrist bracelets. Fur belt and light blue cape flowing behind.",
+      "type": "AI",
+      "imageUrl": "/art/ai/2.png",
+      "date": "20240209",
+      "order": 0,
+      "width": 1112,
+      "height": 1485,
+      "thumbImageUrl": "/art/ai/2.png.avif",
+      "descriptionZH": "開朗的 Saren 展示肱二頭肌，橙色棕褐色毛髮，白色鬃毛，亮藍色眼睛。身穿色彩斑斕的部落風格上衣，帶有藍橙幾何圖案，流蘇邊緣，串珠項鍊和編織手腕手鐲。毛皮腰帶和淺藍色斗篷在身後飄動。"
+    },
+    {
+      "title": "Saren Tribal Warrior Capture Scene",
+      "description": "Forest scene with Saren as a tribal warrior in an aggressive pose, roaring while holding a spear. Tan fur with white mane, blue eyes, colorful feather decorations and blue gem belt buckle. A human character with dark hair tied to a tree with rope, appearing distressed.",
+      "type": "AI",
+      "imageUrl": "/art/ai/a12_rbk.png",
+      "extraVideoUrl": "/art/ai/video_2026-05-02_02-59-27.mp4",
+      "date": "20241227",
+      "order": 0,
+      "width": 1792,
+      "height": 1024,
+      "thumbImageUrl": "/art/ai/a12_rbk.png.avif",
+      "descriptionZH": "森林場景，Saren 作為部落戰士呈侵略性姿態，手持長矛並咆哮。棕褐色毛髮配白色鬃毛，藍眼睛，彩色羽毛裝飾和藍色寶石腰帶扣。一個黑髮人類角色被繩子綁在樹上，顯得痛苦不安。"
+    },
+    {
+      "title": "Saren Japanese Village Night",
+      "description": "Saren sitting cheerfully on an eaves/deck in a traditional Japanese village at night. Orange-tan spotted fur with white mane and blue eyes. Wearing tribal/geometric patterned clothing with multiple colorful leg wraps and bracelets. Warm lantern glow illuminates traditional buildings in the background.",
+      "type": "AI",
+      "imageUrl": "/art/ai/b.png",
+      "date": "20240213",
+      "order": 0,
+      "width": 884,
+      "height": 1200,
+      "thumbImageUrl": "/art/ai/b.png.avif",
+      "descriptionZH": "Saren 快樂地坐在傳統日式村莊夜晚的屋簷/露臺上。橙棕色斑點毛髮，白色鬃毛和藍眼睛。身穿部落/幾何紋樣服裝，搭配多條色彩繽紛的腿部裹布和手鐲。溫暖的燈光照亮背景中的傳統建築。"
+    },
+    {
+      "title": "Fantasy Market City Scene",
+      "description": "Bustling medieval fantasy marketplace in an ornate European-style city with market stalls and colorful spices. Saren as an armored warrior in red-brown metallic plate armor with spiky lynx-like features. In the background stands a tall Gothic clock tower with warm sunlight streaming through a distant archway.",
+      "type": "AI",
+      "imageUrl": "/art/ai/city-4.png",
+      "date": "20251109",
+      "order": 49,
+      "width": 3320,
+      "height": 1088,
+      "thumbImageUrl": "/art/ai/city-4.png.avif",
+      "descriptionZH": "繁華的中世紀古都市場，裝飾華麗的歐洲風格城市，有市場攤位和多彩香料。Saren 作為戰士，身穿紅棕色金屬板甲，帶有尖刺猞猁般特徵。背景矗立著高大的哥特式鐘樓，溫暖的陽光透過遠處拱門照射進來。"
+    },
+    {
+      "title": "Fantasy Grand Ballroom Scene",
+      "description": "Epic fantasy ballroom with ornate multi-level architecture and balconies filled with guests. Saren standing in the foreground facing away, wearing a dark formal coat with his spotted lynx tail visible. Warm candlelight and magical glowing lights throughout, with a dreamy blue sky visible above the open-air venue.",
+      "type": "AI",
+      "imageUrl": "/art/ai/clipspace-mask-12193852.png",
+      "date": "20250523",
+      "order": 0,
+      "width": 3840,
+      "height": 1600,
+      "thumbImageUrl": "/art/ai/clipspace-mask-12193852.png.avif",
+      "descriptionZH": "史詩奇幻舞廳，擁有華麗的多層建築，陽臺上擠滿客人。前景中 Saren 背對站立，穿著深色正式禮服，斑點猞猁尾巴清晰可見。溫暖的燭光和魔法光輝遍佈，露天場地上方可見夢幻的藍天。"
+    },
+    {
+      "title": "Fantasy Ballroom Vertical View",
+      "description": "Vertical composition of an epic fantasy ballroom with ornate multi-level architecture. Saren in a dark formal coat facing away, spotted lynx tail visible. Balconies filled with guests, hanging foliage, floating lanterns, and warm lights against a teal misty sky with birds flying above.",
+      "type": "AI",
+      "imageUrl": "/art/ai/clipspace-mask-12193852-tall.png",
+      "date": "20250523",
+      "order": 50,
+      "width": 1200,
+      "height": 1600,
+      "thumbImageUrl": "/art/ai/clipspace-mask-12193852-tall.png.avif",
+      "descriptionZH": "史詩奇幻舞廳垂直構圖，擁有華麗的多層建築。Saren 身穿深色正式禮服，背對而立，斑點猞猁尾巴清晰可見。陽臺上擠滿客人，懸垂的植物、漂浮的燈籠和溫暖的燈光，背景為青綠色霧蒙天空，上方有鳥兒飛翔。"
+    },
+    {
+      "title": "Saren in Fantastical City",
+      "description": "Vibrant fantasy scene with a tall, shirtless Saren standing in a bustling colorful city with towering architecture in warm golds, oranges, and teals. Multiple dragon-like flying creatures soar through a blue sky filled with clouds. A smaller human character in a cloak stands observing in the foreground.",
+      "type": "AI",
+      "imageUrl": "/art/ai/ComfyUI_00547_mix.png",
+      "date": "20250630",
+      "order": 46,
+      "width": 832,
+      "height": 1216,
+      "thumbImageUrl": "/art/ai/ComfyUI_00547_mix.png.avif",
+      "descriptionZH": "充滿活力的奇幻場景，高大的赤裸 Saren 站在繁華多彩的城市中，高聳建築以溫暖的金黃色、橙色和青色呈現。多隻龍狀飛行生物穿過充滿雲朵的藍天。前景中較小的人類角色披著斗篷站立觀察。"
+    },
+    {
+      "title": "Saren and Kokumo Cyberpunk City",
+      "description": "Vibrant futuristic Asian-inspired city street with Saren (spotted lynx in ornate tribal armor with blue eyes) standing beside Kokumo (dark furred dragon in black armor with red accents and glowing red eyes). Neon signs in Asian characters, flying vehicles, floating islands in the sky. Three-quarters scale art style with warm sunset lighting.",
+      "type": "AI",
+      "imageUrl": "/art/ai/ComfyUI_01297_.png",
+      "date": "20250901",
+      "order": 39,
+      "width": 7680,
+      "height": 2176,
+      "thumbImageUrl": "/art/ai/ComfyUI_01297_.png.avif",
+      "descriptionZH": "充滿活力的未來感亞洲風格城市街道，Saren（斑點猞猁，身穿華麗部落鎧甲，藍色眼睛）站在 Kokumo 旁（深色毛髮的龍，黑色鎧甲配紅色裝飾，發光紅眼）。霓虹燈牌展示亞洲文字，飛行車輛，空中漂浮島嶼。三分之二的比例藝術風格，搭配溫暖的夕陽照明。"
+    },
+    {
+      "title": "Monster Hunter x How to Train Your Dragon Crossover",
+      "description": "Monster Hunter x How to Train Your Dragon crossover fan art in a cozy tavern setting. Toothless the Night Fury lounges at a wooden table alongside a small Palico (Monster Hunter cat companion) cooking over a firepot. Film character Hiccup stand nearby reading a map, with warm golden sunlight streaming through diamond-paned windows. Additional fantasy characters including a wyverian and female Kirin armored warrior in the background.",
+      "type": "AI",
+      "imageUrl": "/art/ai/ComfyUI_01611_.png",
+      "date": "20260104",
+      "order": 44,
+      "width": 3520,
+      "height": 1920,
+      "thumbImageUrl": "/art/ai/ComfyUI_01611_.png.avif",
+      "descriptionZH": "《魔物獵人》x《馴龍高手》跨界同人創作的溫馨酒館場景。無牙（Night Fury）慵懶地躺在木桌旁，一隻小小的侍貓（Palico，魔物獵人貓夥伴）在火鍋旁烹飪。電影角色 Hiccup 站在附近閱讀地圖，溫暖的金色陽光透過菱形格窗戶灑落。背景中還有其他奇幻角色，包括龍人族男性和女性麒麟鎧甲戰士。"
+    },
+    {
+      "title": "Saren Winter Portrait",
+      "description": "Portrait of Saren wearing a light blue-gray hat/beret with dark band, matching oversized scarf wrapped around neck, and a bone/teeth necklace. Spotted tan and white fur with striking blue eyes. Minimalist style on clean white background, with tail visible behind.",
+      "type": "AI",
+      "imageUrl": "/art/ai/final-lg.png",
+      "date": "20230824",
+      "order": 0,
+      "width": 2048,
+      "height": 2048,
+      "thumbImageUrl": "/art/ai/final-lg.png.avif",
+      "descriptionZH": "Saren 肖像，戴著淺藍灰色帽子/貝雷帽配深色束帶，搭配同色系超大圍巾繞在頸部，以及骨頭/牙齒項鍊。斑點棕褐色與白色毛髮，引人注目的藍色眼睛。純淨白色背景上的極簡風格，身後可見尾巴。"
+    },
+    {
+      "title": "Dynamic Saren Action Pose",
+      "description": "Muscular Saren in a dynamic running/lunging action pose with flowing white mane and spotted tan fur. Wearing tribal accessories including colorful beaded necklaces, wristbands, and blue fabric sash with dangling ribbons. Powerful pose with claws extended against a vibrant streaked background of reds, oranges, blues and greens suggesting speed and energy.",
+      "type": "AI",
+      "imageUrl": "/art/ai/final_warm40.png",
+      "date": "20240526",
+      "order": 40,
+      "width": 1664,
+      "height": 2432,
+      "thumbImageUrl": "/art/ai/final_warm40.png.avif",
+      "descriptionZH": "肌肉結實的 Saren 呈現動態奔跑/突進動作姿態，白色鬃毛飄逸，棕褐色斑點毛髮。佩戴部落配飾，包括彩色串珠項鍊、手腕護帶和帶有垂墜絲帶的藍色布質腰帶。強健的姿勢，爪子伸展，背景是充滿活力的紅、橙、藍、綠條紋，暗示速度與能量。"
+    },
+    {
+      "title": "Saren Rooftop Night Watch",
+      "description": "Atmospheric night scene with Saren sitting on a rooftop overlooking a dimly lit village. Wearing dark clothing with visible lynx features, leaning against a wooden structure. Village below has warm glowing windows creating contrast with cool blue night tones. A meteor streaks across the cloudy sky in the distance.",
+      "type": "AI",
+      "imageUrl": "/art/ai/gt.png",
+      "date": "20230408",
+      "order": 43,
+      "width": 1536,
+      "height": 2048,
+      "thumbImageUrl": "/art/ai/gt.png.avif",
+      "descriptionZH": "富於氛圍的夜景，Saren 坐在屋頂上俯瞰燈光昏暗的村莊。身穿深色衣物，猞猁特徵清晰可見，倚靠在木製結構上。下方村莊溫暖發光的窗戶與冷色調的藍色夜景形成對比。遠處流星劃過多雲的天空。"
+    },
+    {
+      "title": "Saren Scarf Portrait",
+      "description": "Close-up portrait of Saren with orange-tan spotted fur and striking bright blue eyes. White mane framing the face, with fluffy lynx ears. Wearing a dark patterned scarf with geometric designs. A village scene visible in the sunlit background.",
+      "type": "AI",
+      "imageUrl": "/art/ai/gt.webp",
+      "date": "20231019",
+      "order": 0,
+      "width": 1536,
+      "height": 2048,
+      "thumbImageUrl": "/art/ai/gt.webp.avif",
+      "descriptionZH": "Saren 特寫肖像，橙棕色斑點毛髮和引人注目的亮藍色眼睛，白色鬃毛環繞臉龐，毛茸茸的猞猁耳朵。佩戴帶有幾何圖案的深色圍巾。陽光背景中可見村莊景色。"
+    },
+    {
+      "title": "Grand Fantasy Atrium",
+      "description": "Lavish multi-level fantasy atrium with ornate baroque architecture. Saren viewing from foreground in a brown cloak, spotted lynx tail visible. Warm golden lighting from right side contrasts with cool teal tones on the left. People mingling on balconies below, with floating platforms and platforms in an open-air sky.",
+      "type": "AI",
+      "imageUrl": "/art/ai/krita2.png",
+      "date": "20230325",
+      "order": 40,
+      "width": 1536,
+      "height": 2048,
+      "thumbImageUrl": "/art/ai/krita2.png.avif",
+      "descriptionZH": "豪華的多層奇幻中庭，飾有精美的巴洛克式建築。前景中 Saren 身披棕色斗篷觀看，斑點猞猁尾巴清晰可見。右側溫暖的金色照明與左側冷色青綠調形成對比。下方陽臺上人們閒聊，空中漂浮著平臺和露天天空。"
+    },
+    {
+      "title": "Saren Armored Warrior",
+      "description": "Saren as a powerful warrior in ornate bronze and blue plate armor with intricate engraved details. Striking blue eyes, white mane, and large lynx ears. Wearing armored gauntlets with prominent metal claws. Dynamic pose against a mystical dark background with glowing blue energy streaks.",
+      "type": "AI",
+      "imageUrl": "/art/ai/photo_2023-08-25_12-59-31.jpg",
+      "date": "20230825",
+      "order": 0,
+      "width": 1280,
+      "height": 1280,
+      "thumbImageUrl": "/art/ai/photo_2023-08-25_12-59-31.jpg.avif",
+      "descriptionZH": "Saren 作為強健戰士，身著華麗的青銅與藍色板甲，飾有精緻雕刻細節。引人注目的藍色眼睛、白色鬃毛和大型猞猁耳朵。佩戴帶有醒目金屬爪的鎧甲護手。動態姿勢，神秘黑暗背景中鑲嵌發光的藍色能量條紋。"
+    },
+    {
+      "title": "Saren Formal Suit Portrait",
+      "description": "Saren in a modern formal outfit standing confidently with hands in pockets. Wearing a light beige suit jacket and matching trousers over a navy blue button-up shirt. Tawny lynx head with striking blue eyes, long flowing white mane, and distinctive ear tufts. Furred arms and a spotted tail visible against a neutral gray studio background.",
+      "type": "AI",
+      "imageUrl": "/art/ai/photo_2024-01-16_12-58-36.jpg",
+      "date": "20240116",
+      "order": 0,
+      "width": 768,
+      "height": 1280,
+      "thumbImageUrl": "/art/ai/photo_2024-01-16_12-58-36.jpg.avif",
+      "descriptionZH": "Saren 身穿現代正裝，雙手插袋自信地站立。搭配淺米色西裝外套和相配長褲，內穿海軍藍鈕扣襯衫。棕黃色猞猁頭部，引人注目的藍色眼睛，長而飄逸的白色鬃毛，以及獨特的耳簇。毛茸茸的手臂和斑點尾巴在灰色攝影棚背景前清晰可見。"
+    },
+    {
+      "title": "Saren Overlooking Night Village",
+      "description": "Saren fursuit sitting atop a wooden railing overlooking a beautifully lit village at night. The lynx character with white mane in dark clothing gazing over a scenic valley filled with warm village lights. Colorful illumination on trees along the mountainside, dark night sky above creating a peaceful contemplative mood. Fursuit by Inerri Creatures. Clothing enhanced by AI.",
+      "type": "PHOTO",
+      "imageUrl": "/art/ai/photo_2024-04-01_02-34-18.jpg",
+      "date": "20240331",
+      "order": 0,
+      "width": 960,
+      "height": 1280,
+      "thumbImageUrl": "/art/ai/photo_2024-04-01_02-34-18.jpg.avif",
+      "descriptionZH": "Saren 可穿戴毛絨服坐在木製護欄上，夜晚俯瞰美麗的燈光村莊。擁有白色鬃毛的猞猁角色身著深色衣物，凝視著鋪滿溫暖村莊燈光的風景山谷。山腰樹木多彩照明，上方黑暗夜空營造出平靜沉思的氛圍。毛絨服由 Inerri Creatures 製作，服裝經 AI 增強。"
+    },
+    {
+      "title": "Saren Scarf Sketch Style",
+      "description": "Sketch-style drawing of Saren with bare muscular chest and spotted arms, wearing a brown scarf wrapped around neck and beige pants. White spiky mane with tan lynx face and bright blue eyes, small fangs visible. One paw raised near shoulder holding the scarf. Loose, energetic brush work on a minimal gray-white background.",
+      "type": "AI",
+      "imageUrl": "/art/ai/photo_2024-04-23_01-34-23.jpg",
+      "date": "20240423",
+      "order": 0,
+      "width": 832,
+      "height": 1216,
+      "thumbImageUrl": "/art/ai/photo_2024-04-23_01-34-23.jpg.avif",
+      "descriptionZH": "素描風格的 Saren 繪畫，裸露的肌肉胸膛和斑點手臂，脖子上圍著棕色圍巾，穿著米色長褲。白色尖刺鬃毛，棕褐色猞猁臉龐和亮藍色眼睛，可見小犬齒。一隻爪子舉至肩部附近握住圍巾。鬆散、充滿活力的筆觸，背景為簡潔的灰白色。"
+    },
+    {
+      "title": "Saren Desert Wanderer",
+      "description": "Saren standing in a soft pink desert landscape, wrapped in a colorful patterned blanket with geometric tribal designs in blues, reds and earth tones. White and tan lynx fur with characteristic ear tufts. Warm lighting suggests sunrise or sunset, creating a peaceful desert wanderer atmosphere.",
+      "type": "AI",
+      "imageUrl": "/art/ai/photo_2024-07-24_02-51-57.jpg",
+      "date": "20240724",
+      "order": 0,
+      "width": 875,
+      "height": 1280,
+      "thumbImageUrl": "/art/ai/photo_2024-07-24_02-51-57.jpg.avif",
+      "descriptionZH": "Saren 站在柔和的粉紅色沙漠景觀中，包裹著色彩斑斕的圖案毯子，帶有藍、紅和大地的幾何部落設計。白色與棕褐色猞猁毛髮，具有特徵性的耳簇。溫暖的照明暗示日出或日落，營造出平靜的沙漠流浪者氛圍。"
+    },
+    {
+      "title": "Saren Overlooking Eastern Village at Night",
+      "description": "Saren viewed from behind, a lynx character in a dark cloak standing on high ground overlooking a traditional East Asian village at night. Traditional pagoda-style buildings with curved roofs and warm glowing lanterns fill the scene. A full moon hangs in the teal night sky, with mist settling over the village. Peaceful, contemplative atmosphere.",
+      "type": "AI",
+      "imageUrl": "/art/ai/photo_2024-10-22_16-42-54.jpg",
+      "date": "20241022",
+      "order": 0,
+      "width": 853,
+      "height": 1280,
+      "thumbImageUrl": "/art/ai/photo_2024-10-22_16-42-54.jpg.avif",
+      "descriptionZH": "從後方看到的 Saren，猞猁角色身披深色斗篷站立在高地上，俯瞰夜晚的傳統東亞村莊。充滿場景的傳統塔式建築，帶彎曲屋頂和溫暖發光的燈籠。滿月懸掛在青藍色夜空，薄霧瀰漫村莊之上。和平、沉思的氛圍。"
+    },
+    {
+      "title": "Saren Photorealistic Portrait",
+      "description": "Photorealistic portrait of Saren as a powerful anthropomorphic lynx with striking blue eyes and light tan fur. Long flowing mane with characteristic ear tufts, muscular physique with detailed fur texture. Neutral studio lighting against a dark gray background emphasizing the realistic rendering style.",
+      "type": "AI",
+      "imageUrl": "/art/ai/photo_2024-12-05_03-56-40.jpg",
+      "date": "20241205",
+      "order": 0,
+      "width": 853,
+      "height": 1280,
+      "thumbImageUrl": "/art/ai/photo_2024-12-05_03-56-40.jpg.avif",
+      "descriptionZH": "Saren 的超寫實肖像，作為強健的擬人化猞猁，擁有引人注目的藍眼睛和淺棕褐色毛髮。長而飄逸的鬃毛，特徵性耳簇，肌肉健壯，毛髮紋理細緻。灰色背景前的中性攝影棚照明，強調寫實渲染風格。"
+    },
+    {
+      "title": "Saren Throne King Portrait",
+      "description": "Saren sitting regally on an ornate wooden throne with golden decorations. Light tan lynx fur with white mane and striking blue eyes. Wearing a red vest with yellow X design, green pants with yellow patches, and white bandages wrapped around arms and legs. Dark velvet curtains create a royal atmosphere in the background.",
+      "type": "AI",
+      "imageUrl": "/art/ai/photo_2025-12-03_10-59-10.jpg",
+      "date": "20251203",
+      "order": 0,
+      "width": 714,
+      "height": 1280,
+      "thumbImageUrl": "/art/ai/photo_2025-12-03_10-59-10.jpg.avif",
+      "descriptionZH": "Saren 莊嚴地坐在裝飾華麗的金色木製寶座上。淺棕褐色猞猁毛髮，白色鬃毛和引人注目的藍色眼睛。穿著帶有黃色 X 圖案的紅色背心，帶有黃色補丁的綠色褲子，手臂和腿部纏繞白色繃帶。背景中深色絨布簾幕營造王者氣氛。"
+    },
+    {
+      "title": "Dynamic Crouching Pose",
+      "description": "Saren in a dynamic crouching pose wearing a red sleeveless top with yellow X design, green pants with yellow patches, and white bandages wrapped around arms and legs. Large lynx ears, white mane, long tail, bare feet. Dramatic spotlighting with sketch-style background line art.",
+      "type": "OG",
+      "imageUrl": "/art/og/saren-giga2-dist.png",
+      "date": "20200712",
+      "order": 95,
+      "width": 2174,
+      "height": 2056,
+      "thumbImageUrl": "/art/og/saren-giga2-dist.png.avif",
+      "descriptionZH": "Saren 呈現動態蹲伏姿勢，穿著帶有黃色 X 圖案的紅色無袖上衣，帶有黃色補丁的綠色褲子，手臂和腿部纏繞白色繃帶。大型猞猁耳朵，白色鬃毛，長尾巴，赤腳。戲劇性的聚光照明，背景為素描風格線稿。"
+    },
+    {
+      "title": "Dream Scene",
+      "description": "A serene balcony at sunset with warm orange and yellow sky. Stone architecture with arched doorway on left, wooden railing, tiled floor with long shadows, and green foliage on the right side.",
+      "type": "OG",
+      "imageUrl": "/art/og/dream2-post.png",
+      "date": "20200712",
+      "order": 90,
+      "width": 1920,
+      "height": 1080,
+      "thumbImageUrl": "/art/og/dream2-post.png.avif",
+      "descriptionZH": "日落時分寧靜的陽臺，天空呈現溫暖的橙色和黃色。石造建築，左側有拱門，木製護欄，鋪有瓷磚的地面映出長長影子，右側是綠色植被。"
+    },
+    {
+      "title": "Oil Portrait",
+      "description": "Oil painting portrait of Saren the lynx with bright blue eyes, large tufted ears, and golden-cream fur against a deep blue starry night sky with full moon. Wearing ornate green clothing with gold jewelry and necklaces.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/dex.pascal.1/Saren_Oil.png",
+      "author": {
+        "name": "dex.pascal.1",
+        "link": "https://facebook.com/dex.pascal.1"
+      },
+      "date": "20200712",
+      "order": 85,
+      "width": 1957,
+      "height": 2415,
+      "thumbImageUrl": "/art/comms/dex.pascal.1/Saren_Oil.png.avif",
+      "descriptionZH": "Saren 猞猁的油畫肖像，亮藍色眼睛，大型簇毛耳朵，金奶油色毛髮，背景是滿月的深藍色星空。身穿華麗的綠色服裝，搭配金色首飾和項鍊。"
+    },
+    {
+      "title": "Kokumo Fursona Reference",
+      "description": "Character reference sheet for Kokumo the furred dragon with dark gray/black fur and white markings. Multiple views including full body poses, head expressions, silhouette references, color palette, and a small chibi Saren at the bottom.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/furyRaptor23/ref/Kokumo Fursona_CN_SFW.png",
+      "author": {
+        "name": "furyRaptor23",
+        "link": "https://twitter.com/furyRaptor23"
+      },
+      "date": "20210808",
+      "order": 80,
+      "width": 3710,
+      "height": 1000,
+      "thumbImageUrl": "/art/comms/furyRaptor23/ref/Kokumo Fursona_CN_SFW.png.avif",
+      "descriptionZH": "Kokumo 毛茸茸龍的角色參考圖，擁有深灰色/黑色毛髮和白色斑紋。多個視角，包括全身姿勢、頭部表情、輪廓參考、色板和底部的小 Q 版 Saren。"
+    },
+    {
+      "title": "Saren & Kokumo Stickers",
+      "description": "LINE/Telegram stickers of Saren and Kokumo's everyday life and funny faces. | Telegram (Free): https://t.me/addstickers/saren_kokumo_vol1 | LINE ($0.99 each pack, all revenue goes to the artist): https://store.line.me/stickershop/product/31326198/ https://store.line.me/stickershop/product/32209566/",
+      "type": "COMM",
+      "imageUrl": "/art/comms/furyRaptor23/stickers.png",
+      "author": {
+        "name": "furyRaptor23",
+        "link": "https://twitter.com/furyRaptor23"
+      },
+      "date": "20250728",
+      "order": 850,
+      "width": 928,
+      "height": 1205,
+      "thumbImageUrl": "/art/comms/furyRaptor23/stickers.png.avif",
+      "descriptionZH": "Saren和Kokumo的LINE/Telegram聊天表符貼圖，展現各種日常生活和顏藝。 | Telegram (免費): https://t.me/addstickers/saren_kokumo_vol1 | LINE (每包$0.99，收益全歸畫師): https://store.line.me/stickershop/product/31326198/ https://store.line.me/stickershop/product/32209566/"
+    },
+    {
+      "title": "PalWorld Scene",
+      "description": "Saren winking playfully while reaching toward Chillet (a large light-blue furred character from Palworld). Pink hearts float in the air. Saren has spotted orange fur, white mane, green tank top, and gold bracelets.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/furyRaptor23/PalWorld Chillet Commission_Final.png",
+      "author": {
+        "name": "furyRaptor23",
+        "link": "https://twitter.com/furyRaptor23"
+      },
+      "date": "20240711",
+      "order": 940,
+      "width": 2160,
+      "height": 3840,
+      "thumbImageUrl": "/art/comms/furyRaptor23/PalWorld Chillet Commission_Final.png.avif",
+      "descriptionZH": "Saren 俏皮地眨眼，同時伸手朝向疾旋鼬(大型淺藍色毛角色，來自幻獸帕魯)。粉紅色愛心懸浮在空中。Saren 擁有斑點橙色毛髮、白色鬃毛、綠色背心和金色手鐲。"
+    },
+    {
+      "title": "Store Scene",
+      "description": "Two anthropomorphic characters in a store. Saren (spotted lynx with blue eyes, green tank top) holding a shopping bag, shopping with Folf (wolf with grey face, red markings, a blue horn on head, wearing black shirt and a necklace). Store shelves and Y2-Y26 sign visible in background. Character owner of Folf: https://x.com/fenrirschwart",
+      "type": "COMM",
+      "imageUrl": "/art/comms/furyRaptor23/Srean_Folf_Commission.png",
+      "author": {
+        "name": "furyRaptor23",
+        "link": "https://twitter.com/furyRaptor23"
+      },
+      "date": "20240711",
+      "order": 930,
+      "width": 3840,
+      "height": 2160,
+      "thumbImageUrl": "/art/comms/furyRaptor23/Srean_Folf_Commission.png.avif",
+      "descriptionZH": "兩位擬人化角色在商店內。Saren（一隻藍色眼睛、穿著綠色背心的斑點猞猁）手提購物袋，與Folf （一隻灰色臉孔、紅色紋記、頭上長有藍色角的狼，穿著黑色上衣並戴著項鍊）一同購物。背景可見商店貨架與Y2-Y26標誌。Folf角色的歸屬者：https://x.com/fenrirschwart"
+    },
+    {
+      "title": "Cactus Desert Wanderer",
+      "description": "Saren walking through a sandy desert landscape with wind blowing. Wearing a dark sleeveless top with white fur collar, ornate belt, brown pants, and a tattered blue cape flowing behind. Holding a curved sword in one hand.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/WhackyUmbra/flow2.png",
+      "author": {
+        "name": "WhackyUmbra",
+        "link": "https://twitter.com/whackyumbra"
+      },
+      "date": "20200629",
+      "order": 65,
+      "width": 1280,
+      "height": 960,
+      "thumbImageUrl": "/art/comms/WhackyUmbra/flow2.png.avif",
+      "descriptionZH": "Saren 穿過風吹沙地的沙漠景觀。身穿深色無袖上衣，配有白色毛皮領、華麗腰帶、棕色長褲，身後飄著破損的藍色斗篷。一隻手握著彎刀。"
+    },
+    {
+      "title": "Shirtless Warrior Pose",
+      "description": "Saren standing shirtless in a confident pose with a large sword strapped to his back. Spotted lynx with white mane and blue eyes, wearing teal pants, black belt with pouches, fingerless gloves, and white leg wraps. Warm sepia-toned background with ruins.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/eggtartzzz/eggtatt1.png",
+      "author": {
+        "name": "eggtartzzz",
+        "link": "https://twitter.com/eggtartzzz"
+      },
+      "date": "20200629",
+      "order": 60,
+      "width": 1536,
+      "height": 2048,
+      "thumbImageUrl": "/art/comms/eggtartzzz/eggtatt1.png.avif",
+      "descriptionZH": "Saren 赤裸站立，自信姿勢，背上綁著一把大型長劍。斑點猞猁，白色鬃毛和藍色眼睛，穿著青色長褲、帶有袋子黑色腰帶、露指手套和白色腿部裹布。溫暖的褐色背景，帶有廢墟。"
+    },
+    {
+      "title": "Sleeping Under Tree",
+      "description": "Saren sleeping peacefully under a tree in dappled sunlight. Lying on grass wearing green outfit with gold trim and blue sash, eyes closed with serene expression. Signature 'For Saren 21 TOOMIRO' visible.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/TOOMIRO/toomiro.png",
+      "author": {
+        "name": "TOOMIRO",
+        "link": "https://twitter.com/toomiro"
+      },
+      "date": "20210710",
+      "order": 1000,
+      "width": 3500,
+      "height": 2500,
+      "thumbImageUrl": "/art/comms/TOOMIRO/toomiro.png.avif",
+      "descriptionZH": "Saren 在樹下斑駁的陽光中安睡。躺在草地上，身穿綠色服裝配金色鑲邊和藍色腰帶，雙眼緊閉，神態安詳。可見簽名「For Saren 21 TOOMIRO」。"
+    },
+    {
+      "title": "Playful Necklace Pose",
+      "description": "Saren winking playfully while holding up a golden necklace. Spotted lynx with blue eye, white mane, wearing green cropped jacket with yellow geometric patterns and gold bracelets. Pink hearts float near cheeks. 'To Saren' text in orange cursive.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/novox/image0.jpg",
+      "author": {
+        "name": "novox"
+      },
+      "date": "20211011",
+      "order": 50,
+      "width": 2048,
+      "height": 2048,
+      "thumbImageUrl": "/art/comms/novox/image0.jpg.avif",
+      "descriptionZH": "Saren 俏皮眨眼同時舉起金色項鍊。斑點猞猁，藍色眼睛，白色鬃毛，穿著綠色短夾克配黃色幾何圖案和金色手鐲。粉紅色愛心飄浮在臉頰旁。橙色花體字「To Saren」。"
+    },
+    {
+      "title": "Character Reference Sheet",
+      "description": "Detailed character reference sheet showing Saren front and back views, clothing components (jewelry, sleeves, fabric patterns), multiple head expressions with different emotions, paw print reference, and color palette at bottom.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/laiyishin02/cheetah-ref2-name.png",
+      "author": {
+        "name": "laiyishin02",
+        "link": "https://twitter.com/laiyishin02"
+      },
+      "date": "20200708",
+      "order": 45,
+      "width": 7440,
+      "height": 4133,
+      "thumbImageUrl": "/art/comms/laiyishin02/cheetah-ref2-name.png.avif",
+      "descriptionZH": "細緻的角色參考圖，展示 Saren 正面和背面視圖、服裝部件（首飾、袖子、布料紋樣）、多種不同情緒的頭部表情、腳印參考，以及底部的色板。"
+    },
+    {
+      "title": "Sunset Tree Lean",
+      "description": "Saren leaning against a tree trunk gazing at a colorful sunset with pink, orange, and blue clouds. Wearing green outfit with gold trim. Lush green landscape with mountains in the distance.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/laiyishin02/dc05c76bfae1f1cadad9568ebaff4dfb0e7929c2.png",
+      "author": {
+        "name": "laiyishin02",
+        "link": "https://twitter.com/laiyishin02"
+      },
+      "date": "20200708",
+      "order": 40,
+      "width": 2480,
+      "height": 3507,
+      "thumbImageUrl": "/art/comms/laiyishin02/dc05c76bfae1f1cadad9568ebaff4dfb0e7929c2.png.avif",
+      "descriptionZH": "Saren 倚靠樹幹凝視色彩繽紛的日落，粉色、橙色和藍色雲朵。身穿綠色服裝配金色鑲邊。鬱鬱蔥蔥的綠色景觀，遠處有山脈。"
+    },
+    {
+      "title": "Reference Sheet Clean",
+      "description": "Character reference sheet for Saren showing full front and back body views, multiple head expressions (smiling, surprised, playful), paw print reference, and color palette. Clean lineart on mint green background.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/laiyishin02/sfw.png",
+      "author": {
+        "name": "laiyishin02",
+        "link": "https://twitter.com/laiyishin02"
+      },
+      "date": "20210810",
+      "order": 35,
+      "width": 6166,
+      "height": 4133,
+      "thumbImageUrl": "/art/comms/laiyishin02/sfw.png.avif",
+      "descriptionZH": "Saren 角色參考圖，展示完整前後身體視圖、多種頭部表情（微笑、驚訝、俏皮）、腳印參考和色板。薄荷綠色背景上的乾淨線稿。"
+    },
+    {
+      "title": "Reaching Pose with Tooth Necklace",
+      "description": "Saren reaching toward the viewer with one paw extended forward. Spotted lynx with bright blue eyes, wearing a tooth necklace, green jacket over bare chest, dark shorts with belt and sword hilt visible. Soft natural background.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/Chihua_Zoku/rita1.png",
+      "author": {
+        "name": "Chihua_Zoku",
+        "link": "https://twitter.com/chihua_zoku"
+      },
+      "date": "20210706",
+      "order": 960,
+      "width": 2508,
+      "height": 3541,
+      "thumbImageUrl": "/art/comms/Chihua_Zoku/rita1.png.avif",
+      "descriptionZH": "Saren 向觀眾伸手，一爪向前伸出。斑點猞猁，亮藍色眼睛，佩戴牙齒項鍊，綠色夾克罩在裸露的胸膛上，深色短褲，腰帶和劍柄清晰可見。柔和的自然背景。"
+    },
+    {
+      "title": "Traditional Robes",
+      "description": "Saren in ornate traditional East Asian robes with layered green, brown, and orange colors. Elaborate jewelry including dangling earrings and a large green gem at the waist. Wooden clogs on feet. Warm orange background.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/asaseno_sio315/asa1.png",
+      "author": {
+        "name": "asaseno_sio315",
+        "link": "https://twitter.com/asaseno_sio315"
+      },
+      "date": "20210706",
+      "order": 990,
+      "width": 1651,
+      "height": 2053,
+      "thumbImageUrl": "/art/comms/asaseno_sio315/asa1.png.avif",
+      "descriptionZH": "Saren 身著華麗的傳統東亞長袍，層次分明的綠色、棕色和橙色。精緻的首飾，包括垂墜耳環和腰間的大型綠色寶石。腳穿木製木屐。溫暖的橙色背景。"
+    },
+    {
+      "title": "Colored Pencil Head Sketch",
+      "description": "Colored pencil sketch of Saren's head and shoulders on notebook paper with torn edges. Intense blue eyes, detailed fur work with light coloring. Handwritten 'To. Saren' and signature with date '2024.6.10' visible.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/FenrirSchwart/20240610.jpg",
+      "author": {
+        "name": "FenrirSchwart",
+        "link": "https://twitter.com/fenrirschwart"
+      },
+      "date": "20240610",
+      "order": 20,
+      "width": 1536,
+      "height": 2048,
+      "thumbImageUrl": "/art/comms/FenrirSchwart/20240610.jpg.avif",
+      "descriptionZH": "彩色鉛筆素描，Saren 頭部和肩膀繪於撕邊筆記本紙上。強烈的藍色眼睛，精細的毛髮工作，淺色調。手寫的「To. Saren」和簽名及日期「2024.6.10」清晰可見。"
+    },
+    {
+      "title": "Warrior with Bone Armor",
+      "description": "Saren in warrior armor with bone decorations, holding a blue shield with gold stars and a large sword. Standing in a grassy field with ruins in the background under a blue sky.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/FenrirSchwart/20251016.jpg",
+      "author": {
+        "name": "FenrirSchwart",
+        "link": "https://twitter.com/fenrirschwart"
+      },
+      "date": "20251016",
+      "order": 910,
+      "width": 1197,
+      "height": 1638,
+      "thumbImageUrl": "/art/comms/FenrirSchwart/20251016.jpg.avif",
+      "descriptionZH": "Saren 身穿戰士鎧甲，飾有骨製裝飾，手持帶有金色星星的藍色盾牌和大型長劍。站立於草地上，背景廢墟，藍天之下。"
+    },
+    {
+      "title": "Aquatic Reach",
+      "description": "Saren in water reaching toward the viewer. Wearing green and gold ornate outfit with gold bracelets. Close-up showing expressive blue eyes, spotted fur, and white mane. Bright aquatic background with light effects.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/NKemoaka/20220223.png",
+      "author": {
+        "name": "NKemoaka",
+        "link": "https://twitter.com/nkemoaka"
+      },
+      "date": "20220223",
+      "order": 10,
+      "width": 2000,
+      "height": 2400,
+      "thumbImageUrl": "/art/comms/NKemoaka/20220223.png.avif",
+      "descriptionZH": "Saren 在水中向觀眾伸手。身穿金色鑲嵌的綠色華麗服裝和金色手鐲。特寫展示富有表情的藍眼睛、斑點毛髮和白色鬃毛。明亮的水下背景帶有光效。"
+    },
+    {
+      "title": "Roaring Run",
+      "description": "Saren in a dynamic running pose, roaring with mouth open. Muscular spotted lynx with blue eyes, wearing green pants with belt. Large spotted tail curves behind. Solid teal background.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/himasora/iSWgX_mj.jpg",
+      "author": {
+        "name": "himasora",
+        "link": "https://twitter.com/himasora"
+      },
+      "date": "20250624",
+      "order": 950,
+      "width": 1500,
+      "height": 1500,
+      "thumbImageUrl": "/art/comms/himasora/iSWgX_mj.jpg.avif",
+      "descriptionZH": "Saren 呈現動態奔跑姿勢，張口咆哮。肌肉發達的斑點猞猁，藍眼睛，穿著綠色褲子和腰帶。大型斑點尾巴在身後彎曲。純青色背景。"
+    },
+    {
+      "title": "Kokumo Roaring Run",
+      "description": "Kokumo in a dynamic running pose, roaring with mouth open. Dark gray furred dragon with white mane, glowing red eyes, wearing teal pants. Large curved tail with white fur accents. Solid brown background.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/himasora/JpyoV70P.jpg",
+      "author": {
+        "name": "himasora",
+        "link": "https://twitter.com/himasora"
+      },
+      "date": "20250624",
+      "order": 940,
+      "width": 1397,
+      "height": 1452,
+      "thumbImageUrl": "/art/comms/himasora/JpyoV70P.jpg.avif",
+      "descriptionZH": "Kokumo 呈現動態奔跑姿勢，張口咆哮。深灰色毛髮的龍，白色鬃毛，發光的紅眼睛，穿著青色長褲。大型彎曲尾巴帶有白色毛髮裝飾。純棕色背景。"
+    },
+    {
+      "title": "Japanese Garden Night",
+      "description": "Saren sitting peacefully in a traditional Japanese garden at night. Wearing white robes with blue accents, holding a red bowl. Traditional architecture, a tree, and a full moon visible in the background.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/LucentTear/20240307.png",
+      "author": {
+        "name": "LucentTear",
+        "link": "https://twitter.com/lucntear"
+      },
+      "date": "20240307",
+      "order": 2,
+      "width": 1920,
+      "height": 1080,
+      "thumbImageUrl": "/art/comms/LucentTear/20240307.png.avif",
+      "descriptionZH": "Saren 靜靜地坐在傳統日式花園中，在夜晚。身穿白色長袍配藍色裝飾，手持紅色碗。背景中可見傳統建築、一棵樹和滿月。"
+    },
+    {
+      "title": "Chubby Belly Pose",
+      "description": "Saren holding his chubby belly in a humorous way. Spotted body with blue eyes wearing a green cropped top with yellow geometric patterns and gold bracelets. Clean gray background.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/si_ra_ta_ma3/shiratama.png",
+      "author": {
+        "name": "si_ra_ta_ma3",
+        "link": "https://twitter.com/si_rata_ma3"
+      },
+      "date": "20250624",
+      "order": 850,
+      "width": 2480,
+      "height": 3508,
+      "thumbImageUrl": "/art/comms/si_ra_ta_ma3/shiratama.png.avif",
+      "descriptionZH": "Saren 以幽默的方式撫摸他圓滾滾的肚子。斑點身體，藍眼睛，穿著帶有黃色幾何圖案的綠色短上衣和金色手鐲。乾淨的灰色背景。"
+    },
+    {
+      "title": "Relaxed Sit",
+      "description": "Saren sitting in a relaxed pose with arms wrapped around knees. Bright orange-yellow spotted fur, white mane, and blue eyes. Clean vector-style illustration on white background.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/falvie/falvie.png",
+      "author": {
+        "name": "falvie",
+        "link": "https://twitter.com/falvie"
+      },
+      "date": "20250624",
+      "order": -1,
+      "width": 2975,
+      "height": 3850,
+      "thumbImageUrl": "/art/comms/falvie/falvie.png.avif",
+      "descriptionZH": "Saren 以放鬆姿勢坐著，雙臂環抱膝蓋。明亮的橙黃色斑點毛髮，白色鬃毛和藍色眼睛。白色背景上的乾淨矢量風格插畫。"
+    },
+    {
+      "title": "Techwear Hoodie",
+      "description": "Saren in a modern techwear outfit with a black hoodie featuring glowing cyan accents. Casual pose with one hand in pocket against a dark background with geometric cyan shapes.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/FeatherRoan/F4Bt6X2h.png",
+      "author": {
+        "name": "FeatherRoan",
+        "link": "https://twitter.com/featherroan"
+      },
+      "date": "20240711",
+      "order": -2,
+      "width": 800,
+      "height": 1129,
+      "thumbImageUrl": "/art/comms/FeatherRoan/F4Bt6X2h.png.avif"
+    },
+    {
+      "title": "Tactical Lounging",
+      "description": "Saren lounging casually in modern tactical gear. Wearing a dark vest over a white shirt, brown cargo pants, and tech boots. Relaxed pose with feet crossed, showing sole of shoes.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/FeatherRoan/q_EDfLGX.png",
+      "author": {
+        "name": "FeatherRoan",
+        "link": "https://twitter.com/featherroan"
+      },
+      "date": "20240711",
+      "order": -3,
+      "width": 1600,
+      "height": 1134,
+      "thumbImageUrl": "/art/comms/FeatherRoan/q_EDfLGX.png.avif",
+      "descriptionZH": "Saren 閒適地身著現代戰術裝備。身穿深色背心內搭白色襯衫、棕色戰術長褲和科技靴子。放鬆姿勢，雙腳交叉，露出鞋底。"
+    },
+    {
+      "title": "Fursuit Head Portrait",
+      "description": "Photo of Saren fursuit head with tan and white fur, striking green eyes, wearing a black and white geometric patterned sweater. Indoor setting. Fursuit by Inerri Creatures.",
+      "type": "PHOTO",
+      "imageUrl": "/art/photos/Gale021/photo_2020-10-20_19-53-23.jpg",
+      "author": {
+        "name": "Gale021",
+        "link": "https://twitter.com/gale021"
+      },
+      "date": "20201020",
+      "order": 800,
+      "width": 852,
+      "height": 1280,
+      "thumbImageUrl": "/art/photos/Gale021/photo_2020-10-20_19-53-23.jpg.avif",
+      "descriptionZH": "Saren 毛絨服頭部照片，帶有棕褐色和白色毛髮，引人注目的綠色眼睛，穿著黑白幾何圖案毛衣。室內環境。毛絨服由 Inerri Creatures 製作。"
+    },
+    {
+      "title": "Harbor Sunset Photo",
+      "description": "Saren fursuit posing at a Victoria Harbor (Hong Kong) railing with a city skyline in the background during golden hour. Tan and white fur, bright green eyes, wearing a dark shawl with orange geometric patterns. Ferry boat visible on the water, urban skyscrapers and mountains in the distance. Fursuit by Inerri Creatures.",
+      "type": "PHOTO",
+      "imageUrl": "/art/photos/Gale021/IMG_1475.JPG",
+      "author": {
+        "name": "Gale021",
+        "link": "https://twitter.com/gale021"
+      },
+      "date": "20241019",
+      "order": 985,
+      "width": 5770,
+      "height": 3246,
+      "thumbImageUrl": "/art/photos/Gale021/IMG_1475.JPG.avif",
+      "descriptionZH": "Saren 毛絨服在維多利亞港（香港）護欄旁擺姿勢，背景是城市天際線，正值黃金時刻。棕褐色和白色毛髮，明亮的綠色眼睛，佩戴帶有橙色幾何圖案的深色披肩。水面上可見渡輪，遠處有都市摩天大樓和山脈。毛絨服由 Inerri Creatures 製作。"
+    },
+    {
+      "title": "Night Balcony Photo",
+      "description": "Saren fursuit at night on a balcony with city skyline in background. Skyscrapers with blue and colorful lights visible. The fursuit wears a black jacket and rests a paw on the railing. Fursuit by Inerri Creatures.",
+      "type": "PHOTO",
+      "imageUrl": "/art/photos/tigersil37/IMG_4787.JPG",
+      "author": {
+        "name": "tigersil37",
+        "link": "https://twitter.com/tigersil37"
+      },
+      "date": "20251221",
+      "order": -10,
+      "width": 3908,
+      "height": 5211,
+      "thumbImageUrl": "/art/photos/tigersil37/IMG_4787.JPG.avif",
+      "descriptionZH": "Saren 毛絨服在夜晚的陽臺上，背景是城市天際線。摩天大樓的藍色和多彩燈光清晰可見。毛絨服穿著黑色夾克，爪子 resting 在護欄上。毛絨服由 Inerri Creatures 製作。"
+    },
+    {
+      "title": "Meow",
+      "description": "Cartoon character (Meow from Space Dandy) with red hood/hat featuring a yellow smiley face emblem. Yellow eyes, paws raised in a cute pose, wearing a light green outfit against a blue background.",
+      "type": "OG",
+      "imageUrl": "/art/og/484915019_3953649338181721_319585905921877576_n.jpg",
+      "date": "20181204",
+      "order": -15,
+      "width": 1249,
+      "height": 797,
+      "thumbImageUrl": "/art/og/484915019_3953649338181721_319585905921877576_n.jpg.avif",
+      "descriptionZH": "卡通角色（《宇宙浪子》中的 Meow），帶有黃色微笑表情徽章的紅色兜帽/帽子。黃色眼睛，爪子舉起呈可愛姿勢，穿著淺綠色服裝，背景為藍色。"
+    },
+    {
+      "title": "Shower Scene",
+      "description": "3D rendered realistic style Saren standing in a modern shower with ocean view through window. Tan and white fur, blue eyes, muscular build. Bathroom shelves with toiletries visible. 3D model modified from: https://sketchfab.com/3d-models/cougar-d9dc5171a1a14674a0313df212d12c87",
+      "type": "OG",
+      "imageUrl": "/art/og/486510951_3960357164177605_1148716364127670695_n.jpg",
+      "date": "20230919",
+      "order": 900,
+      "width": 1080,
+      "height": 1920,
+      "thumbImageUrl": "/art/og/486510951_3960357164177605_1148716364127670695_n.jpg.avif",
+      "descriptionZH": "3D 渲染寫實風格 Saren 站在現代淋浴間，透過窗戶可見海景。棕褐色和白色毛髮，藍色眼睛，肌肉健壯。浴室架子上的洗浴用品清晰可見。3D 模型修改自：https://sketchfab.com/3d-models/cougar-d9dc5171a1a14674a0313df212d12c87"
+    },
+    {
+      "title": "Back View Hoodie",
+      "description": "Sketch-style art of Saren viewed from behind with arms crossed. White flowing mane, tan spotted fur visible on arms. Wearing a dark hoodie against a white background.",
+      "type": "OG",
+      "imageUrl": "/art/og/487021265_3962545763958745_2239732437234320669_n.jpg",
+      "date": "20200727",
+      "order": 200,
+      "width": 526,
+      "height": 633,
+      "thumbImageUrl": "/art/og/487021265_3962545763958745_2239732437234320669_n.jpg.avif",
+      "descriptionZH": "Saren 素描風格藝術，從後方觀看，雙臂交叉。白色飄逸鬃毛，手臂上可見棕褐色斑點毛髮。身穿深色連帽衫，背景為白色。"
+    },
+    {
+      "title": "Voxel Saren Model",
+      "description": "Screenshot of Blender 3D software showing a voxel/Minecraft-style Saren character model. Blocky tan and white fur pattern, blue eyes, standing in the 3D viewport.",
+      "type": "OG",
+      "imageUrl": "/art/og/487750951_3967969650083023_8398500309670777220_n.jpg",
+      "date": "20230919",
+      "order": 100,
+      "width": 1737,
+      "height": 1668,
+      "thumbImageUrl": "/art/og/487750951_3967969650083023_8398500309670777220_n.jpg.avif",
+      "descriptionZH": "Blender 3D 軟件截圖，顯示體素/Minecraft 風格的 Saren 角色模型。方塊狀的棕褐色和白色毛髮紋樣，藍眼睛，站立在 3D 視口中。"
+    },
+    {
+      "title": "Math Sketch",
+      "description": "Sketch of Saren reaching toward viewer with one paw extended. Brown fur with white mane, bright blue eyes, wearing a dark t-shirt and shorts. Mathematical summation formula drawn on the side.",
+      "type": "OG",
+      "imageUrl": "/art/og/488639005_3968916183321703_2661205968891061381_n.jpg",
+      "date": "20190321",
+      "order": 50,
+      "width": 1190,
+      "height": 1125,
+      "thumbImageUrl": "/art/og/488639005_3968916183321703_2661205968891061381_n.jpg.avif",
+      "descriptionZH": "Saren 素描，向觀眾伸手，一爪前伸。棕色毛髮配白色鬃毛，亮藍眼睛，穿著深色 T 恤和短褲。旁邊繪有數學求和公式。"
+    },
+    {
+      "title": "3D Model Render",
+      "description": "3D rendered anthropomorphic lynx character model of Saren in T-pose against black background. Tan/beige fur with white chest and mane, spotted pattern, blue eyes, muscular build with defined abs. Large clawed hands and paws, spotted tail with white spikes.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/Hsin70512647/611013162_1515969536171002_7629879339668612323_n.jpg",
+      "author": {
+        "name": "Hsin70512647",
+        "link": "https://twitter.com/Hsin70512647"
+      },
+      "date": "20240723",
+      "order": -40,
+      "width": 1246,
+      "height": 1221,
+      "thumbImageUrl": "/art/comms/Hsin70512647/611013162_1515969536171002_7629879339668612323_n.jpg.avif",
+      "descriptionZH": "Saren 的 3D 渲染擬人化猞猁角色模型，呈 T 姿勢，黑色背景。棕褐色/米色毛髮，白色胸部和鬃毛，斑點圖案，藍眼睛，肌肉健壯，腹肌分明。大型帶爪手掌和爪子，斑點尾巴帶有白色尖刺。"
+    },
+    {
+      "title": "3D Model Side Profile",
+      "description": "3D rendered side profile of Saren wearing green outfit with gold trim and blue sash. Tan fur with white mane, spotted pattern visible. Character reaching forward with clawed paw. Spiked tail and detailed fur work.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/Hsin70512647/614851241_1169058595377062_1217638504058248192_n.jpg",
+      "author": {
+        "name": "Hsin70512647",
+        "link": "https://twitter.com/Hsin70512647"
+      },
+      "date": "20240723",
+      "order": 930,
+      "width": 851,
+      "height": 1239,
+      "thumbImageUrl": "/art/comms/Hsin70512647/614851241_1169058595377062_1217638504058248192_n.jpg.avif",
+      "descriptionZH": "Saren 的 3D 渲染側面像，身穿綠色服裝，金色鑲邊和藍色腰帶。棕褐色毛髮，白色鬃毛，斑點圖案清晰可見。角色向前伸手，帶爪的爪子。帶刺尾巴和精細的毛髮效果。"
+    },
+    {
+      "title": "Green Armor Side Profile",
+      "description": "Saren in a relaxed seated pose with one knee up. Wearing green outfit with shoulder armor, black arm wraps, and ornate pants with gold patterns. Blue eye visible in side profile, white mane, spotted tan fur. 'Saren!! Thank you!' text in top left corner with leaf decorations.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/melai_mm/1487629-2.output.png",
+      "author": {
+        "name": "melai_mm",
+        "link": "https://twitter.com/melai_mm"
+      },
+      "date": "20240723",
+      "order": 995,
+      "width": 2508,
+      "height": 3541,
+      "thumbImageUrl": "/art/comms/melai_mm/1487629-2.output.png.avif",
+      "descriptionZH": "Saren 呈放鬆坐姿，一膝抬起。身穿帶有肩甲的綠色服裝、黑色手臂裹布和帶有金色圖案華麗長褲。側面可見藍色眼睛、白色鬃毛和斑點棕褐色毛髮。左上角有文字「Saren!! Thank you!」帶有葉子裝飾。"
+    },
+    {
+      "title": "Cheerful Headshot",
+      "description": "Cheerful headshot of Saren with bright blue eyes and a playful smile showing small fangs. Tan fur with dark spots, large ears with black tips, white mane. One paw raised playfully near the face. Soft digital painting style with white background.",
+      "type": "COMM",
+      "imageUrl": "/art/comms/1094281163/photo_2024-10-19_20-39-35.jpg",
+      "author": {
+        "name": "QQ1094281163"
+      },
+      "date": "20241019",
+      "order": -55,
+      "width": 1280,
+      "height": 1151,
+      "thumbImageUrl": "/art/comms/1094281163/photo_2024-10-19_20-39-35.jpg.avif",
+      "descriptionZH": "Saren 開朗的頭像，亮藍色眼睛和俏皮的微笑，露出小犬齒。棕褐色毛帶有深色斑點，大型耳朵，黑色耳尖，白色鬃毛。一隻 paw 在臉旁俏皮地舉起。柔和的數碼繪畫風格，白色背景。"
+    }
+  ]
+}

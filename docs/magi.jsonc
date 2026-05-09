@@ -1,0 +1,193 @@
+{
+  "serverUrl": "https://magi-monitor.wtako.net/",
+  "storageInfo": {
+    "systemSSD": {
+      "paths": [
+        "/dev/disk/by-id/nvme-ESL01TBTLCZ-27J2-TYN_5P1250703005000105_1",
+        "/"
+      ],
+      "lastUpdate": 1777637649711,
+      "info": {
+        "status": 0,
+        "statusText": "Normal",
+        "issues": [],
+        "metrics": {
+          "smart": {
+            "spare": {
+              "current": 100,
+              "threshold": 5,
+              "formatted": "100% spare (threshold: 5%)"
+            },
+            "wear": {
+              "percentage": 1,
+              "formatted": "1% worn"
+            },
+            "mediaErrors": {
+              "count": 0,
+              "formatted": "0 media errors"
+            },
+            "dataWritten": {
+              "units": 14068426,
+              "formatted": "6.55 TB written"
+            },
+            "dataRead": {
+              "units": 30639143,
+              "formatted": "14.27 TB read"
+            },
+            "powerOnTime": {
+              "hours": 2349,
+              "formatted": "97 days, 21 hours"
+            }
+          },
+          "filesystem": {}
+        }
+      }
+    }
+  },
+  "initInfo": null,
+  "metrics": null,
+  "networkMetrics": null,
+  "iotMetrics": [],
+  "internetMetrics": [],
+  "vllmMetrics": {
+    "prefillTokensPerSecond": 0,
+    "generationTokensPerSecond": 0,
+    "numRequestsRunning": 0,
+    "numRequestsWaiting": 0,
+    "lastUpdate": 1777637650705
+  },
+  "temperatures": {
+    "cpu": 64,
+    "gpu": 60,
+    "cx7": 64
+  },
+  "usage": {
+    "cpu": 1,
+    "gpu": 0,
+    "ram": 98,
+    "vram": 89,
+    "swap": 48
+  },
+  "usageMB": {
+    "ram": 121903,
+    "vram": 110972,
+    "swap": 15721
+  },
+  "disks": {
+    "systemSSD": {
+      "label": "systemSSD",
+      "name": "System",
+      "temperature": 48,
+      "temperatureLimit": {
+        "min": 30,
+        "max": 70
+      },
+      "usage": 40,
+      "usageGB": 345,
+      "diskRead": 0,
+      "diskWrite": 0
+    }
+  },
+  "io": {
+    "diskRead": 0,
+    "diskWrite": 0,
+    "networkRx": 13100,
+    "networkTx": 3875,
+    "networkPacketsRx": 24,
+    "networkPacketsTx": 6,
+    "networkRxTotal": 422478357,
+    "networkTxTotal": 777691095,
+    "activeConn": 18,
+    "backupNetworkPacketsRx": 0,
+    "backupNetworkPacketsTx": 0,
+    "backupNetworkRx": 0,
+    "backupNetworkTx": 0,
+    "isUsingBackup": false,
+    "routeMetrics": {
+      "wlP9s9": 600,
+      "enP2p1s0f0np0": 101,
+      "enp1s0f0np0": 100
+    }
+  },
+  "fanSpeed": {
+    "cpu": 1500,
+    "motherboard": 2100
+  },
+  "frequencies": {
+    "cpu": [
+      338,
+      2810
+    ],
+    "gpuCore": 2405
+  },
+  "pwr": {
+    "gpu": 12.94
+  },
+  "firstDataPushedAt": 1777637536837,
+  "lastDataPushedAt": 1777637650851,
+  "lastUpdate": 1777637650840,
+  "_uiPollingTimestamp": 1777637650715,
+  "GAUGE_LIMITS": {
+    "temperature": {
+      "cpu": {
+        "min": 30,
+        "max": 95
+      },
+      "gpu": {
+        "min": 30,
+        "max": 95
+      },
+      "ssd": {
+        "min": 30,
+        "max": 70
+      },
+      "cx7": {
+        "min": 30,
+        "max": 105
+      }
+    },
+    "io": {
+      "diskRead": {
+        "max": 8053063680
+      },
+      "diskWrite": {
+        "max": 8053063680
+      },
+      "networkRx": {
+        "max": 13421772800
+      },
+      "networkTx": {
+        "max": 13421772800
+      }
+    },
+    "vllm": {
+      "prefillTokensPerSecond": {
+        "max": 3000
+      },
+      "generationTokensPerSecond": {
+        "max": 60
+      },
+      "numRequestsRunning": {
+        "max": 8
+      },
+      "numRequestsWaiting": {
+        "max": 20
+      }
+    }
+  },
+  "SYSTEM_INFO": {
+    "hostname": "magi",
+    "os": "Ubuntu 24.04.4 LTS",
+    "cpu": "NVIDIA GB10",
+    "gpu": "",
+    "case": "MSI EdgeXpert MS-C931"
+  },
+  "swapTotal": 32768,
+  "swapUsed": 15721,
+  "system": "1d 7h 51m | 0.37 0.47 0.36",
+  "uptime": 114708.12,
+  "prefillTokensPerSecond": 0,
+  "generationTokensPerSecond": 0,
+  "numRequestsRunning": 0,
+  "numRequestsWaiting": 0
+}

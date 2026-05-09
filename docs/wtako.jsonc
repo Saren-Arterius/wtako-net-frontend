@@ -1,0 +1,383 @@
+{
+  "serverUrl": "https://monitor.wtako.net/",
+  "storageInfo": {
+    "systemSSD": {
+      "paths": [
+        "/dev/disk/by-id/nvme-Micron_7300_MTFDHBG3T8TDF_21012D5EF921",
+        "/"
+      ],
+      "lastUpdate": 1777626602693,
+      "info": {
+        "status": 0,
+        "issues": [],
+        "metrics": {
+          "smart": {
+            "spare": {
+              "current": 100,
+              "threshold": 5,
+              "formatted": "100% spare (threshold: 5%)"
+            },
+            "wear": {
+              "percentage": 2,
+              "formatted": "2% worn"
+            },
+            "mediaErrors": {
+              "count": 0,
+              "formatted": "0 media errors"
+            },
+            "powerOnTime": {
+              "hours": 34993,
+              "formatted": "1458 days, 1 hours"
+            },
+            "dataWritten": {
+              "units": 2322524564,
+              "formatted": "1189.13 TB written"
+            },
+            "dataRead": {
+              "units": 2235407675,
+              "formatted": "1144.53 TB read"
+            }
+          },
+          "filesystem": {
+            "writeErrors": 0,
+            "readErrors": 0,
+            "flushErrors": 0,
+            "corruptionErrors": 0,
+            "generationErrors": 0
+          },
+          "scrub": {
+            "status": "finished",
+            "progress": 100,
+            "totalToScrub": 606374220267.52,
+            "bytesScrubbed": 606374220267.52,
+            "uuid": "8716f0c7-a277-4d4c-8ed3-781358aac3bb",
+            "scrubStarted": 1777584475000,
+            "duration": "0:05:08",
+            "timeLeft": "",
+            "eta": "",
+            "rate": "1.83GiB/s",
+            "errorSummary": "no errors found"
+          }
+        },
+        "statusText": "Normal"
+      }
+    },
+    "storageSSD": {
+      "paths": [
+        "/dev/disk/by-id/nvme-SAMSUNG_MZQL215THBLA-00AAZ_S6GTNE0T500485",
+        "/mnt/storage"
+      ],
+      "lastUpdate": 1777626602728,
+      "info": {
+        "status": 0,
+        "issues": [],
+        "metrics": {
+          "smart": {
+            "spare": {
+              "current": 100,
+              "threshold": 10,
+              "formatted": "100% spare (threshold: 10%)"
+            },
+            "wear": {
+              "percentage": 0,
+              "formatted": "0% worn"
+            },
+            "mediaErrors": {
+              "count": 0,
+              "formatted": "0 media errors"
+            },
+            "powerOnTime": {
+              "hours": 14971,
+              "formatted": "623 days, 19 hours"
+            },
+            "dataWritten": {
+              "units": 261399855,
+              "formatted": "133.84 TB written"
+            },
+            "dataRead": {
+              "units": 1086218591,
+              "formatted": "556.14 TB read"
+            }
+          },
+          "filesystem": {
+            "writeErrors": 0,
+            "readErrors": 0,
+            "flushErrors": 0,
+            "corruptionErrors": 0,
+            "generationErrors": 0
+          },
+          "scrub": {
+            "status": "finished",
+            "progress": 100,
+            "totalToScrub": 7004007180533.76,
+            "bytesScrubbed": 7004007180533.76,
+            "uuid": "03a7d067-e0f6-4c60-98f4-d3ae2e2ca692",
+            "scrubStarted": 1775056846000,
+            "duration": "0:30:01",
+            "timeLeft": "",
+            "eta": "",
+            "rate": "3.33GiB/s",
+            "errorSummary": "no errors found"
+          }
+        },
+        "statusText": "Normal"
+      }
+    }
+  },
+  "initInfo": null,
+  "metrics": null,
+  "networkMetrics": {
+    "internet_ports": [],
+    "ping_statistics": {
+      "latency": {
+        "last1h": 1,
+        "last1m": 1,
+        "last24h": 1.89,
+        "last5m": 1,
+        "latest": 1.03
+      },
+      "minute_history": [
+        {
+          "latency_ms": 0.97,
+          "packet_loss_percent": 0,
+          "timestamp": "2026-05-01T08:10:00.000Z"
+        },
+        {
+          "latency_ms": 0.99,
+          "packet_loss_percent": 0,
+          "timestamp": "2026-05-01T08:11:00.000Z"
+        }
+        // any more
+      ],
+      "outages": [],
+      "packet_loss": {
+        "last1h": 0,
+        "last1m": 0,
+        "last24h": 0.02,
+        "last5m": 0,
+        "latest_percent": 0
+      }
+    },
+    "network_traffic": {
+      "historical": {
+        "last12h": {
+          "avg_rx_Bps": 600993.95,
+          "avg_tx_Bps": 3216402.98,
+          "cum_rx": 25964074396,
+          "cum_tx": 138954687558
+        },
+        "last15m": {
+          "avg_rx_Bps": 913721.52,
+          "avg_tx_Bps": 5502076.02,
+          "cum_rx": 822397791,
+          "cum_tx": 4952160030
+        },
+        "last1d": {
+          "avg_rx_Bps": 628850.4,
+          "avg_tx_Bps": 2319676.92,
+          "cum_rx": 54335080029,
+          "cum_tx": 200428958775
+        },
+        "last1h": {
+          "avg_rx_Bps": 1168852.09,
+          "avg_tx_Bps": 4920887.41,
+          "cum_rx": 4208052185,
+          "cum_tx": 17715972187
+        },
+        "last1m": {
+          "avg_rx_Bps": 1879599.56,
+          "avg_tx_Bps": 2928254.22,
+          "cum_rx": 112783492,
+          "cum_tx": 175706966
+        },
+        "last30d": {
+          "avg_rx_Bps": 665313.6,
+          "avg_tx_Bps": 3149104.5,
+          "cum_rx": 1724466012256,
+          "cum_tx": 8162351786133
+        },
+        "last3d": {
+          "avg_rx_Bps": 499360.83,
+          "avg_tx_Bps": 3547814.69,
+          "cum_rx": 129439962964,
+          "cum_tx": 919633616404
+        },
+        "last3h": {
+          "avg_rx_Bps": 1209785.41,
+          "avg_tx_Bps": 5570895.88,
+          "cum_rx": 13066286155,
+          "cum_tx": 60168455425
+        },
+        "last5m": {
+          "avg_rx_Bps": 944280.4,
+          "avg_tx_Bps": 7313651.85,
+          "cum_rx": 283297339,
+          "cum_tx": 2194197945
+        },
+        "last7d": {
+          "avg_rx_Bps": 612360.63,
+          "avg_tx_Bps": 3362101.18,
+          "cum_rx": 370352847457,
+          "cum_tx": 2033383079718
+        }
+      },
+      "minute_history": [
+        {
+          "avg_rx_Bps": 651141.04,
+          "avg_tx_Bps": 3003132.34,
+          "timestamp": "2026-05-01T08:10:00.000Z",
+          "total_rx_in_minute": 39071718,
+          "total_tx_in_minute": 180202956
+        },
+        {
+          "avg_rx_Bps": 795827.61,
+          "avg_tx_Bps": 2682403.22,
+          "timestamp": "2026-05-01T08:11:00.000Z",
+          "total_rx_in_minute": 47751248,
+          "total_tx_in_minute": 160949558
+        }
+        // and more
+      ]
+    },
+    "last_updated": 1777626599082
+  },
+  "temperatures": {
+    "cpu": 59,
+    "cx5": 82
+  },
+  "usage": {
+    "cpu": 11,
+    "ram": 60
+  },
+  "usageMB": {
+    "ram": 57895
+  },
+  "disks": {
+    "systemSSD": {
+      "label": "systemSSD",
+      "name": "System",
+      "temperature": 58,
+      "temperatureLimit": {
+        "min": 30,
+        "max": 76
+      },
+      "usage": 16,
+      "usageGB": 565,
+      "diskRead": 0,
+      "diskWrite": 0
+    },
+    "storageSSD": {
+      "label": "storageSSD",
+      "name": "Storage",
+      "temperature": 54,
+      "temperatureLimit": {
+        "min": 30,
+        "max": 84
+      },
+      "usage": 48,
+      "usageGB": 6523,
+      "diskRead": 0,
+      "diskWrite": 0
+    }
+  },
+  "io": {
+    "diskRead": 0,
+    "diskWrite": 0,
+    "networkRx": 558324,
+    "networkTx": 112237,
+    "networkPacketsRx": 596,
+    "networkPacketsTx": 171,
+    "networkRxTotal": 60378263406,
+    "networkTxTotal": 218902062865,
+    "activeConn": 196,
+    "backupNetworkPacketsRx": 0,
+    "backupNetworkPacketsTx": 0,
+    "backupNetworkRx": 0,
+    "backupNetworkTx": 0,
+    "isUsingBackup": false,
+    "routeMetrics": {
+      "ext1": 1005
+    }
+  },
+  "fanSpeed": {
+    "cpu": 2812,
+    "ssd": 3237
+  },
+  "frequencies": {
+    "cpu": [
+      763.126,
+      974.062,
+      1066.567,
+      400,
+      797.594,
+      400,
+      792.796,
+      400,
+      781.269,
+      400,
+      1017.48,
+      626.158,
+      1137.878,
+      1066.337,
+      400,
+      868.199,
+      1072.035,
+      400,
+      400,
+      1097.826
+    ]
+  },
+  "pwr": {},
+  "firstDataPushedAt": 1777626547396,
+  "lastDataPushedAt": 1777626602751,
+  "lastUpdate": 1777626602534,
+  "_uiPollingTimestamp": 1777626602560,
+  "GAUGE_LIMITS": {
+    "temperature": {
+      "cpu": {
+        "min": 30,
+        "max": 90
+      },
+      "cx5": {
+        "min": 30,
+        "max": 105
+      }
+    },
+    "io": {
+      "diskRead": {
+        "max": 5242880000
+      },
+      "diskWrite": {
+        "max": 5242880000
+      },
+      "networkRx": {
+        "max": 524288000
+      },
+      "networkTx": {
+        "max": 262144000
+      },
+      "backupNetworkRx": {
+        "max": 6291456
+      },
+      "backupNetworkTx": {
+        "max": 1048576
+      }
+    },
+    "fanSpeed": {
+      "cpu": {
+        "max": 4200
+      },
+      "ssd": {
+        "max": 4200
+      }
+    }
+  },
+  "SYSTEM_INFO": {
+    "hostname": "WTAKO",
+    "os": "7.0.2-2-cachyos-server",
+    "cpu": "Intel® Core™ i9-13900H",
+    "case": "Minisforum MS-01"
+  },
+  "system": "1d 4h 24m | 3.11 1.63 1.23",
+  "uptime": 102286.38
+}

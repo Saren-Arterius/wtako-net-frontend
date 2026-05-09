@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f1316;
+  --subtitle: rgb(231, 212, 184);
+  --subtitle-rgb: 231, 212, 184;
+  --content: rgb(233, 223, 207);
+  --content-rgb: 233, 223, 207;
+  --title: rgb(153, 163, 126);
+  --title-rgb: 153, 163, 126;
+  --link: rgb(153, 163, 126);
+  --link-rgb: 153, 163, 126;
+  --highlight: rgb(153, 163, 126);
+  --highlight-rgb: 153, 163, 126;
+  --status-online: rgb(90, 122, 90);
+  --status-online-rgb: 90, 122, 90;
+  --status-offline: rgb(142, 90, 90);
+  --status-offline-rgb: 142, 90, 90;
+
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-subtitle: rgb(var(--subtitle-rgb));
+  --color-content: rgb(var(--content-rgb));
+  --color-title: rgb(var(--title-rgb));
+  --color-link: rgb(var(--link-rgb));
+  --color-highlight: rgb(var(--highlight-rgb));
+  --color-status-online: rgb(var(--status-online-rgb));
+  --color-status-offline: rgb(var(--status-offline-rgb));
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--subtitle);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 32px;
+  background: transparent;
+  border-radius: 16px;
+  margin: 12px 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: rgb(153, 163, 126);
+  margin-top: -4px;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 32px;
+  background: transparent;
+  border-radius: 16px;
+  margin: 12px 0;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: rgb(153, 163, 126);
+  border: none;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+  }
+}
+
+@keyframes backdropFadeOut {
+  from {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+}
