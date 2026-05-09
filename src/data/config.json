@@ -271,6 +271,23 @@
   ],
   "projects": [
     {
+      "title": "WTAKO Network Frontend",
+      "description": "WTAKO Network's Frontend (this website) is written in Next.js 16 and MobX, with the help of a local LLM in my AI core inside my home. I just hope it looks good enough because I don't have much design sense. This Next.js project is exported as a static site and it is being hosted on my own server. I never liked the idea of Server-Side Rendering (SSR), and I also avoid Vercel as much as possible.",
+      "status": "ACTIVE",
+      "tags": [
+        "TypeScript",
+        "Next.js",
+        "Mobx"
+      ],
+      "url": "https://github.com/Saren-Arterius/wtako-net-frontend",
+      "cover": {
+        "imageUrl": "/logo.svg"
+      },
+      "date": "20260510",
+      "order": 16,
+      "descriptionZH": "WTAKO Network 的前端（本網站）是基於 Next.js 16 和 MobX 開發，並藉助我家中 AI 核心中的本地 LLM 協助完成。我只希望它看起來足夠體面，因為我的設計美感有限。這個 Next.js 專案是靜態網站，並託管在我自己的伺服器上。我從不喜歡伺服器端渲染 (SSR) 的概念，也會盡可能避免使用 Vercel。"
+    },
+    {
       "title": "Saren Gaming Monitor",
       "description": "Hardware & IoT Monitoring Server with real-time Linux hardware monitoring and IoT device tracking via WebSocket. Collects CPU, memory, temperatures, fan speeds, storage health, and network statistics.",
       "status": "ACTIVE",
