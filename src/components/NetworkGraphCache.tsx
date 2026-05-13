@@ -757,7 +757,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel" />
@@ -781,7 +780,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -814,7 +812,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -847,7 +844,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -877,7 +873,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -910,7 +905,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -943,7 +937,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -973,7 +966,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -1003,7 +995,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -1033,7 +1024,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -1063,7 +1053,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -1093,7 +1082,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -1123,7 +1111,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="labelBkg"
                 >
                   <span className="edgeLabel">
@@ -1165,7 +1152,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>{store.t('Fiber Broadband (ISP)')}</p>
@@ -1200,7 +1186,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>
@@ -1239,7 +1224,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>{store.t('Mobile 4G LTE Backup Network')}</p>
@@ -1274,7 +1258,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>
@@ -1315,7 +1298,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>
@@ -1356,7 +1338,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>
@@ -1397,7 +1378,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>
@@ -1436,7 +1416,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>
@@ -1475,7 +1454,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>{store.t('Unifi AP1 (Wired Backhaul)')}</p>
@@ -1510,7 +1488,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>
@@ -1549,7 +1526,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>{store.t('Zigbee Coordinator')}</p>
@@ -1584,7 +1560,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>{store.t('Idle Old Computer')}</p>
@@ -1619,7 +1594,6 @@ export const NetworkGraphCache = observer(() => {
                     textAlign: "center",
                     width: 200
                   }}
-                  xmlns="http://www.w3.org/1999/xhtml"
                 >
                   <span className="nodeLabel">
                     <p>{store.t('Unifi AP2 (Wired Backhaul)')}</p>
