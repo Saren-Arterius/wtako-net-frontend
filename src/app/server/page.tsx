@@ -147,15 +147,21 @@ export const ServerDashboard = observer(() => {
       rx_bps = store?.serverWithStores[1]?.store?.io?.networkRx * 8;
       tx_bps = store?.serverWithStores[1]?.store?.io?.networkTx * 8;
     }
-    if (!rx_bps || !tx_bps) {
+    if (rx_bps && !tx_bps) {
       const nifObj = lanInfo[host].interfaces[nif];
-      if (!nifObj) {
-        tmpCode[i] = `<span style="font-size: 12px; opacity: 0.8">N/A</span>`;
-        continue;
+      if (nifObj) {
+        rx_bps = nifObj.rx_bps;
+        tx_bps = nifObj.tx_bps;
       }
-      rx_bps = nifObj.rx_bps;
-      tx_bps = nifObj.tx_bps;
     }
+
+    if (!rx_bps && !tx_bps) {
+      tmpCode[i] = `<span style="font-size: 12px; opacity: 0.8">N/A</span>`;
+      continue;
+    }
+
+    if (!rx_bps) rx_bps = 0;
+    if (!tx_bps) tx_bps = 0;
 
     if (reversed) {
       const tmp: number = rx_bps;
