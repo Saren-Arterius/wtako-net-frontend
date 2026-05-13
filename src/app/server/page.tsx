@@ -147,7 +147,7 @@ export const ServerDashboard = observer(() => {
       rx_bps = store?.serverWithStores[1]?.store?.io?.networkRx * 8;
       tx_bps = store?.serverWithStores[1]?.store?.io?.networkTx * 8;
     }
-    if (rx_bps && !tx_bps) {
+    if (!rx_bps && !tx_bps) {
       const nifObj = lanInfo[host].interfaces[nif];
       if (nifObj) {
         rx_bps = nifObj.rx_bps;
