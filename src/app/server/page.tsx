@@ -6,6 +6,15 @@ import { SystemHealth } from "@/components/SystemHealth";
 import { useEffect, useState } from "react";
 import mermaid from "mermaid";
 import { store } from "@/store/store";
+import { TransformedRealTimeRate } from "@/store/MonitorStore";
+
+const formatBps = (bps: number): string => {
+  if (bps >= 1024 * 1024 * 1024) return `${(bps / (1024 * 1024 * 1024)).toFixed(1)} Gbps`;
+  if (bps >= 1024 * 1024) return `${(bps / (1024 * 1024)).toFixed(1)} Mbps`;
+  if (bps >= 1024) return `${(bps / 1024).toFixed(1)} Kbps`;
+  return `${bps} bps`;
+};
+
 
 export const ServerDashboard = observer(() => {
   const [svgCode, setSvgCode] = useState("");
@@ -41,23 +50,23 @@ export const ServerDashboard = observer(() => {
 
     ISP --- Modem
 
-    Modem -- "${store.t('10G RJ45 to SFP+ (10G)')}" --> Router
-    Modem -- "${store.t('1G RJ45')}" --> CRS305
+    Modem -- "${store.t('10G RJ45 to SFP+ (10G)')}\n[XXXX]192.168.0.1|ext1[XXXX]" --> Router
+    Modem -- "${store.t('1G RJ45')}\n[XXXX]192.168.0.208|ether1[XXXX]" --> CRS305
 
-    LTE -- "${store.t('USB 3.0')}" --> Router
+    LTE -- "${store.t('USB 3.0')}\n[XXXX]192.168.0.1|enp0s20f0u4[XXXX]" --> Router
 
-    Router <-->|"${store.t('SFP+ AOC (10G)')}"| CRS305
-    Router -- "${store.t('QSFP+ Fiber (40G)')}" --> GamingPC
-    Router -- "${store.t('QSFP28 DAC (100G)')}" --> AI_PC
+    Router <-->|"${store.t('SFP+ AOC (10G)')}\n[XXXX]192.168.0.1|int1[XXXX]"| CRS305
+    Router -- "${store.t('QSFP+ Fiber (40G)')}\n[XXXX]192.168.0.1|int3[XXXX]" --> GamingPC
+    Router -- "${store.t('QSFP28 DAC (100G)')}\n[XXXX]192.168.0.1|int2[XXXX]" --> AI_PC
 
-    CRS305 -- "${store.t('SFP+ AOC (10G)')}" --> Switch25G
-    CRS305 -- "${store.t('SFP+ to RJ45 (10G)')}" --> Unifi1
-    CRS305 -- "${store.t('SFP+ to RJ45 (100M)')}" --> RPi
+    CRS305 -- "${store.t('SFP+ AOC (10G)')}\n[XXXX]192.168.0.208|sfp-sfpplus2[XXXX]" --> Switch25G
+    CRS305 -- "${store.t('SFP+ to RJ45 (10G)')}\n[XXXX]192.168.0.208|sfp-sfpplus4[XXXX]" --> Unifi1
+    CRS305 -- "${store.t('SFP+ to RJ45 (100M)')}\n[XXXX]192.168.0.208|sfp-sfpplus3[XXXX]" --> RPi
 
-    Switch25G -- "${store.t('2.5G to 1G')}" --> Zigbee
-    Switch25G -- "${store.t('SFP+ (10G)')}" --> OldPC
+    Switch25G -- "${store.t('2.5G to 1G')}\n[XXXX]192.168.0.106|port2[XXXX]" --> Zigbee
+    Switch25G -- "${store.t('SFP+ (10G)')}\n[XXXX]192.168.0.106|port4[XXXX]" --> OldPC
 
-    Switch25G -- "${store.t('2.5G RJ45')}" --> Unifi2
+    Switch25G -- "${store.t('2.5G RJ45')}\n[XXXX]192.168.0.106|port1[XXXX]" --> Unifi2
 
     linkStyle 0 stroke-width:1px;
     linkStyle 1 stroke-width:3px;
@@ -118,6 +127,30 @@ export const ServerDashboard = observer(() => {
     setInited(true);
   });
 
+  const tmpCode = svgCode.split('[XXXX]');
+  const lanInfo: TransformedRealTimeRate | null = JSON.parse(JSON.stringify(store?.serverWithStores[0].store?.lanInfo));
+  for (let i = 0; i < tmpCode.length; i++) {
+    if (i % 2 === 0) continue;
+    if (!lanInfo) {
+      tmpCode[i] = '';
+      continue;
+    }
+    // console.log(tmpCode[i]);
+    const [host, nif] = tmpCode[i].split('|');
+    // console.log({host, nif, lanInfo, t: lanInfo[host].interfaces[nif]});
+    // console.log({lanInfo, host, nif});
+    const nifObj = lanInfo[host].interfaces[nif];
+    if (!nifObj) {
+      tmpCode[i] = '';
+      continue;
+    }
+    const { rx_bps, tx_bps } = nifObj;
+    tmpCode[i] = `<span style="color: #f0bcf2cc; font-size: 12px;">↑${formatBps(tx_bps)}</span><span style="color: #bcddf2cc; font-size: 12px;">↓${formatBps(rx_bps)}</span>`;
+  }
+  const svgCodeApplied = tmpCode.join('');
+
+  console.log({ splitted: svgCode.split('[XXXX]') });
+
   useEffect(() => {
     mermaid.parse(NETWORK_DIAGRAM);
     mermaid.render("mermaid-diagram", NETWORK_DIAGRAM).then(({ svg }) => {
@@ -153,7 +186,7 @@ export const ServerDashboard = observer(() => {
             </svg>
           </a>
         </div>
-        <div className="flex justify-center overflow-x-auto" dangerouslySetInnerHTML={{ __html: svgCode }} />
+        <div className="flex justify-center overflow-x-auto" dangerouslySetInnerHTML={{ __html: svgCodeApplied }} />
       </div>
     </div>
   );

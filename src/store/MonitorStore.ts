@@ -151,6 +151,8 @@ export interface MemoryTotals {
   swapTotal: number;
 }
 
+export type TransformedRealTimeRate = Record<string, {label?: string, interfaces: Record<string, {rx_bps: number, tx_bps: number}>}>;
+
 export class MonitorStore {
   serverUrl: string;
   socket: Socket | null = null;
@@ -164,6 +166,7 @@ export class MonitorStore {
   networkMetrics: NetworkMetrics | null = null;
   iotMetrics: unknown[] = [];
   internetMetrics: unknown[] = [];
+  lanInfo: TransformedRealTimeRate | null = null;
 
   // MAGI-specific metrics
   vllmMetrics: {
@@ -279,10 +282,10 @@ export class MonitorStore {
     this.socket.on("networkMetrics", (data) => this.saveData("networkMetrics", data));
     this.socket.on("iotMetrics", (data) => this.saveData("iotMetrics", data));
     this.socket.on("internetMetrics", (data) => this.saveData("internetMetrics", data));
+    this.socket.on("lanInfo", (data) => this.saveData("lanInfo", data));
 
     // MAGI-specific events
     this.socket.on("vllmMetrics", (data) => this.saveData("vllmMetrics", data));
-
     this.socket.on("connect", () => console.log(`Connected to ${this.serverUrl}`));
     this.socket.on("disconnect", () => console.log(`Disconnected from ${this.serverUrl}`));
     this.socket.on("connect_error", (error) => console.error(`Connection error to ${this.serverUrl}:`, error));

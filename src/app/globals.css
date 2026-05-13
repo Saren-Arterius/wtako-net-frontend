@@ -32,6 +32,38 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* 1. Target the foreignObject (the parent) */
+foreignObject {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 2. All items have a foreignObject */
+  /* We only care about edgeLabels */
+  &:has(.edgeLabel) {
+    background-color: transparent;
+
+    /* 3. Make the label transparent because, by default, */
+    /* it has a translucent background color */
+    .edgeLabel,
+    .labelBkg {
+      background-color: transparent !important;
+    }
+
+    /* 4. Now, changes to the paragraph */
+    /* directly impact what you see */
+    p {
+      background-color: rgba(0, 0, 0, 0.5) !important;
+      margin-inline: auto !important;
+      max-width: max-content;
+      border-radius: 8px;
+      padding: 0.2rem 0.3rem;
+      line-height: 1rem;
+    }
+  }
+}
+
+
 body {
   background: var(--background);
   color: var(--subtitle);
@@ -87,6 +119,7 @@ input[type="range"]::-moz-range-thumb {
     transform: translateY(100%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -98,6 +131,7 @@ input[type="range"]::-moz-range-thumb {
     transform: translateY(0);
     opacity: 1;
   }
+
   to {
     transform: translateY(100%);
     opacity: 0;
@@ -109,6 +143,7 @@ input[type="range"]::-moz-range-thumb {
     transform: scale(0.95);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -120,6 +155,7 @@ input[type="range"]::-moz-range-thumb {
     transform: scale(1);
     opacity: 1;
   }
+
   to {
     transform: scale(0.95);
     opacity: 0;
@@ -131,6 +167,7 @@ input[type="range"]::-moz-range-thumb {
     background-color: rgba(0, 0, 0, 0);
     backdrop-filter: blur(0px);
   }
+
   to {
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(12px);
@@ -142,6 +179,7 @@ input[type="range"]::-moz-range-thumb {
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(12px);
   }
+
   to {
     background-color: rgba(0, 0, 0, 0);
     backdrop-filter: blur(0px);
