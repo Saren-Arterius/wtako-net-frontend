@@ -55,18 +55,18 @@ export const ServerDashboard = observer(() => {
 
     LTE -- "${store.t('USB 3.0')}\n[XXXX]192.168.0.1|enp0s20f0u4[XXXX]" --> Router
 
-    Router <-->|"${store.t('SFP+ AOC (10G)')}\n[XXXX]192.168.0.1|int1[XXXX]"| CRS305
+    Router <-->|"${store.t('SFP+ AOC (10G)')}\n[XXXX]192.168.0.1|int1|1[XXXX]"| CRS305
     Router -- "${store.t('QSFP+ Fiber (40G)')}\n[XXXX]192.168.0.1|int3[XXXX]" --> GamingPC
     Router -- "${store.t('QSFP28 DAC (100G)')}\n[XXXX]192.168.0.1|int2[XXXX]" --> AI_PC
 
-    CRS305 -- "${store.t('SFP+ AOC (10G)')}\n[XXXX]192.168.0.208|sfp-sfpplus2[XXXX]" --> Switch25G
-    CRS305 -- "${store.t('SFP+ to RJ45 (10G)')}\n[XXXX]192.168.0.208|sfp-sfpplus4[XXXX]" --> Unifi1
-    CRS305 -- "${store.t('SFP+ to RJ45 (100M)')}\n[XXXX]192.168.0.208|sfp-sfpplus3[XXXX]" --> RPi
+    CRS305 -- "${store.t('SFP+ AOC (10G)')}\n[XXXX]192.168.0.208|sfp-sfpplus2|1[XXXX]" --> Switch25G
+    CRS305 -- "${store.t('SFP+ to RJ45 (10G)')}\n[XXXX]192.168.0.208|sfp-sfpplus4|1[XXXX]" --> Unifi1
+    CRS305 -- "${store.t('SFP+ to RJ45 (100M)')}\n[XXXX]192.168.0.208|sfp-sfpplus3|1[XXXX]" --> RPi
 
-    Switch25G -- "${store.t('2.5G to 1G')}\n[XXXX]192.168.0.106|port2[XXXX]" --> Zigbee
-    Switch25G -- "${store.t('SFP+ (10G)')}\n[XXXX]192.168.0.106|port4[XXXX]" --> OldPC
+    Switch25G -- "${store.t('2.5G to 1G')}\n[XXXX]192.168.0.106|port2|1[XXXX]" --> Zigbee
+    Switch25G -- "${store.t('SFP+ (10G)')}\n[XXXX]192.168.0.106|port4|1[XXXX]" --> OldPC
 
-    Switch25G -- "${store.t('2.5G RJ45')}\n[XXXX]192.168.0.106|port1[XXXX]" --> Unifi2
+    Switch25G -- "${store.t('2.5G RJ45')}\n[XXXX]192.168.0.106|port1|1[XXXX]" --> Unifi2
 
     linkStyle 0 stroke-width:1px;
     linkStyle 1 stroke-width:3px;
@@ -128,7 +128,7 @@ export const ServerDashboard = observer(() => {
   });
 
   const tmpCode = svgCode.split('[XXXX]');
-  const lanInfo: TransformedRealTimeRate | null = JSON.parse(JSON.stringify(store?.serverWithStores[0].store?.lanInfo));
+  const lanInfo: TransformedRealTimeRate | null = store?.serverWithStores[0].store?.lanInfo;
   for (let i = 0; i < tmpCode.length; i++) {
     if (i % 2 === 0) continue;
     if (!lanInfo) {
@@ -136,20 +136,36 @@ export const ServerDashboard = observer(() => {
       continue;
     }
     // console.log(tmpCode[i]);
-    const [host, nif] = tmpCode[i].split('|');
+    const [host, nif, reversed] = tmpCode[i].split('|');
     // console.log({host, nif, lanInfo, t: lanInfo[host].interfaces[nif]});
     // console.log({lanInfo, host, nif});
-    const nifObj = lanInfo[host].interfaces[nif];
-    if (!nifObj) {
-      tmpCode[i] = '';
-      continue;
+    let rx_bps, tx_bps;
+    if (host === '192.168.0.1' && nif === 'ext1') {
+      rx_bps = store?.serverWithStores[0]?.store?.io?.networkRx * 8;
+      tx_bps = store?.serverWithStores[0]?.store?.io?.networkTx * 8;
+    } else if (host === '192.168.0.1' && nif === 'int2') {
+      rx_bps = store?.serverWithStores[1]?.store?.io?.networkRx * 8;
+      tx_bps = store?.serverWithStores[1]?.store?.io?.networkTx * 8;
     }
-    const { rx_bps, tx_bps } = nifObj;
-    tmpCode[i] = `<span style="color: #f0bcf2cc; font-size: 12px;">↑${formatBps(tx_bps)}</span><span style="color: #bcddf2cc; font-size: 12px;">↓${formatBps(rx_bps)}</span>`;
+    if (!rx_bps || !tx_bps) {
+      const nifObj = lanInfo[host].interfaces[nif];
+      if (!nifObj) {
+        tmpCode[i] = `<span style="font-size: 12px; opacity: 0.8">N/A</span>`;
+        continue;
+      }
+      rx_bps = nifObj.rx_bps;
+      tx_bps = nifObj.tx_bps;
+    }
+
+    if (reversed) {
+      const tmp: number = rx_bps;
+      rx_bps = tx_bps;
+      tx_bps = tmp;
+    }
+
+    tmpCode[i] = `<span style="color: #f0bcf2; font-size: 12px; opacity: 0.8">↑${formatBps(tx_bps)}</span><span style="color: #bcddf2; font-size: 12px; opacity: 0.8">↓${formatBps(rx_bps)}</span>`;
   }
   const svgCodeApplied = tmpCode.join('');
-
-  console.log({ splitted: svgCode.split('[XXXX]') });
 
   useEffect(() => {
     mermaid.parse(NETWORK_DIAGRAM);
