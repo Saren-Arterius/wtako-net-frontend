@@ -9,12 +9,68 @@ const formatBps = (bps: number): string => {
   return `${bps} bps`;
 };
 
+const COLOR_STOPS = [
+  { color: "#99a37e", position: 0 },
+  { color: "#F7EE7F", position: 50 },
+  { color: "#A63D40", position: 90 },
+  { color: "#A63D40", position: 100 }
+];
+
+
+function hexToRGB(hex: string) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return { r, g, b };
+}
+
+function rgbToHex(r: number, g: number, b: number) {
+  return (
+    "#" +
+    [r, g, b]
+      .map((x) => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+      })
+      .join("")
+  );
+}
+
+
+function getColorAtPercent(percent: number) {
+  if (percent > 100) percent = 100;
+  if (percent < 0) percent = 0;
+  
+  let start = COLOR_STOPS[0];
+  let end = COLOR_STOPS[1];
+
+  for (let i = 1; i < COLOR_STOPS.length; i++) {
+    if (percent <= COLOR_STOPS[i].position) {
+      start = COLOR_STOPS[i - 1];
+      end = COLOR_STOPS[i];
+      break;
+    }
+  }
+
+  const range = end.position - start.position;
+  const adjustedPercent = (percent - start.position) / range;
+
+  const startRGB = hexToRGB(start.color);
+  const endRGB = hexToRGB(end.color);
+
+  const r = Math.round(startRGB.r + (endRGB.r - startRGB.r) * adjustedPercent);
+  const g = Math.round(startRGB.g + (endRGB.g - startRGB.g) * adjustedPercent);
+  const b = Math.round(startRGB.b + (endRGB.b - startRGB.b) * adjustedPercent);
+
+  return rgbToHex(r, g, b);
+}
+
 
 export const NetworkGraphCache = observer(() => {
 
   const lanInfo: TransformedRealTimeRate | null = store?.serverWithStores[0].store?.lanInfo;
 
-  const getBPSDisplay = (host: string, nif: string, reversed = false) => {
+  const getBPS = (host: string, nif: string) => {
     let rx_bps, tx_bps;
     if (host === '192.168.0.1' && nif === 'ext1') {
       rx_bps = store?.serverWithStores[0]?.store?.io?.networkRx * 8;
@@ -30,6 +86,26 @@ export const NetworkGraphCache = observer(() => {
         tx_bps = nifObj.tx_bps;
       }
     }
+    return [rx_bps, tx_bps];
+  }
+
+  const getStrokeColor = (host: string, nif: string, rxMbpsMax: number, txMbpsMax: number | null = null) => {
+    let [rx_bps, tx_bps] = getBPS(host, nif);
+    if (!rx_bps) rx_bps = 0;
+    if (!tx_bps) tx_bps = 0;
+    let pct = (rx_bps / (rxMbpsMax * 1024 * 1024)) * 100;
+    if (txMbpsMax !== null) {
+      const pct2 = (tx_bps / (txMbpsMax * 1024 * 1024)) * 100;
+      if (pct2 > pct) pct = pct2;
+    } else {
+      const pct2 = (tx_bps / (rxMbpsMax * 1024 * 1024)) * 100;
+      if (pct2 > pct) pct = pct2;
+    }
+    return getColorAtPercent(pct);
+  }
+
+  const getBPSDisplay = (host: string, nif: string, reversed = false) => {
+    let [rx_bps, tx_bps] = getBPS(host, nif);
 
     if (!rx_bps && !tx_bps) {
       return (<span style={{ fontSize: 12, opacity: 0.8 }}>N/A</span>);
@@ -598,146 +674,145 @@ export const NetworkGraphCache = observer(() => {
             d="M512.281,162L515.485,170.7C518.688,179.4,525.094,196.8,573.649,216.63C622.205,236.46,712.91,258.72,758.263,269.849L803.615,280.979"
             id="mermaid-diagram-L_Modem_Router_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 3, fill: "none" }}
+            style={{ strokeWidth: 3, fill: "none", stroke: getStrokeColor('192.168.0.1', 'ext1', 4000, 2000), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_Modem_Router_0"
             data-points="W3sieCI6NTEyLjI4MTQ3MzExMTA5NSwieSI6MTYyfSx7IngiOjUzMS41LCJ5IjoyMTQuMTk5OTk2OTQ4MjQyMn0seyJ4Ijo4MDcuNSwieSI6MjgxLjkzMjY0Nzg2MDc4MDA0fV0="
             data-look="classic"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
           <path
             d="M454.894,162L442.495,170.7C430.096,179.4,405.298,196.8,392.899,221.533C380.5,246.267,380.5,278.333,380.5,310.4C380.5,342.467,380.5,374.533,390.832,398.85C401.164,423.166,421.829,439.732,432.161,448.015L442.493,456.298"
             id="mermaid-diagram-L_Modem_CRS305_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 1, fill: "none" }}
+            style={{ strokeWidth: 1, fill: "none", stroke: getStrokeColor('192.168.0.208', 'ether1', 1000), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_Modem_CRS305_0"
             data-points="W3sieCI6NDU0Ljg5NDI5NzYzNDQ3MDgzLCJ5IjoxNjJ9LHsieCI6MzgwLjUsInkiOjIxNC4xOTk5OTY5NDgyNDIyfSx7IngiOjM4MC41LCJ5IjozMTAuMzk5OTkzODk2NDg0NH0seyJ4IjozODAuNSwieSI6NDA2LjU5OTk5MDg0NDcyNjU2fSx7IngiOjQ0NS42MTQzNDMzNzMyMDQ0NiwieSI6NDU4Ljc5OTk4Nzc5Mjk2ODc1fV0="
             data-look="classic"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
           <path
             d="M923.5,162L923.5,170.7C923.5,179.4,923.5,196.8,923.5,213.533C923.5,230.267,923.5,246.333,923.5,254.367L923.5,262.4"
             id="mermaid-diagram-L_LTE_Router_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 3, strokeDasharray: "5 5", fill: "none" }}
+            style={{ strokeWidth: 3, strokeDasharray: "5 5", fill: "none", stroke: getStrokeColor('192.168.0.1', 'enp0s20f0u4', 48, 6), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_LTE_Router_0"
             data-points="W3sieCI6OTIzLjUsInkiOjE2Mn0seyJ4Ijo5MjMuNSwieSI6MjE0LjE5OTk5Njk0ODI0MjJ9LHsieCI6OTIzLjUsInkiOjI2Ni4zOTk5OTM4OTY0ODQ0fV0="
             data-look="classic"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
           <path
             d="M803.615,339.821L758.263,350.951C712.91,362.08,622.205,384.34,574.253,403.536C526.302,422.731,521.104,438.862,518.505,446.927L515.906,454.993"
             id="mermaid-diagram-L_Router_CRS305_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 3, fill: "none" }}
+            style={{ strokeWidth: 3, fill: "none", stroke: getStrokeColor('192.168.0.1', 'int1', 10000), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_Router_CRS305_0"
             data-points="W3sieCI6ODA3LjUsInkiOjMzOC44NjczMzk5MzIxODg3fSx7IngiOjUzMS41LCJ5Ijo0MDYuNTk5OTkwODQ0NzI2NTZ9LHsieCI6NTE0LjY3ODc5NDYyODU4ODksInkiOjQ1OC43OTk5ODc3OTI5Njg3NX1d"
             data-look="classic"
-            markerStart="url(#mermaid-diagram_flowchart-v2-pointStart)"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
           <path
             d="M859.009,354.4L846.258,363.1C833.506,371.8,808.003,389.2,795.252,405.933C782.5,422.667,782.5,438.733,782.5,446.767L782.5,454.8"
             id="mermaid-diagram-L_Router_GamingPC_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 4, fill: "none" }}
+            style={{ strokeWidth: 4, fill: "none", stroke: getStrokeColor('192.168.0.1', 'int3', 26000), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_Router_GamingPC_0"
             data-points="W3sieCI6ODU5LjAwOTM1MzQ2MzUxNTMsInkiOjM1NC4zOTk5OTM4OTY0ODQ0fSx7IngiOjc4Mi41LCJ5Ijo0MDYuNTk5OTkwODQ0NzI2NTZ9LHsieCI6NzgyLjUsInkiOjQ1OC43OTk5ODc3OTI5Njg3NX1d"
             data-look="classic"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
           <path
             d="M987.991,354.4L1000.742,363.1C1013.494,371.8,1038.997,389.2,1051.748,407.933C1064.5,426.667,1064.5,446.733,1064.5,456.767L1064.5,466.8"
             id="mermaid-diagram-L_Router_AI_PC_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 6, fill: "none" }}
+            style={{ strokeWidth: 6, fill: "none", stroke: getStrokeColor('192.168.0.1', 'int2', 100000), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_Router_AI_PC_0"
             data-points="W3sieCI6OTg3Ljk5MDY0NjUzNjQ4NDcsInkiOjM1NC4zOTk5OTM4OTY0ODQ0fSx7IngiOjEwNjQuNSwieSI6NDA2LjU5OTk5MDg0NDcyNjU2fSx7IngiOjEwNjQuNSwieSI6NDcwLjc5OTk4Nzc5Mjk2ODc1fV0="
             data-look="classic"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
           <path
             d="M392.787,546.8L371.489,555.5C350.191,564.2,307.596,581.6,286.298,598.333C265,615.067,265,631.133,265,639.167L265,647.2"
             id="mermaid-diagram-L_CRS305_Switch25G_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 3, fill: "none" }}
+            style={{ strokeWidth: 3, fill: "none", stroke: getStrokeColor('192.168.0.208', 'sfp-sfpplus2', 10000), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_CRS305_Switch25G_0"
             data-points="W3sieCI6MzkyLjc4Njg5ODg2OTkxMzcsInkiOjU0Ni43OTk5ODc3OTI5Njg4fSx7IngiOjI2NSwieSI6NTk4Ljk5OTk4NDc0MTIxMDl9LHsieCI6MjY1LCJ5Ijo2NTEuMTk5OTgxNjg5NDUzMX1d"
             data-look="classic"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
           <path
             d="M521.768,546.8L525.973,555.5C530.179,564.2,538.589,581.6,542.795,600.333C547,619.067,547,639.133,547,649.167L547,659.2"
             id="mermaid-diagram-L_CRS305_Unifi1_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 3, fill: "none" }}
+            style={{ strokeWidth: 3, fill: "none", stroke: getStrokeColor('192.168.0.208', 'sfp-sfpplus4', 10000), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_CRS305_Unifi1_0"
             data-points="W3sieCI6NTIxLjc2ODE5MTk0Mjg4MzMsInkiOjU0Ni43OTk5ODc3OTI5Njg4fSx7IngiOjU0NywieSI6NTk4Ljk5OTk4NDc0MTIxMDl9LHsieCI6NTQ3LCJ5Ijo2NjMuMTk5OTgxNjg5NDUzMX1d"
             data-look="classic"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
           <path
             d="M616.5,536.77L651.917,547.142C687.333,557.513,758.167,578.257,793.583,596.662C829,615.067,829,631.133,829,639.167L829,647.2"
             id="mermaid-diagram-L_CRS305_RPi_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 1, fill: "none" }}
+            style={{ strokeWidth: 1, fill: "none", stroke: getStrokeColor('192.168.0.208', 'sfp-sfpplus3', 100), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_CRS305_RPi_0"
             data-points="W3sieCI6NjE2LjUsInkiOjUzNi43NzAxNTQxNDMwMzN9LHsieCI6ODI5LCJ5Ijo1OTguOTk5OTg0NzQxMjEwOX0seyJ4Ijo4MjksInkiOjY1MS4xOTk5ODE2ODk0NTMxfV0="
             data-look="classic"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
           <path
             d="M211.413,715.2L196.844,723.9C182.276,732.6,153.138,750,138.569,766.733C124,783.467,124,799.533,124,807.567L124,815.6"
             id="mermaid-diagram-L_Switch25G_Zigbee_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 1, fill: "none" }}
+            style={{ strokeWidth: 1, fill: "none", stroke: getStrokeColor('192.168.0.106', 'port2', 1000), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_Switch25G_Zigbee_0"
             data-points="W3sieCI6MjExLjQxMzI5OTcyMDUwMzE4LCJ5Ijo3MTUuMTk5OTgxNjg5NDUzMX0seyJ4IjoxMjQsInkiOjc2Ny4zOTk5Nzg2Mzc2OTUzfSx7IngiOjEyNCwieSI6ODE5LjU5OTk3NTU4NTkzNzV9XQ=="
             data-look="classic"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
           <path
             d="M318.587,715.2L333.156,723.9C347.724,732.6,376.862,750,391.431,766.733C406,783.467,406,799.533,406,807.567L406,815.6"
             id="mermaid-diagram-L_Switch25G_OldPC_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 3, fill: "none" }}
+            style={{ strokeWidth: 3, fill: "none", stroke: getStrokeColor('192.168.0.106', 'port4', 10000), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_Switch25G_OldPC_0"
             data-points="W3sieCI6MzE4LjU4NjcwMDI3OTQ5NjgsInkiOjcxNS4xOTk5ODE2ODk0NTMxfSx7IngiOjQwNiwieSI6NzY3LjM5OTk3ODYzNzY5NTN9LHsieCI6NDA2LCJ5Ijo4MTkuNTk5OTc1NTg1OTM3NX1d"
             data-look="classic"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
           <path
             d="M381,706.29L432.167,716.475C483.333,726.66,585.667,747.03,636.833,765.248C688,783.467,688,799.533,688,807.567L688,815.6"
             id="mermaid-diagram-L_Switch25G_Unifi2_0"
             className="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link"
-            style={{ strokeWidth: 3, fill: "none" }}
+            style={{ strokeWidth: 3, fill: "none", stroke: getStrokeColor('192.168.0.106', 'port1', 2500), transition: 'stroke ease 1s' }}
             data-edge="true"
             data-et="edge"
             data-id="L_Switch25G_Unifi2_0"
             data-points="W3sieCI6MzgxLCJ5Ijo3MDYuMjkwMjg4MTgxMTY5N30seyJ4Ijo2ODgsInkiOjc2Ny4zOTk5Nzg2Mzc2OTUzfSx7IngiOjY4OCwieSI6ODE5LjU5OTk3NTU4NTkzNzV9XQ=="
             data-look="classic"
-            markerEnd="url(#mermaid-diagram_flowchart-v2-pointEnd)"
+
           />
         </g>
         <g className="edgeLabels">
