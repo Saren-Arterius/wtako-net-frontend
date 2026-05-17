@@ -6,7 +6,7 @@ import { musicPlayerStore } from "../../store/MusicPlayerStore";
 import Image from "next/image";
 import { useEffect } from "react";
 import { linkify } from "@/app/utils";
-import FadeInImage from "../FadeInImage";
+// import FadeInImage from "../FadeInImage";
 
 // ========== MusicPlayer ==========
 export const MusicPlayer = observer(() => {
@@ -50,7 +50,7 @@ export const MusicPlayer = observer(() => {
         <div className="flex flex-wrap lg:flex-nowrap items-center gap-3">
           <div className="flex items-center gap-3 min-w-[160px] flex-1 lg:flex-none lg:min-w-[280px]">
             {musicPlayerStore.currentTrack.coverUrl ? (
-              <FadeInImage src={musicPlayerStore.currentTrack.coverUrl} alt={musicPlayerStore.currentTrack.title} width="48" height="48" className="w-12 h-12 rounded object-cover flex-shrink-0" />
+              <Image src={musicPlayerStore.currentTrack.coverUrl} alt={musicPlayerStore.currentTrack.title} width="48" height="48" className="w-12 h-12 rounded object-cover flex-shrink-0" />
             ) : (
               <div className="w-12 h-12 rounded bg-highlight/20 flex items-center justify-center flex-shrink-0">
                 <svg className="w-6 h-6 text-link" fill="currentColor" viewBox="0 0 24 24">
