@@ -54,7 +54,7 @@
       "image": "/kokumo.avif",
       "refArt": "/art/comms/furyRaptor23/ref/Kokumo Fursona_CN_SFW.png",
       "order": 8,
-      "descriptionZH": "擁有溫暖之心和冒險精神的毛龍。他忠誠，話不多。"
+      "descriptionZH": "擁有溫暖之心和冒險精神的毛龍。他很忠誠，話不多。"
     }
   ],
   "services": [
@@ -1034,7 +1034,7 @@
       "imageUrl": "/art/comms/si_ra_ta_ma3/shiratama.png",
       "author": {
         "name": "si_ra_ta_ma3",
-        "link": "https://twitter.com/si_rata_ma3"
+        "link": "https://twitter.com/si_ra_ta_ma3"
       },
       "date": "20250624",
       "order": 850,
