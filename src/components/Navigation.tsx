@@ -22,6 +22,8 @@ export const navItems = [
   { name: "ABOUT", path: "/about" },
 ];
 
+const servicesIdx = navItems.indexOf(navItems.find(n => n.name === 'SERVICES')!);
+
 const NavText = observer(({ mobile = false }: { mobile?: boolean } = {}) => {
   const pathname = usePathname();
   const refs = navItems.map(() => useRef(null));
@@ -49,7 +51,7 @@ const NavText = observer(({ mobile = false }: { mobile?: boolean } = {}) => {
 
     const activeTab = navItems.find(n => pathname === n.path || pathname.replace(/\/$/, "") === n.path);
 
-    store.updateTabIdx(activeTab ? navItems.indexOf(activeTab) : -1)
+    store.updateTabIdx(activeTab ? navItems.indexOf(activeTab) : servicesIdx)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, mobile, store.innerWidth, store.lang]);
 
