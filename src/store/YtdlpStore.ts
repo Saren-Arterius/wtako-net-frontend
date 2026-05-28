@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { store } from "./store";
+import { musicPlayerStore } from "./MusicPlayerStore";
 
 const YTDLPROXY_BASE_URL = "https://ytdlp-proxy.wtako.net";
 
@@ -90,7 +91,7 @@ export class YtdlpStore {
       this.videoUrl = videoUrl;
       this.status = "ready";
       this.progress = store.t("Fetched video!");
-
+      musicPlayerStore.pause();
       return videoUrl;
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : store.t("Unknown error occurred");
