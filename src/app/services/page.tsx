@@ -2,6 +2,7 @@
 
 import { Layout } from "@/components/Layout";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { observer } from "mobx-react-lite";
 import { store } from "@/store/store";
 import { ContentPageHeader } from "@/components/ContentPageHeader";
@@ -15,6 +16,42 @@ const filterOptions = [
   { key: "PUBLIC", label: "Public" },
   { key: "PRIVATE", label: "Private" },
 ] as const;
+
+const ServiceCardContent = ({ service }: { service: Service }) => (
+  <>
+    <div className="w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0">
+      <FadeInImage
+        src={service.iconUrl}
+        alt={service.name}
+        width={64}
+        height={64}
+        className="object-contain mb-4"
+      />
+    </div>
+    <h3 className="text-title text-md font-medium text-center truncate">{service.name}</h3>
+    <div className="flex gap-1 mt-2 flex-wrap justify-center">
+      <span className={`text-xs px-2 py-1 rounded ${service.type === "PUBLIC"
+        ? "text-green-200/80 bg-green-200/10"
+        : "text-yellow-200/80 bg-yellow-200/10"
+        }`}>
+        {store.t(filterOptions.find(o => o.key === service.type)?.label || service.type)}
+      </span>
+      {service.lanUrl && (
+        <span className="text-xs px-2 py-1 rounded text-blue-200/80 bg-blue-200/10">
+          LAN
+        </span>
+      )}
+    </div>
+  </>
+);
+
+const isExternalUrl = (url: string) => {
+  try {
+    return new URL(url).hostname !== location.hostname;
+  } catch {
+    return true;
+  }
+};
 
 export const ServiceList = observer(() => {
   const services = store.services;
@@ -86,39 +123,30 @@ export const ServiceList = observer(() => {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-        {filteredServices.map((service: Service, index: number) => (
-          <a
-            key={index}
-            href={showLanUrl && service.lanUrl ? service.lanUrl : service.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 hover:border-white/20 hover:bg-white/6 transition-colors aspect-square flex flex-col items-center justify-center group"
-          >
-            <div className="w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0">
-              <FadeInImage
-                src={service.iconUrl}
-                alt={service.name}
-                width={64}
-                height={64}
-                className="object-contain mb-4"
-              />
-            </div>
-            <h3 className="text-title text-md font-medium text-center truncate">{service.name}</h3>
-            <div className="flex gap-1 mt-2 flex-wrap justify-center">
-              <span className={`text-xs px-2 py-1 rounded ${service.type === "PUBLIC"
-                ? "text-green-200/80 bg-green-200/10"
-                : "text-yellow-200/80 bg-yellow-200/10"
-                }`}>
-                {store.t(filterOptions.find(o => o.key === service.type)?.label || service.type)}
-              </span>
-              {service.lanUrl && (
-                <span className="text-xs px-2 py-1 rounded text-blue-200/80 bg-blue-200/10">
-                  LAN
-                </span>
-              )}
-            </div>
-          </a>
-        ))}
+        {filteredServices.map((service: Service, index: number) => {
+          const targetUrl = showLanUrl && service.lanUrl ? service.lanUrl : service.url;
+          const external = store.inited && isExternalUrl(targetUrl);
+
+          return external ? (
+            <a
+              key={index}
+              href={targetUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 hover:border-white/20 hover:bg-white/6 transition-colors aspect-square flex flex-col items-center justify-center group"
+            >
+              <ServiceCardContent service={service} />
+            </a>
+          ) : (
+            <Link
+              key={index}
+              href={targetUrl}
+              className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 hover:border-white/20 hover:bg-white/6 transition-colors aspect-square flex flex-col items-center justify-center group"
+            >
+              <ServiceCardContent service={service} />
+            </Link>
+          );
+        })}
       </div>
 
       {filteredServices.length === 0 && (
