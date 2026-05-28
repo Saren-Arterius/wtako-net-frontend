@@ -59,6 +59,12 @@
   ],
   "services": [
     {
+      "name": "yt-dlp Proxy",
+      "iconUrl": "https://raw.githubusercontent.com/yt-dlp/yt-dlp/master/.github/banner.svg",
+      "url": "https://wtako.net/ytdlp",
+      "type": "PUBLIC"
+    },
+    {
       "name": "Dropzone",
       "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/droppy.png",
       "url": "https://drop.wtako.net",
