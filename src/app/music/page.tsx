@@ -35,7 +35,10 @@ export const MusicGallery = observer(() => {
             className="bg-white/4 rounded-xl backdrop-blur-md p-4 border border-white/10"
           >
             <div className="flex gap-4">
-              <div className="w-16 h-16 md:w-32 md:h-32 rounded-lg bg-white/5 backdrop-blur-md flex items-center justify-center flex-shrink-0">
+              <div
+                className="w-16 h-16 md:w-32 md:h-32 rounded-lg bg-white/5 backdrop-blur-md flex items-center justify-center flex-shrink-0 cursor-pointer"
+                onClick={() => musicPlayerStore.openModal(item)}
+              >
                 {item.coverUrl ? (
                   <FadeInImage
                     src={item.coverUrl}
@@ -53,12 +56,18 @@ export const MusicGallery = observer(() => {
               </div>
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-lg text-highlight">{item.title}</h3>
-                  {item.date && (
-                    <span className="text-xs text-subtitle/60">
-                      {item.date.slice(0, 4)}-{item.date.slice(4, 6)}-{item.date.slice(6, 8)}
-                    </span>
-                  )}
+                  <h3
+                    className="text-lg text-highlight cursor-pointer hover:text-subtitle transition-colors"
+                    onClick={() => musicPlayerStore.openModal(item)}
+                  >
+                    {item.title}
+                  </h3>
+                  <span
+                    className="text-xs text-subtitle/60 cursor-pointer hover:text-highlight transition-colors"
+                    onClick={() => item.date && musicPlayerStore.openModal(item)}
+                  >
+                    {item.date?.slice(0, 4)}-{item.date?.slice(4, 6)}-{item.date?.slice(6, 8)}
+                  </span>
 
                 </div>
                 <p className="text-subtitle text-sm mt-2">{linkify(store.t(item))}</p>

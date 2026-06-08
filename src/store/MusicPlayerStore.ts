@@ -11,9 +11,25 @@ export class MusicPlayerStore {
   isLooping: boolean = false;
   isClosing: boolean = false;
   isOpening: boolean = false;
+  selectedTrackForModal: Music | null = null;
+  pageInited: boolean = false;
+  isClosingModal: boolean = false;
+
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  openModal(track: Music) {
+    this.selectedTrackForModal = track;
+  }
+
+  closeModal() {
+    this.isClosingModal = true;
+    setTimeout(() => {
+      this.isClosingModal = false;
+      this.selectedTrackForModal = null;
+    }, 200);
   }
 
   playTrack(track: Music) {
