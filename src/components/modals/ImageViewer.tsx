@@ -4,8 +4,8 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { observer } from "mobx-react-lite";
-import { imageViewerStore } from "../../store/ImageViewerStore";
-import { store } from "../../store/store";
+import { imageViewerStore } from "@/store/ImageViewerStore";
+import { store } from "@/store/store";
 import { linkify } from "@/app/utils";
 import { filterOptions } from "@/app/art/page";
 import FadeInImage from "../FadeInImage";

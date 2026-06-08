@@ -6,6 +6,7 @@ import { musicPlayerStore } from "../store/MusicPlayerStore";
 import Image from "next/image";
 import { MusicPlayer } from "./modals/MusicPlayer";
 import { ImageViewer } from "./modals/ImageViewer";
+import { MusicPlayerModal } from "./modals/MusicPlayerModal";
 import { Navigation } from "./Navigation";
 import { useEffect, useState } from "react";
 import FadeInImage from "./FadeInImage";
@@ -123,6 +124,7 @@ export const Layout = observer(({ children }: { children: React.ReactNode }) => 
 
         <MusicPlayer />
         <ImageViewer />
+        <MusicPlayerModal />
       </div>
     </div >
   );
