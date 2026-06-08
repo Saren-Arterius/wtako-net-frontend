@@ -40,6 +40,7 @@ export class MusicPlayerStore {
     if (this.isLooping) {
       this.audioRef.loop = true;
     }
+    this.audioRef.volume = this.volume;
     this.audioRef.play();
     this.isPlaying = true;
 
