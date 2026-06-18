@@ -986,7 +986,7 @@ export const NetworkGraphCache = observer(() => {
                     <p>
                       {store.t('QSFP+ Fiber (40G)')}
                       <br />
-                      {getBPSDisplay('192.168.0.1', 'int3')}
+                      {getBPSDisplay('192.168.0.1', 'int3', true)}
                     </p>
                   </span>
                 </div>
