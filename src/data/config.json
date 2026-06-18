@@ -59,9 +59,15 @@
   ],
   "services": [
     {
+      "name": "AUR Audit",
+      "iconUrl": "/services/stub.svg",
+      "url": "https://wtako.net/services/aur-audit",
+      "type": "PUBLIC"
+    },
+    {
       "name": "yt-dlp Proxy",
       "iconUrl": "https://raw.githubusercontent.com/yt-dlp/yt-dlp/master/.github/banner.svg",
-      "url": "https://wtako.net/ytdlp",
+      "url": "https://wtako.net/services/ytdlp",
       "type": "PUBLIC"
     },
     {
