@@ -134,7 +134,7 @@ const Page = observer(() => {
                     {store.t(pkg.status)}
                   </span>
                   {pkg.version && (
-                    <span className="text-subtitle text-sm">{pkg.version}</span>
+                    <span className="text-subtitle text-sm min-w-0 hidden md:inline-block max-w-[150px] truncate" title={pkg.version}>{pkg.version}</span>
                   )}
                 </div>
                 <p className="text-subtitle text-sm mt-1">{pkg.description}</p>
