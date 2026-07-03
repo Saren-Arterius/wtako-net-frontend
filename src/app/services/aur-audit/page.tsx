@@ -16,7 +16,7 @@ const filterOptions = [
 ] as const;
 
 const Page = observer(() => {
-  const { packages, filter, search, hasMore, isLoading, error, setFilter, setSearch, nextPage, prevPage, canGoPrev, refresh } = aurAuditStore;
+  const { packages, filter, search, hasMore, isLoading, error, setFilter, setSearch, nextPage, prevPage, canGoPrev, refresh, healthStats } = aurAuditStore;
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
@@ -51,8 +51,10 @@ const Page = observer(() => {
   }, [search, refresh]);
 
   useEffect(() => {
+    aurAuditStore.fetchHealthStats();
     const interval = setInterval(() => {
       if (!aurAuditStore.cursor) refresh();
+      aurAuditStore.fetchHealthStats();
     }, 30000);
     return () => clearInterval(interval);
   }, []);
@@ -105,6 +107,12 @@ const Page = observer(() => {
           placeholder={searchInput.includes(",") ? store.t("Search by names (comma-separated)...") : store.t("Search by name or comma-separated list...")}
           className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-subtitle placeholder-subtitle/40 focus:outline-none focus:border-highlight/50 transition-colors"
         />
+        {healthStats && (
+          <div className="flex gap-6 text-sm text-subtitle">
+            <div>{store.t("Waiting")}: <strong>{healthStats.waiting}</strong></div>
+            <div>{store.t("Running")}: <strong>{healthStats.running}</strong></div>
+          </div>
+        )}
       </div>
 
       {error && (
