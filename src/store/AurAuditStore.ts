@@ -19,6 +19,17 @@ export interface PackageResult {
 
 export type FilterType = "scanned" | "red" | "yellow" | "black";
 
+export interface HealthData {
+  status: string;
+  timestamp: number;
+  queues: {
+    aur: { waiting: number; running: number; delayed: number; completed: number; failed: number };
+    sss: { waiting: number; running: number; delayed: number; completed: number; failed: number };
+  };
+}
+
+export type HealthStats = { waiting: number; running: number };
+
 export class AurAuditStore {
   packages: PackageResult[] = [];
   filter: FilterType = "scanned";
@@ -28,6 +39,7 @@ export class AurAuditStore {
   cursor: number | null = null;
   hasMore: boolean = false;
   history: { packages: PackageResult[], cursor: number | null, hasMore: boolean }[] = [];
+  healthStats: HealthStats | null = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -126,6 +138,21 @@ export class AurAuditStore {
   refresh = () => {
     this.history = [];
     this.fetchPackages(null);
+  }
+
+  async fetchHealthStats() {
+    try {
+      const res = await fetch("https://aur-audit.wtako.net/health");
+      if (!res.ok) return;
+      const data: HealthData = await res.json();
+      const totalWaiting = (data.queues.aur.waiting || 0) + (data.queues.sss.waiting || 0);
+      const totalRunning = (data.queues.aur.running || 0) + (data.queues.sss.running || 0);
+      runInAction(() => {
+        this.healthStats = { waiting: totalWaiting, running: totalRunning };
+      });
+    } catch {
+      // Silently fail if health check fails
+    }
   }
 }
 
