@@ -145,6 +145,12 @@ export interface NetworkMetrics {
   };
 }
 
+export interface AIHealth {
+  thinking_brain: { healthy: boolean };
+  speaking_lips: { healthy: boolean };
+  listening_ears: { healthy: boolean };
+}
+
 export interface MemoryTotals {
   ramTotal: number;
   vramTotal: number;
@@ -176,6 +182,7 @@ export class MonitorStore {
     numRequestsWaiting: number;
     lastUpdate: number;
   } | null = null;
+  aiHealth: AIHealth | null = null;
 
   // System info
   SYSTEM_INFO: SystemInfo = { hostname: "", os: "", cpu: "", case: "" };
@@ -286,6 +293,7 @@ export class MonitorStore {
 
     // MAGI-specific events
     this.socket.on("vllmMetrics", (data) => this.saveData("vllmMetrics", data));
+    this.socket.on("aiHealth", (data) => this.saveData("aiHealth", data));
     this.socket.on("connect", () => console.log(`Connected to ${this.serverUrl}`));
     this.socket.on("disconnect", () => console.log(`Disconnected from ${this.serverUrl}`));
     this.socket.on("connect_error", (error) => console.error(`Connection error to ${this.serverUrl}:`, error));

@@ -273,7 +273,7 @@ export const SystemHealth = observer(({ homePage }: SystemHealthProps) => {
         ) : (
           servers.map((server) => {
             const { name, monitorUrl, store } = server;
-            const { temperatures, usage, usageMB, io, fanSpeed, pwr, vllmMetrics, GAUGE_LIMITS, disks, SYSTEM_INFO, uptime, networkMetrics, frequencies, storageInfo } = store;
+            const { temperatures, usage, usageMB, io, fanSpeed, pwr, vllmMetrics, aiHealth, GAUGE_LIMITS, disks, SYSTEM_INFO, uptime, networkMetrics, frequencies, storageInfo } = store;
             const swap = usage.swap ?? 0;
             const pingStats = networkMetrics?.ping_statistics;
             const networkTraffic = networkMetrics?.network_traffic;
@@ -462,7 +462,16 @@ export const SystemHealth = observer(({ homePage }: SystemHealthProps) => {
                   {/* vLLM Metrics */}
                   {vllmMetrics && GAUGE_LIMITS.vllm && (
                     <div className="pt-2 border-t border-white/10 space-y-2">
-                      <div className="text-subtitle text-sm font-medium">{ms.t('vLLM')}</div>
+                      <div className="text-subtitle text-sm font-medium flex items-center gap-2">
+                        {ms.t('vLLM')}
+                        {aiHealth && (
+                          <>
+                            <span style={{ opacity: aiHealth.thinking_brain.healthy ? 1 : 0.2 }} title="thinking_brain">🧠</span>
+                            <span style={{ opacity: aiHealth.speaking_lips.healthy ? 1 : 0.2 }} title="speaking_lips">👄</span>
+                            <span style={{ opacity: aiHealth.listening_ears.healthy ? 1 : 0.2 }} title="listening_ears">🦻</span>
+                          </>
+                        )}
+                      </div>
                       <div className="grid grid-cols-2 gap-3">
                         <VllmMetricDisplay
                           label={'Prefill'}
