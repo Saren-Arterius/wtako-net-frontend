@@ -460,38 +460,41 @@ export const SystemHealth = observer(({ homePage }: SystemHealthProps) => {
                   </div>
 
                   {/* vLLM Metrics */}
-                  {vllmMetrics && GAUGE_LIMITS.vllm && (
-                    <div className="pt-2 border-t border-white/10 space-y-2">
-                      <div className="text-subtitle text-sm font-medium flex items-center gap-2">
-                        {ms.t('vLLM')}
-                        {aiHealth && (
-                          <>
-                            <span style={{ opacity: aiHealth.thinking_brain.healthy ? 1 : 0.2 }} title="thinking_brain">🧠</span>
-                            <span style={{ opacity: aiHealth.speaking_lips.healthy ? 1 : 0.2 }} title="speaking_lips">👄</span>
-                            <span style={{ opacity: aiHealth.listening_ears.healthy ? 1 : 0.2 }} title="listening_ears">🦻</span>
-                          </>
-                        )}
+                  {GAUGE_LIMITS.vllm && (() => {
+                    const v = vllmMetrics ?? { prefillTokensPerSecond: 0, generationTokensPerSecond: 0, numRequestsRunning: 0, numRequestsWaiting: 0 };
+                    return (
+                      <div className="pt-2 border-t border-white/10 space-y-2">
+                        <div className="text-subtitle text-sm font-medium flex items-center gap-2">
+                          {ms.t('vLLM')}
+                          {aiHealth && (
+                            <>
+                              <span style={{ opacity: aiHealth.thinking_brain.healthy ? 1 : 0.2 }} title="thinking_brain">🧠</span>
+                              <span style={{ opacity: aiHealth.speaking_lips.healthy ? 1 : 0.2 }} title="speaking_lips">👄</span>
+                              <span style={{ opacity: aiHealth.listening_ears.healthy ? 1 : 0.2 }} title="listening_ears">🦻</span>
+                            </>
+                          )}
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <VllmMetricDisplay
+                            label={'Prefill'}
+                            value={v.prefillTokensPerSecond}
+                            max={GAUGE_LIMITS.vllm.prefillTokensPerSecond?.max ?? 3000}
+                            unit="tok/s"
+                          />
+                          <VllmMetricDisplay
+                            label={'Decode'}
+                            value={v.generationTokensPerSecond}
+                            max={GAUGE_LIMITS.vllm.generationTokensPerSecond?.max ?? 60}
+                            unit="tok/s"
+                          />
+                        </div>
+                        <div className="flex items-center gap-4 text-xs text-content/65 pt-1">
+                          <span>{ms.t('Running:')} <span className="text-content">{v.numRequestsRunning}</span> / {GAUGE_LIMITS.vllm.numRequestsRunning?.max ?? 8}</span>
+                          <span>{ms.t('Waiting:')} <span className="text-content">{v.numRequestsWaiting}</span> / {GAUGE_LIMITS.vllm.numRequestsWaiting?.max ?? 20}</span>
+                        </div>
                       </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        <VllmMetricDisplay
-                          label={'Prefill'}
-                          value={vllmMetrics.prefillTokensPerSecond}
-                          max={GAUGE_LIMITS.vllm.prefillTokensPerSecond?.max ?? 3000}
-                          unit="tok/s"
-                        />
-                        <VllmMetricDisplay
-                          label={'Decode'}
-                          value={vllmMetrics.generationTokensPerSecond}
-                          max={GAUGE_LIMITS.vllm.generationTokensPerSecond?.max ?? 60}
-                          unit="tok/s"
-                        />
-                      </div>
-                      <div className="flex items-center gap-4 text-xs text-content/65 pt-1">
-                        <span>{ms.t('Running:')} <span className="text-content">{vllmMetrics.numRequestsRunning}</span> / {GAUGE_LIMITS.vllm.numRequestsRunning?.max ?? 8}</span>
-                        <span>{ms.t('Waiting:')} <span className="text-content">{vllmMetrics.numRequestsWaiting}</span> / {GAUGE_LIMITS.vllm.numRequestsWaiting?.max ?? 20}</span>
-                      </div>
-                    </div>
-                  )}
+                    );
+                  })()}
 
                   {/* Network Quality - WTAKO only */}
                   {isWtako && pingStats && networkTraffic && (
