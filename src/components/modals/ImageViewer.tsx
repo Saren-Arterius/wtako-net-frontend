@@ -135,7 +135,7 @@ export const ImageViewer = observer(() => {
             {/* Video overlay */}
             {isVideoPlaying && (
               <video
-                src={selectedArt.extraVideoUrl}
+                src={store.lang === 'zh' && selectedArt.extraVideoUrlZH ? selectedArt.extraVideoUrlZH : selectedArt.extraVideoUrl}
                 className="w-full h-full object-contain absolute inset-0"
                 style={{ zIndex: 2 }}
                 controls
