@@ -533,6 +533,8 @@
       "description": "Monster Hunter x How to Train Your Dragon crossover fan art in a cozy tavern setting. Toothless the Night Fury lounges at a wooden table alongside a small Palico (Monster Hunter cat companion) cooking over a firepot. Film character Hiccup stand nearby reading a map, with warm golden sunlight streaming through diamond-paned windows. Additional fantasy characters including a wyverian and female Kirin armored warrior in the background.",
       "type": "AI",
       "imageUrl": "/art/ai/ComfyUI_01611_.png",
+      "extraVideoUrl": "/art/ai/mhttyd_en.mp4",
+      "extraVideoUrlZH": "/art/ai/mhttyd_zh.mp4",
       "date": "20260104",
       "order": 44,
       "width": 3520,

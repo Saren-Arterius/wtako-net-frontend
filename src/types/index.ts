@@ -11,6 +11,7 @@ export interface Art extends Sortable {
   imageUrl: string;
   thumbImageUrl?: string;
   extraVideoUrl?: string;
+  extraVideoUrlZH?: string;
   author?: { name: string; link: string };
   width?: number;
   height?: number;
