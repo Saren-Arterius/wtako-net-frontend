@@ -192,6 +192,7 @@ export const NetworkGraphCache = observer(() => {
 
     #mermaid-diagram .edge-pattern-solid {
       stroke-dasharray: 0;
+      opacity: 0.8;
     }
 
     #mermaid-diagram .edge-thickness-invisible {
@@ -254,7 +255,7 @@ export const NetworkGraphCache = observer(() => {
     #mermaid-diagram .node polygon,
     #mermaid-diagram .node path {
       fill: #ffffff10;
-      stroke: #99a37e;
+      stroke: #99a37e80;
       stroke-width: 1px;
     }
 
@@ -308,7 +309,13 @@ export const NetworkGraphCache = observer(() => {
     }
 
     #mermaid-diagram .edgeLabel p {
-      background-color: #33342fde !important;
+      border: 0px solid #ffffff40;
+      border-radius: 8px;
+      padding: 0.2rem;
+      line-height: 1.2rem;
+      background-color: #404040c0 !important;
+      margin-inline: auto !important;
+      max-width: max-content;
     }
 
     #mermaid-diagram .edgeLabel rect {
