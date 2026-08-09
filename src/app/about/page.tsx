@@ -70,7 +70,7 @@ export const AboutSection = observer(() => {
               <p className="text-subtitle text-sm mb-4">{store.t('Full-stack Developer · 1995 · Male · Hong Kong')}</p>
             </div>
             <blockquote className="border-l-2 border-highlight/50 pl-4 mt-2 mb-4">
-              <p className="text-subtitle/80 italic">{store.t(store.config?.siteOwner as SiteOwner)}</p>
+              <p className="text-subtitle/80 italic" style={{ filter: 'brightness(1.2)' }}>{store.t(store.config?.siteOwner as SiteOwner)}</p>
             </blockquote>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
