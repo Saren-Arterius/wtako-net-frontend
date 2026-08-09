@@ -56,7 +56,7 @@ const WelcomeSection = observer(() => {
                   <span className="text-title font-medium">{store.config?.siteOwner?.name}</span> <span className="text-content/65 text-xs">{store.config?.siteOwner?.handle}</span>
                 </div>
               </div>
-              <p className="text-highlight/80 text-sm italic flex-1 hidden sm:block">&quot;{store.t(store.config?.siteOwner as SiteOwner)}&quot;</p>
+              <p className="text-highlight/80 text-sm italic flex-1 hidden sm:block" style={{ filter: 'brightness(1.5)' }}>&quot;{store.t(store.config?.siteOwner as SiteOwner)}&quot;</p>
               <Link href="/about" className="flex items-center gap-2 flex-shrink-0 ml-auto hover:opacity-70 transition-opacity">
                 <div className="w-8 h-8 rounded-full border border-content/30 flex items-center justify-center">
                   <svg className="w-4 h-4 text-content/65" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,7 +65,7 @@ const WelcomeSection = observer(() => {
                 </div>
               </Link>
             </div>
-            <p className="text-highlight/80 text-sm italic mt-3 sm:hidden">&quot;{store.t(store.config?.siteOwner as SiteOwner)}&quot;</p>
+            <p className="text-highlight/80 text-sm italic mt-3 sm:hidden" style={{ filter: 'brightness(1.5)' }}>&quot;{store.t(store.config?.siteOwner as SiteOwner)}&quot;</p>
           </div>
 
         </div>
