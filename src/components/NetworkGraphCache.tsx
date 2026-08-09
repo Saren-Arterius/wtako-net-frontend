@@ -303,18 +303,18 @@ export const NetworkGraphCache = observer(() => {
     }
 
     #mermaid-diagram .edgeLabel {
-      background-color: #1d2425e3 !important;
+      background-color: #33342fde !important;
       text-align: center;
     }
 
     #mermaid-diagram .edgeLabel p {
-      background-color: #1d2425e3 !important;
+      background-color: #33342fde !important;
     }
 
     #mermaid-diagram .edgeLabel rect {
       opacity: 0.5;
-      background-color: #1d2425e3 !important;
-      fill: #1d2425e3 !important;
+      background-color: #33342fde !important;
+      fill: #33342fde !important;
     }
 
     #mermaid-diagram .labelBkg {
