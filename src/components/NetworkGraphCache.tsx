@@ -40,7 +40,7 @@ function rgbToHex(r: number, g: number, b: number) {
 function getColorAtPercent(percent: number) {
   if (percent > 100) percent = 100;
   if (percent < 0) percent = 0;
-  
+
   let start = COLOR_STOPS[0];
   let end = COLOR_STOPS[1];
 
@@ -121,8 +121,8 @@ export const NetworkGraphCache = observer(() => {
     }
 
     return (<>
-      <span style={{ color: "#f0bcf2", fontSize: 12, opacity: 0.8 }}>↑{formatBps(tx_bps)}</span>&nbsp;
-      <span style={{ color: "#bcddf2", fontSize: 12, opacity: 0.8 }}>↓{formatBps(rx_bps)}</span>
+      <span style={{ color: "#754c4f", fontSize: 12, filter: 'brightness(1.2)' }}>↑{formatBps(tx_bps)}</span>&nbsp;
+      <span style={{ color: "#779784", fontSize: 12, filter: 'brightness(1.2)' }}>↓{formatBps(rx_bps)}</span>
     </>);
 
   }
@@ -303,18 +303,18 @@ export const NetworkGraphCache = observer(() => {
     }
 
     #mermaid-diagram .edgeLabel {
-      background-color: hsl(0, 0%, 34.4117647059%);
+      background-color: #1d2425e3 !important;
       text-align: center;
     }
 
     #mermaid-diagram .edgeLabel p {
-      background-color: hsl(0, 0%, 34.4117647059%);
+      background-color: #1d2425e3 !important;
     }
 
     #mermaid-diagram .edgeLabel rect {
       opacity: 0.5;
-      background-color: hsl(0, 0%, 34.4117647059%);
-      fill: hsl(0, 0%, 34.4117647059%);
+      background-color: #1d2425e3 !important;
+      fill: #1d2425e3 !important;
     }
 
     #mermaid-diagram .labelBkg {
