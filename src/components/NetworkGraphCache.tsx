@@ -121,8 +121,8 @@ export const NetworkGraphCache = observer(() => {
     }
 
     return (<>
-      <span style={{ color: "#754c4f", fontSize: 12, filter: 'brightness(1.2)' }}>↑{formatBps(tx_bps)}</span>&nbsp;
-      <span style={{ color: "#779784", fontSize: 12, filter: 'brightness(1.2)' }}>↓{formatBps(rx_bps)}</span>
+      <span style={{ color: "rgb(255, 168, 175)", fontSize: 12 }}>↑{formatBps(tx_bps)}</span>&nbsp;
+      <span style={{ color: "rgb(163, 203, 179)", fontSize: 12 }}>↓{formatBps(rx_bps)}</span>
     </>);
 
   }
