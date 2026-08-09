@@ -228,6 +228,19 @@ export const NetworkGraphCache = observer(() => {
 
     #mermaid-diagram .connection {
       color: rgb(231, 212, 184);
+      font-size: 0.9rem;
+    }
+
+    #mermaid-diagram .description {
+      color: rgb(233, 223, 207, 0.65);
+      font-size: 0.8rem;
+      line-height: 1rem;
+    }
+
+    #mermaid-diagram .description > br {
+      display: block;
+      content: "";
+      margin-top: -4px;
     }
 
     #mermaid-diagram .label {
@@ -1277,7 +1290,7 @@ export const NetworkGraphCache = observer(() => {
                     <p>
                       {store.t('Modem / ONT')}
                       <br />
-                      ({store.t('4x1G, 1x10G RJ45')})
+                      <span className="description">({store.t('4x1G, 1x10G RJ45')})</span>
                     </p>
                   </span>
                 </div>
@@ -1349,9 +1362,11 @@ export const NetworkGraphCache = observer(() => {
                     <p>
                       {store.t('Router / NVME NAS')}
                       <br />
-                      ({store.t('2x SFP+, 2x QSFP28')})
-                      <br />
-                      {store.t('WAN1, VRRP Main')}
+                      <span className="description">
+                        ({store.t('2x SFP+, 2x QSFP28')})
+                        <br />
+                        {store.t('WAN1, VRRP Main')}
+                      </span>
                     </p>
                   </span>
                 </div>
@@ -1389,9 +1404,11 @@ export const NetworkGraphCache = observer(() => {
                     <p>
                       {store.t('CRS305 Switch')}
                       <br />
-                      ({store.t('1x 1G RJ45, 4x SFP+')})
-                      <br />
-                      {store.t('WAN2, VRRP Backup')}
+                      <span className="description">
+                        ({store.t('1x 1G RJ45, 4x SFP+')})
+                        <br />
+                        {store.t('WAN2, VRRP Backup')}
+                      </span>
                     </p>
                   </span>
                 </div>
@@ -1429,9 +1446,11 @@ export const NetworkGraphCache = observer(() => {
                     <p>
                       {store.t('Gaming PC')}
                       <br />
-                      ({store.t('40G QSFP+')})
-                      <br />
-                      @{store.t('26Gbps (PCIe 3.0 x4)')}
+                      <span className="description">
+                        ({store.t('40G QSFP+')})
+                        <br />
+                        @{store.t('26Gbps (PCIe 3.0 x4)')}
+                      </span>
                     </p>
                   </span>
                 </div>
@@ -1469,7 +1488,7 @@ export const NetworkGraphCache = observer(() => {
                     <p>
                       {store.t('AI Core (DGX Spark)')}
                       <br />
-                      ({store.t('2x 200G QSFP56')})
+                      <span className="description">({store.t('2x 200G QSFP56')})</span>
                     </p>
                   </span>
                 </div>
@@ -1507,7 +1526,7 @@ export const NetworkGraphCache = observer(() => {
                     <p>
                       {store.t('2.5G Switch')}
                       <br />
-                      ({store.t('2x SFP+, 4x 2.5G RJ45')})
+                      <span className="description">({store.t('2x SFP+, 4x 2.5G RJ45')})</span>
                     </p>
                   </span>
                 </div>
@@ -1579,7 +1598,7 @@ export const NetworkGraphCache = observer(() => {
                     <p>
                       {store.t('Raspberry Pi 2')}
                       <br />
-                      {store.t('WAN2, Isolated NAT2')}
+                      <span className="description">{store.t('WAN2, Isolated NAT2')}</span>
                     </p>
                   </span>
                 </div>
