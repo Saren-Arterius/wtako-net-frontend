@@ -203,7 +203,6 @@ export const NetworkGraphCache = observer(() => {
     #mermaid-diagram .edge-pattern-dashed {
       stroke-dasharray: 3;
     }
-
     #mermaid-diagram .edge-pattern-dotted {
       stroke-dasharray: 2;
     }
@@ -224,6 +223,11 @@ export const NetworkGraphCache = observer(() => {
 
     #mermaid-diagram p {
       margin: 0;
+    }
+
+
+    #mermaid-diagram .connection {
+      color: rgb(231, 212, 184);
     }
 
     #mermaid-diagram .label {
@@ -866,7 +870,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('10G RJ45 to SFP+ (10G)')}
+                      <span className="connection">{store.t('10G RJ45 to SFP+ (10G)')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.1', 'ext1')}
                     </p>
@@ -898,7 +902,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('1G RJ45')}
+                      <span className="connection">{store.t('1G RJ45')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.208', 'ether1')}
                     </p>
@@ -930,7 +934,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('USB 3.0')}
+                      <span className="connection">{store.t('USB 3.0')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.1', 'enp0s20f0u4')}
                     </p>
@@ -959,7 +963,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('SFP+ AOC (10G)')}
+                      <span className="connection">{store.t('SFP+ AOC (10G)')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.1', 'int1', true)}
                     </p>
@@ -991,7 +995,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('QSFP+ Fiber (40G)')}
+                      <span className="connection">{store.t('QSFP+ Fiber (40G)')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.1', 'int3', true)}
                     </p>
@@ -1023,7 +1027,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('QSFP28 DAC (100G)')}
+                      <span className="connection">{store.t('QSFP28 DAC (100G)')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.1', 'int2')}
                     </p>
@@ -1052,7 +1056,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('SFP+ AOC (10G)')}
+                      <span className="connection">{store.t('SFP+ AOC (10G)')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.208', 'sfp-sfpplus2', true)}
                     </p>
@@ -1081,7 +1085,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('SFP+ to RJ45 (10G)')}
+                      <span className="connection">{store.t('SFP+ to RJ45 (10G)')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.208', 'sfp-sfpplus4', true)}
                     </p>
@@ -1110,7 +1114,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('SFP+ to RJ45 (100M)')}
+                      <span className="connection">{store.t('SFP+ to RJ45 (100M)')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.208', 'sfp-sfpplus3', true)}
                     </p>
@@ -1139,7 +1143,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('2.5G to 1G')}
+                      <span className="connection">{store.t('2.5G to 1G')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.106', 'port2', true)}
                     </p>
@@ -1168,7 +1172,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('SFP+ (10G)')}
+                      <span className="connection">{store.t('SFP+ (10G)')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.106', 'port4', true)}
                     </p>
@@ -1197,7 +1201,7 @@ export const NetworkGraphCache = observer(() => {
                 >
                   <span className="edgeLabel">
                     <p>
-                      {store.t('2.5G RJ45')}
+                      <span className="connection">{store.t('2.5G RJ45')}</span>
                       <br />
                       {getBPSDisplay('192.168.0.106', 'port1', true)}
                     </p>
