@@ -468,9 +468,9 @@ export const SystemHealth = observer(({ homePage }: SystemHealthProps) => {
                           {ms.t('vLLM')}
                           {aiHealth && (
                             <>
-                              <span style={{ opacity: aiHealth.thinking_brain.healthy ? 1 : 0.2 }} title="thinking_brain">🧠</span>
-                              <span style={{ opacity: aiHealth.speaking_lips.healthy ? 1 : 0.2 }} title="speaking_lips">👄</span>
-                              <span style={{ opacity: aiHealth.listening_ears.healthy ? 1 : 0.2 }} title="listening_ears">🦻</span>
+                              <span style={{ opacity: aiHealth.thinking_brain?.healthy ? 1 : 0.2 }} title="thinking_brain">🧠</span>
+                              <span style={{ opacity: aiHealth.speaking_lips?.healthy ? 1 : 0.2 }} title="speaking_lips">👄</span>
+                              <span style={{ opacity: aiHealth.listening_ears?.healthy ? 1 : 0.2 }} title="listening_ears">🦻</span>
                             </>
                           )}
                         </div>
