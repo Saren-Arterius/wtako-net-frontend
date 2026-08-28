@@ -306,6 +306,7 @@ export class MonitorStore {
     }
     try {
       const info = typeof data === "string" ? JSON.parse(data) : data;
+      if (info == null) return;
       if (label === 'usageMB') {
         const infoTyped = info as UsageMB;
         this.usageMB = { ...this.usageMB, ...infoTyped };
