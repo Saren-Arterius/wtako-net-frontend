@@ -8,7 +8,7 @@ import { imageViewerStore } from "@/store/ImageViewerStore";
 import { store } from "@/store/store";
 import { linkify } from "@/app/utils";
 import { filterOptions } from "@/app/art/page";
-import FadeInImage from "../FadeInImage";
+import { ModalShell, ModalImage } from "./ModalShell";
 
 const handleArtQP = (isBack: boolean) => {
   if (!store.config?.art) return;
@@ -83,31 +83,19 @@ export const ImageViewer = observer(() => {
 
   const aspectRatio = selectedArt.width && selectedArt.height ? selectedArt.width / selectedArt.height : 1;
   return (
-    <div
-      onClick={() => imageViewerStore.closeArt()}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{
-        animation: isClosing ? 'backdropFadeOut 0.2s ease-out forwards' : 'backdropFadeIn 0.2s ease-out forwards'
-      }}
+    <ModalShell
+      isClosing={isClosing}
+      onClose={() => imageViewerStore.closeArt()}
+      aspectRatio={aspectRatio}
+      panelClassName="max-w-5xl"
     >
-
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="bg-black/50 border border-white/20 rounded-xl max-w-5xl w-full max-h-[90vh] overflow-auto relative"
-        style={{
-          marginBottom: 0,
-          animation: isClosing ? 'modalFadeOut 0.2s ease-out forwards' : 'modalFadeIn 0.2s ease-out forwards',
-          maxHeight: 'calc(100vh - 10rem)',
-          minWidth: `min(calc((100vh - 10rem) * ${aspectRatio}), calc(100vw - 10rem))`
-        }}
-      >
-        <div className="p-6 flex justify-center flex-col">
-          <div className="bg-white/5 backdrop-blur-md rounded-lg overflow-hidden mb-4 cursor-pointer relative"
-            onClick={() => window.open(selectedArt.imageUrl, "_blank")}
-            style={{
-              aspectRatio,
-              maxHeight: '65vh'
-            }}>
+      <div className="p-6 flex justify-center flex-col">
+        <ModalImage
+          src={selectedArt.imageUrl}
+          alt={selectedArt.title}
+          aspectRatio={aspectRatio}
+          onClick={() => window.open(selectedArt.imageUrl, "_blank")}
+        >
             {/* Loading spinner */}
             {!isImageLoaded && !isVideoPlaying && (
               <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -143,7 +131,7 @@ export const ImageViewer = observer(() => {
                 loop
               />
             )}
-          </div>
+        </ModalImage>
 
           {hasVideo && (
             <button
@@ -209,7 +197,6 @@ export const ImageViewer = observer(() => {
             )}
           </div>
         </div>
-      </div>
-    </div>
+    </ModalShell>
   );
 });

@@ -60,7 +60,7 @@
   "services": [
     {
       "name": "AUR Audit",
-      "iconUrl": "/services/stub.svg",
+      "iconUrl": "/services/broom.svg",
       "url": "https://wtako.net/services/aur-audit",
       "type": "PUBLIC"
     },
@@ -68,6 +68,12 @@
       "name": "yt-dlp Proxy",
       "iconUrl": "https://raw.githubusercontent.com/yt-dlp/yt-dlp/master/.github/banner.svg",
       "url": "https://wtako.net/services/ytdlp",
+      "type": "PUBLIC"
+    },
+    {
+      "name": "Roast Me",
+      "iconUrl": "/services/fire.svg",
+      "url": "https://wtako.net/services/roast-me",
       "type": "PUBLIC"
     },
     {
