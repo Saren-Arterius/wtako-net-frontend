@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "secure.gravatar.com",
       },
+      {
+        protocol: "https",
+        hostname: "roast-me.wtako.net",
+      },
     ],
     unoptimized: true
   },
