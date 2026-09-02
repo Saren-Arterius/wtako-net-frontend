@@ -35,6 +35,7 @@ export class RoastMeStore {
   error: string | null = null;
   previewUrl: string | null = null;
   feed: FeedEntry[] = [];
+  totalRoasts: number | null = null;
   socket: Socket | null = null;
 
   constructor() {
@@ -78,7 +79,13 @@ export class RoastMeStore {
     socket.on("entries", (entries: FeedEntry[]) => {
       runInAction(() => {
         const seen = new Set(this.feed.map((e) => e.image_sha512));
-        this.feed.push(...entries.filter((e) => e.image_sha512 && !seen.has(e.image_sha512)));
+        this.feed.unshift(...entries.filter((e) => e.image_sha512 && !seen.has(e.image_sha512)));
+      });
+    });
+
+    socket.on("stats", (m: { totalRoasts: number }) => {
+      runInAction(() => {
+        this.totalRoasts = m.totalRoasts;
       });
     });
 
@@ -152,6 +159,7 @@ export class RoastMeStore {
     this.result = null;
     this.error = null;
     this.feed = [];
+    this.totalRoasts = null;
   }
 }
 
