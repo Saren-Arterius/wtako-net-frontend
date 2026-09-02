@@ -21,7 +21,7 @@ export const MagiBanner = observer(() => {
     <div
       className={`rounded-lg px-4 py-3 text-sm text-center ${down ? "bg-red-500/20 border border-red-500/30 text-red-200" : "bg-amber-500/10 border border-amber-500/20 text-amber-200/90"}`}
     >
-      {down ? "❌ Magi 掛了" : "⚠️ Magi 負載過高"}
+      {down ? "❌ Magi 掛了" : "⚠️ Magi 負載較高"}
     </div>
   );
 });
