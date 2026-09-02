@@ -74,6 +74,7 @@ export class Store {
   _innerWidth: number = typeof window !== "undefined" ? window.innerWidth : defaultWH;
   _innerHeight: number = typeof window !== "undefined" ? window.innerHeight : defaultWH;
   constructionBannerVisible: boolean = false;
+  magiBannerDismissed: boolean = false;
   lastScrollY: number = 0;
 
   constructor() {
