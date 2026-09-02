@@ -64,7 +64,8 @@ const NavText = observer(({ mobile = false }: { mobile?: boolean } = {}) => {
       style={{ marginBottom: !mobile && i === 0 ? -2 : 0 }}>
       <Link
         href={item.path}
-        onClick={() => {
+        onClick={(e) => {
+          if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
           store.onTabIdxClicked(i);
         }}
         className={`px-4 py-2 text-sm font-medium transition-all ${store.currentTabIdx === i
