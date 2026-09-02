@@ -89,6 +89,7 @@ const RoastForm = observer(() => {
   };
 
   const processing = roastMeStore.status === "processing";
+  const roastMl = parseInt(roastMeStore.progress?.match(/(\d+)毫升/)?.[1] ?? "0", 10);
   const result = roastMeStore.result;
   const resultImage = result
     ? result.image_sha512
@@ -153,16 +154,6 @@ const RoastForm = observer(() => {
             )}
           </label>
 
-          {/* Progress */}
-          {processing && roastMeStore.progress && (
-            <div className="p-3 bg-highlight/10 rounded-lg">
-              <p className="text-subtitle text-sm">
-                <span className="text-highlight/80 font-medium">進度: </span>
-                <span className="text-subtitle/80">{roastMeStore.progress}</span>
-              </p>
-            </div>
-          )}
-
           {/* Error */}
           {roastMeStore.error && (
             <div className="p-3 bg-red-500/20 rounded-lg border border-red-500/30">
@@ -183,25 +174,27 @@ const RoastForm = observer(() => {
                   <p className="text-subtitle text-sm text-yellow-200/80">未公開：{result.reason_zhtw}</p>
                 </div>
               )}
-              <span
-                onClick={async () => {
-                  try {
-                    await navigator.clipboard.writeText(window.location.href);
-                    setCopied(true);
-                    setTimeout(() => setCopied(false), 1000);
-                  } catch {
-                    // Silent fail for non-critical action
-                  }
-                }}
-                className="text-xs text-subtitle/60 text-center cursor-pointer underline hover:text-subtitle transition-colors block"
-                style={{ userSelect: "none" }}
-              >
-                {copied ? "已複製" : "複製分享連結"}
-              </span>
+              {result.image_sha512 && (
+                <span
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText(window.location.href);
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 1000);
+                    } catch {
+                      // Silent fail for non-critical action
+                    }
+                  }}
+                  className="text-xs text-subtitle/60 text-center cursor-pointer underline hover:text-subtitle transition-colors block"
+                  style={{ userSelect: "none" }}
+                >
+                  {copied ? "已複製" : "複製分享連結"}
+                </span>
+              )}
             </div>
           )}
 
-          {file && !viewEntry && (
+          {file && (
             <>
               <div className="border-t border-white/10" />
               <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
@@ -209,7 +202,7 @@ const RoastForm = observer(() => {
               value={species}
               onChange={(e) => setSpecies(e.target.value)}
               disabled={processing}
-              className="w-full sm:w-auto px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-subtitle focus:outline-none focus:border-highlight/50 transition-colors"
+              className="w-full sm:w-auto h-12 px-4 rounded-lg bg-white/5 border border-white/10 text-subtitle focus:outline-none focus:border-highlight/50 transition-colors"
             >
               <option value="" disabled className="bg-black/80">
                 (選填) 物種
@@ -227,16 +220,25 @@ const RoastForm = observer(() => {
               onChange={(e) => setExtra(e.target.value)}
               disabled={processing}
               placeholder="(選填) 其他設定 / 角色 / 作品"
-              className="w-full sm:w-64 px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-subtitle placeholder-subtitle/40 focus:outline-none focus:border-highlight/50 transition-colors"
+              className="w-full sm:w-64 h-12 px-4 rounded-lg bg-white/5 border border-white/10 text-subtitle placeholder-subtitle/40 focus:outline-none focus:border-highlight/50 transition-colors"
             />
             <button
               type="submit"
               disabled={!file || processing}
-              className="w-full sm:w-auto px-6 py-2 bg-highlight text-white rounded-lg hover:bg-highlight/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto sm:min-w-[200px] h-12 px-6 bg-highlight text-white rounded-lg hover:bg-highlight/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {processing ? "噴酸中..." : "開酸"}
+              {processing ? roastMeStore.progress ?? "分泌原料中" : "開酸"}
             </button>
           </div>
+
+          {processing && (
+            <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+              <div
+                className={`h-full rounded-full transition-all ${roastMl > 300 ? "bg-red-400" : "bg-highlight"}`}
+                style={{ width: `${(roastMl > 300 ? Math.min((roastMl - 300) / 150, 1) : Math.min(roastMl / 300, 1)) * 100}%` }}
+              ></div>
+            </div>
+          )}
 
           <label className="flex justify-center items-center gap-2 text-subtitle text-sm cursor-pointer select-none">
             <input
@@ -261,18 +263,18 @@ const RoastForm = observer(() => {
         <div className="space-y-2">
           <p className="text-subtitle">1. 上傳你的角色圖片（支援 png/jpg/gif/webp/avif）</p>
           <p className="text-subtitle">2. 選填物種與角色 / 作品名稱</p>
-          <p className="text-subtitle">3. 等待毒舌短評生成，網址列可直接分享給別人</p>
+          <p className="text-subtitle">3. 等待毒舌短評生成（通常需要300毫升酸液），網址列可直接分享給別人</p>
         </div>
       </div>
 
       {/* Public Feed */}
       <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10">
-        <h2 className="text-xl text-highlight mb-1">最近被酸</h2>
+        <h2 className="text-xl text-highlight mb-1">最近公開處刑</h2>
         {roastMeStore.totalRoasts !== null && (
           <p className="text-subtitle/40 text-sm mb-3">總共酸了 {roastMeStore.totalRoasts} 次</p>
         )}
         {roastMeStore.feed.length === 0 ? (
-          <p className="text-subtitle/40 text-sm">還沒有被酸的獸設...</p>
+          <p className="text-subtitle/40 text-sm">還沒有最近被公開處刑的獸設...</p>
         ) : (
           // round-robin by index: CSS columns would fill column-major (newest stacked left)
           <div className="flex gap-4">
@@ -309,13 +311,12 @@ const RoastForm = observer(() => {
         )}
       </div>
       {/* Disclaimer */}
-      <div className="text-subtitle/40 text-xs text-center space-y-1 pb-4">
+      <div className="text-subtitle/40 text-xs text-center space-y-1 pt-12">
         <p className="text-subtitle/60 text-sm mb-1">免責聲明</p>
-        <p>不建議上傳未經授權或涉及版權、非本人擁有之圖片。</p>
-        <p>圖片為使用者生成內容（UGC）、文字內容為人工智慧生成內容（AIGC），本站不對任何損害負責。</p>
-        <p>若要上傳 NSFW 或非獸設之圖片，請取消勾選「允許公開」。</p>
-        <p>公開的圖片將於上傳後一週自動刪除。</p>
-        <p>未公開（或無法公開）的圖片僅用於生成，完成後即刻刪除，不留存任何圖片資料。</p>
+        <p>不建議上傳未經授權或涉及版權、非本人擁有之圖片；若要上傳 NSFW 或非獸設之圖片，請取消勾選「允許公開」。</p>
+        <p>圖片為使用者生成內容（UGC）、文字內容為人工智慧自動生成的毒舌短評（AIGC），僅供娛樂，其內容與立場不代表本站或作者之意見，本站和作者亦不對任何心理和名譽損害負責。</p>
+        <p>公開的圖片將於上傳後一週自動刪除；未公開（或無法公開）的圖片僅用於生成，完成後即刻刪除，不留存任何圖片內容。</p>
+        <p>如認為本站內容侵犯您的權益，請來信 saren@wtako.net 要求下架。</p>
       </div>
 
       {/* Feed entry viewer */}
