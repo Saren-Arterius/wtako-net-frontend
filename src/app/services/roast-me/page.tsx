@@ -16,6 +16,18 @@ const SPECIES = ["貓", "狗", "狼", "狐", "龍", "馬", "兔", "熊", "鳥", 
 const aspectRatio = (e: FeedEntry) =>
   e.image_width && e.image_height ? e.image_width / e.image_height : 1;
 
+// uuid v7 first 48 bits = ms epoch (skip the dash at index 8)
+const tsOf = (id: string) => parseInt(id.slice(0, 8) + id.slice(9, 13), 16);
+
+const ageOf = (id: string) => {
+  const t = Date.now() - tsOf(id);
+  const [d, h, m] = [Math.floor(t / 864e5), Math.floor(t / 36e5) % 24, Math.floor(t / 6e4) % 60];
+  return d ? `${d}d ${h}h` : h ? `${h}h ${m}m` : `${m}m`;
+};
+
+const isoOf = (id: string) =>
+  new Date(tsOf(id)).toLocaleString("sv-SE", { timeZoneName: "short" });
+
 // one of the site's 404 stickers, picked per page load
 const STICKER = `404-${1 + Math.floor(Math.random() * 7)}.webp`;
 
@@ -32,6 +44,12 @@ const RoastForm = observer(() => {
   const [badFile, setBadFile] = useState(false);
   const badTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const [cols, setCols] = useState(2);
+  // cards beyond the previous feed length are the just-inserted ones → animate them
+  const prevLen = useRef(0);
+  const newCount = prevLen.current > 0 ? roastMeStore.feed.length - prevLen.current : 0;
+  useEffect(() => {
+    prevLen.current = roastMeStore.feed.length;
+  }, [roastMeStore.feed.length]);
 
   const closeModal = () => {
     setModalClosing(true);
@@ -276,17 +294,21 @@ const RoastForm = observer(() => {
         {roastMeStore.feed.length === 0 ? (
           <p className="text-subtitle/40 text-sm">還沒有最近被公開處刑的獸設...</p>
         ) : (
-          // round-robin by index: CSS columns would fill column-major (newest stacked left)
+          // round-robin by index from the end (multicol fills column-major = newest would
+          // stack in the left col); from-the-end keeps existing cards in their column on
+          // prepend → no remount, no refade
           <div className="flex gap-4">
             {Array.from({ length: cols }, (_, c) => (
               <div key={c} className="flex-1 min-w-0 space-y-4">
                 {roastMeStore.feed
-                  .filter((_, i) => i % cols === c)
+                  .filter((_, i) => (roastMeStore.feed.length - 1 - i) % cols === cols - 1 - c)
                   .map((entry) => (
                     <div
                       key={entry.image_sha512}
                       onClick={() => setViewEntry(entry)}
-                      className="bg-white/5 rounded-lg overflow-hidden cursor-pointer hover:bg-white/10 transition-colors"
+                      className={`bg-white/5 rounded-lg overflow-hidden cursor-pointer hover:bg-white/10 transition-colors ${
+                        newCount > 0 && roastMeStore.feed.indexOf(entry) < newCount ? "animate-[feed-insert_0.4s_ease-out]" : ""
+                      }`}
                     >
                       <FadeInImage
                         src={`${ROAST_ME_BASE_URL}/image/${entry.image_sha512}`}
@@ -298,8 +320,11 @@ const RoastForm = observer(() => {
                         className="w-full h-auto max-h-[50vh] object-contain"
                       />
                       <div className="p-3">
-                        <p className="text-highlight text-base mb-1">
-                          {entry.emoji_max2} {entry.short_verdict_max5}
+                        <p className="text-highlight text-base mb-1 flex items-baseline justify-between gap-2">
+                          <span>{entry.emoji_max2} {entry.short_verdict_max5}</span>
+                          <span title={isoOf(entry.session_id)} className="text-xs text-subtitle/40 shrink-0">
+                            {ageOf(entry.session_id)}
+                          </span>
                         </p>
                         <p className="text-subtitle text-sm line-clamp-3">{entry.roast_zhtw}</p>
                       </div>
@@ -351,6 +376,12 @@ const RoastForm = observer(() => {
               >
                 {modalCopied ? "已複製" : "複製分享連結"}
               </span>
+              <p
+                title={isoOf(viewEntry.session_id)}
+                className="text-xs text-subtitle/40 text-center mt-1"
+              >
+                {ageOf(viewEntry.session_id)}
+              </p>
             </div>
           </ModalShell>,
           document.body
