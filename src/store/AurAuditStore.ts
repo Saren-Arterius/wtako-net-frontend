@@ -1,5 +1,12 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
+const BASE = "https://aur-audit.wtako.net";
+
+// Deliberately NOT class fields: MobX must not wrap a live EventSource, and the
+// request counter must not become an observable.
+let es: EventSource | null = null;
+let reqSeq = 0;
+
 export interface PackageResult {
   guid: string;
   packageName: string | null;
@@ -45,11 +52,14 @@ export class AurAuditStore {
     makeAutoObservable(this);
   }
 
-  async fetchPackages(cursor: number | null = null) {
-    this.isLoading = true;
-    this.error = null;
+  async fetchPackages(cursor: number | null = null, silent = false) {
+    const req = ++reqSeq;
+    if (!silent) {
+      this.isLoading = true;
+      this.error = null;
+    }
     try {
-      const url = new URL("https://aur-audit.wtako.net/packages");
+      const url = new URL(`${BASE}/packages`);
       if (this.filter !== "scanned") {
         url.searchParams.set("filter", this.filter);
       }
@@ -61,6 +71,7 @@ export class AurAuditStore {
       const res = await fetch(url.toString());
       if (!res.ok) throw new Error("Failed to fetch packages");
       const data = await res.json();
+      if (req !== reqSeq) return; // a newer request already won
 
       runInAction(() => {
         this.packages = data.packages;
@@ -69,6 +80,7 @@ export class AurAuditStore {
         this.isLoading = false;
       });
     } catch (err) {
+      if (req !== reqSeq) return;
       runInAction(() => {
         this.error = err instanceof Error ? err.message : "Unknown error";
         this.isLoading = false;
@@ -76,17 +88,19 @@ export class AurAuditStore {
     }
   }
 
-  async fetchByNames(names: string[]) {
-    this.isLoading = true;
-    this.error = null;
+  async fetchByNames(names: string[], silent = false) {
+    const req = ++reqSeq;
+    if (!silent) {
+      this.isLoading = true;
+      this.error = null;
+    }
     try {
-      const url = new URL("https://aur-audit.wtako.net/package-analysis");
+      const url = new URL(`${BASE}/package-analysis`);
       url.searchParams.set("names", names.join(","));
       const res = await fetch(url.toString());
       if (!res.ok) throw new Error("Failed to fetch packages");
       const data = await res.json();
-
-      console.log('package-analysis response:', data);
+      if (req !== reqSeq) return;
 
       runInAction(() => {
         this.packages = Object.values(data.packages || {}).filter((p: unknown): p is PackageResult => p !== null && typeof p === 'object');
@@ -95,6 +109,7 @@ export class AurAuditStore {
         this.isLoading = false;
       });
     } catch (err) {
+      if (req !== reqSeq) return;
       runInAction(() => {
         this.error = err instanceof Error ? err.message : "Unknown error";
         this.isLoading = false;
@@ -108,7 +123,6 @@ export class AurAuditStore {
       this.search = "";
       this.history = [];
     });
-    this.fetchPackages();
   }
 
   setSearch = (search: string) => {
@@ -118,7 +132,7 @@ export class AurAuditStore {
   }
 
   nextPage = () => {
-    if (this.cursor) {
+    if (this.cursor && !this.isLoading) {
       this.history.push({ packages: [...this.packages], cursor: this.cursor, hasMore: this.hasMore });
       this.fetchPackages(this.cursor);
     }
@@ -140,19 +154,40 @@ export class AurAuditStore {
     this.fetchPackages(null);
   }
 
-  async fetchHealthStats() {
-    try {
-      const res = await fetch("https://aur-audit.wtako.net/health");
-      if (!res.ok) return;
-      const data: HealthData = await res.json();
-      const totalWaiting = (data.queues.aur.waiting || 0) + (data.queues.sss.waiting || 0);
-      const totalRunning = (data.queues.aur.running || 0) + (data.queues.sss.running || 0);
+  /** Re-run whatever produced the current view, without the loading spinner. */
+  silentRefresh = () => {
+    if (this.isLoading || this.history.length > 0) return; // paged back into history: leave the view alone
+    const names = this.search.split(",").map((s) => s.trim()).filter(Boolean);
+    if (names.length > 0) void this.fetchByNames(names, true);
+    else void this.fetchPackages(null, true);
+  }
+
+  /**
+   * SSE instead of polling: `queue` carries the /health body, `changed` means
+   * audit-results moved so the visible page is refetched. EventSource reconnects
+   * by itself; onopen refetches anything missed while offline.
+   */
+  connect = () => {
+    if (es) return;
+    es = new EventSource(`${BASE}/events`);
+    es.addEventListener("queue", (e) => {
+      const data = JSON.parse((e as MessageEvent).data) as Partial<HealthData>;
+      const q = data.queues;
+      if (!q) return;
       runInAction(() => {
-        this.healthStats = { waiting: totalWaiting, running: totalRunning };
+        this.healthStats = {
+          waiting: (q.aur.waiting || 0) + (q.sss.waiting || 0),
+          running: (q.aur.running || 0) + (q.sss.running || 0),
+        };
       });
-    } catch {
-      // Silently fail if health check fails
-    }
+    });
+    es.addEventListener("changed", () => this.silentRefresh());
+    es.onopen = () => this.silentRefresh();
+  }
+
+  disconnect = () => {
+    es?.close();
+    es = null;
   }
 }
 

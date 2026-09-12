@@ -38,25 +38,17 @@ const Page = observer(() => {
   };
 
   useEffect(() => {
-    refresh();
-  }, [filter, refresh]);
-
-  useEffect(() => {
     const names = search.split(",").map(s => s.trim()).filter(Boolean);
     if (names.length > 0) {
       aurAuditStore.fetchByNames(names);
     } else {
       refresh();
     }
-  }, [search, refresh]);
+  }, [filter, search, refresh]);
 
   useEffect(() => {
-    aurAuditStore.fetchHealthStats();
-    const interval = setInterval(() => {
-      if (!aurAuditStore.cursor) refresh();
-      aurAuditStore.fetchHealthStats();
-    }, 30000);
-    return () => clearInterval(interval);
+    aurAuditStore.connect();
+    return () => aurAuditStore.disconnect();
   }, []);
 
   const getStatusColor = (status: string) => {
