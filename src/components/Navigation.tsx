@@ -98,6 +98,7 @@ const NavText = observer(({ mobile = false }: { mobile?: boolean } = {}) => {
 
 // ========== Navigation ==========
 export const Navigation = observer(() => {
+  const pathname = usePathname();
   const ticking = useRef(false);
   const ticking2 = useRef(false);
   const hozScroll = useRef<HTMLDivElement>(null);
@@ -165,7 +166,12 @@ export const Navigation = observer(() => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 border-b border-white/10 backdrop-blur-md z-50 md:translate-y-0 bg-black/${store.lastScrollY > 100 && (store.currentTabIdx === 1 || store.currentTabIdx === 2) ? 50 : 10}`}
+      className={`fixed top-0 left-0 right-0 border-b border-white/10 backdrop-blur-md z-50 md:translate-y-0 bg-black/${
+        store.lastScrollY > 100 &&
+        (store.currentTabIdx === 1 || store.currentTabIdx === 2 || pathname.startsWith("/services/roast-me"))
+          ? 50
+          : 10
+      }`}
       style={{
         backdropFilter: 'blur(8px)',
         transform: store.navShouldShrinkMobile ? `translateY(-${NAV_HEIGHT}px)` : 'translateY(0)',
