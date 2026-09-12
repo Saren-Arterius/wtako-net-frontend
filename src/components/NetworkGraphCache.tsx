@@ -80,7 +80,7 @@ export const NetworkGraphCache = observer(() => {
       tx_bps = store?.serverWithStores[1]?.store?.io?.networkTx * 8;
     }
     if (lanInfo != null && !rx_bps && !tx_bps) {
-      const nifObj = lanInfo[host].interfaces[nif];
+      const nifObj = lanInfo[host]?.interfaces[nif];
       if (nifObj) {
         rx_bps = nifObj.rx_bps;
         tx_bps = nifObj.tx_bps;
