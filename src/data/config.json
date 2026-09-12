@@ -325,6 +325,25 @@
       "descriptionZH": "硬體與 IoT 監控伺服器，透過 WebSocket 進行即時 Linux 硬體監控和 IoT 裝置追蹤。收集 CPU、記憶體、溫度、風扇轉速、儲存健康狀態和網路統計資料。"
     },
     {
+      "title": "Qwen3.8-Flash-Next on DGX Spark",
+      "description": "Recipe for running Qwen3.8-Flash-Next (~176B params, 6B active) on a single NVIDIA DGX Spark with vLLM, using Intel's W4A16 AutoRound int4 checkpoint plus int8 lm_head and fp8 side layers, and an fp8 n-gram PLE table served from local NVMe via mmap, or from another machine's RAM over one-sided RDMA READ. Achieves ~49 tok/s decode with MTP=3 speculative decoding, working prefix caching, and never-evict KV pinning for system prompts. Fork of blazux/qwen3.8-Flash-DGX.",
+      "status": "WIP",
+      "tags": [
+        "Python",
+        "vLLM",
+        "LLM",
+        "Docker",
+        "DGX Spark"
+      ],
+      "url": "https://github.com/Saren-Arterius/qwen3.8-Flash-DGX-AutoRound",
+      "cover": {
+        "iconText": "⚡"
+      },
+      "date": "20260909",
+      "order": 17,
+      "descriptionZH": "在單一 NVIDIA DGX Spark 上用 vLLM 運行 Qwen3.8-Flash-Next（約 176B 參數，活躍 6B）的方案，採用 Intel W4A16 AutoRound int4 檢查點，加上 int8 lm_head 與 fp8 邊側層，並以 mmap 從本地 NVMe、或透過單邊 RDMA READ 從另一台機器的記憶體提供 fp8 n-gram PLE 表。透過 MTP=3 投機解碼達到約 49 tok/s 的生成速度，具備可用的前綴快取，以及系統提示詞的永不淘汰 KV 釘選。為 blazux/qwen3.8-Flash-DGX 的 fork。"
+    },
+    {
       "title": "Home Assistant Cantonese LLM Voice Assistant",
       "description": "Cantonese-speaking LLM voice assistant for Home Assistant with natural conversation, tool calling for KMB/HKO APIs, and AI radar analysis. Features ~0.15s STT latency and persistent memory via HA todo. See it in action: https://www.threads.com/@nekomata.saren/post/DXV4Z-AkXp4",
       "status": "ACTIVE",
