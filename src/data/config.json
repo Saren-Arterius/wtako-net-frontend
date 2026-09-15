@@ -121,12 +121,6 @@
       "type": "PRIVATE"
     },
     {
-      "name": "Beszel",
-      "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/beszel-light.svg",
-      "url": "https://beszel.wtako.net",
-      "type": "PRIVATE"
-    },
-    {
       "name": "Unifi Controller",
       "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/unifi.svg",
       "url": "https://unifi.wtako.net/",
@@ -134,17 +128,10 @@
       "type": "PRIVATE"
     },
     {
-      "name": "Bambu Studio",
-      "iconUrl": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bambustudio-logo.png",
-      "url": "https://bambu.wtako.net/",
-      "lanUrl": "http://192.168.0.1:31110",
-      "type": "PRIVATE"
-    },
-    {
       "name": "Home Assistant",
       "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/home-assistant-alt.svg",
       "url": "https://ha.wtako.net/",
-      "lanUrl": "http://100.64.0.1:8123",
+      "lanUrl": "https://ha-ts.wtako.net/",
       "type": "PRIVATE"
     },
     {
