@@ -157,6 +157,16 @@
   ],
   "music": [
     {
+      "title": "Hope",
+      "url": "/music/hope2.flac",
+      "description": "I overthought the chords on this one to the point where I didn't know what I was writing, but it turned out well. https://onlinesequencer.net/5553399 (2026-08-02). Arranged using YuE2 (local AI).",
+      "urlType": "FILE",
+      "coverUrl": "/music/Hope.avif",
+      "date": "20260915",
+      "order": 1010,
+      "descriptionZH": "這首曲的和弦用心過頭了，以致我不知道自己在寫什麼，但效果不錯。https://onlinesequencer.net/5553399 （2026-08-02）。使用 YuE2（本地 AI）編曲。"
+    },
+    {
       "title": "神祈世界賛歌",
       "url": "/music/神祈世界賛歌.mp3",
       "description": "This Hymn is about praising our beautiful world and discarding our pain. Inspired by Shikata Akiko. Lyrics by me. https://onlinesequencer.net/5321766 (2026-04-04). Arranged using Suno v5.5.",
