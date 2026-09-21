@@ -59,8 +59,8 @@ export function ModalImage({
   return (
     <div
       onClick={onClick}
-      className="bg-white/5 backdrop-blur-md rounded-lg overflow-hidden mb-4 cursor-pointer relative"
-      style={{ aspectRatio, maxHeight: "65vh" }}
+      className="bg-white/5 rounded-lg overflow-hidden mb-4 cursor-pointer relative"
+      style={{ aspectRatio, maxHeight: "65vh", width: "100%" }}
     >
       {children ?? <img src={src} alt={alt} className="w-full h-full object-contain" />}
     </div>
