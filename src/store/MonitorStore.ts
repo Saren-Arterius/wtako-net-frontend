@@ -258,6 +258,7 @@ export class MonitorStore {
   private pollingInterval: NodeJS.Timeout | null = null;
   private stopAltTimeout: NodeJS.Timeout | null = null;
   private startAltTimeout: NodeJS.Timeout | null = null;
+  private initStartAltTimeout: NodeJS.Timeout | null = null;
 
   constructor(serverUrl: string, serverUrlAlt?: string) {
     this.serverUrl = serverUrl;
@@ -282,32 +283,29 @@ export class MonitorStore {
     this.socket = io(this.serverUrl, { autoConnect: true });
     this.bindEvents(this.socket, this.serverUrl);
 
-    // Open the tailscale endpoint too; shut it down once the primary (internet) path works.
-    this.startAlt();
-    this.socket.on("connect", () => {
-      if (this.stopAltTimeout) clearTimeout(this.stopAltTimeout);
-      this.stopAltTimeout = setTimeout(this.stopAlt, 1000);
-    });
-    this.socket.on("disconnect", () => {
-      if (this.startAltTimeout) clearTimeout(this.startAltTimeout);
-      this.startAltTimeout = setTimeout(this.startAlt, 1000);
-    });
+    this.socket.on("connect", this.stopAlt);
+    this.socket.on("disconnect", this.startAlt);
   }
 
   private startAlt() {
-    const altUrl = this.serverUrlAlt;
-    if (!altUrl || this.socketAlt) return;
-    console.log('Connecting to alt', altUrl);
-    this.socketAlt = io(altUrl, { autoConnect: true });
-    this.bindEvents(this.socketAlt, altUrl);
+    if (this.startAltTimeout) clearTimeout(this.startAltTimeout);
+    this.startAltTimeout = setTimeout(() => {
+      const altUrl = this.serverUrlAlt;
+      if (!altUrl || this.socketAlt) return;
+      console.log('Connecting to alt', altUrl);
+      this.socketAlt = io(altUrl, { autoConnect: true });
+      this.bindEvents(this.socketAlt, altUrl);
+    }, 1000);
   }
 
   private stopAlt() {
-    if (this.socketAlt) {
+    if (this.stopAltTimeout) clearTimeout(this.stopAltTimeout);
+    this.stopAltTimeout = setTimeout(() => {
+      if (!this.socketAlt) return;
       console.log('Primary connected, disconnecting alt');
       this.socketAlt.disconnect();
       this.socketAlt = null;
-    }
+    }, 1000);
   }
 
   private bindEvents(socket: Socket, url: string) {
@@ -327,9 +325,19 @@ export class MonitorStore {
     // MAGI-specific events
     socket.on("vllmMetrics", (data) => this.saveData("vllmMetrics", data));
     socket.on("aiHealth", (data) => this.saveData("aiHealth", data));
-    socket.on("connect", () => console.log(`Connected to ${url}`));
+
+    socket.on("connect", () => {
+      console.log(`Connected to ${url}`);
+      if (this.initStartAltTimeout) clearTimeout(this.initStartAltTimeout);
+    });
     socket.on("disconnect", () => console.log(`Disconnected from ${url}`));
-    socket.on("connect_error", (error) => console.error(`Connection error to ${url}:`, error));
+    socket.on("connect_error", (error) => {
+      console.error(`Connection error to ${url}:`, error)
+      this.startAlt();
+    });
+    this.initStartAltTimeout = setTimeout(() => {
+      this.startAlt();
+    }, 5000)
   }
 
   private saveData(label: string, data: unknown) {
