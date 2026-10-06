@@ -157,7 +157,7 @@ export interface MemoryTotals {
   swapTotal: number;
 }
 
-export type TransformedRealTimeRate = Record<string, {label?: string, interfaces: Record<string, {rx_bps: number, tx_bps: number}>}>;
+export type TransformedRealTimeRate = Record<string, { label?: string, interfaces: Record<string, { rx_bps: number, tx_bps: number }> }>;
 
 export class MonitorStore {
   serverUrl: string;
@@ -256,6 +256,8 @@ export class MonitorStore {
   };
 
   private pollingInterval: NodeJS.Timeout | null = null;
+  private stopAltTimeout: NodeJS.Timeout | null = null;
+  private startAltTimeout: NodeJS.Timeout | null = null;
 
   constructor(serverUrl: string, serverUrlAlt?: string) {
     this.serverUrl = serverUrl;
@@ -282,8 +284,14 @@ export class MonitorStore {
 
     // Open the tailscale endpoint too; shut it down once the primary (internet) path works.
     this.startAlt();
-    this.socket.on("connect", () => this.stopAlt());
-    this.socket.on("disconnect", () => this.startAlt());
+    this.socket.on("connect", () => {
+      if (this.stopAltTimeout) clearTimeout(this.stopAltTimeout);
+      this.stopAltTimeout = setTimeout(this.stopAlt, 1000);
+    });
+    this.socket.on("disconnect", () => {
+      if (this.startAltTimeout) clearTimeout(this.startAltTimeout);
+      this.startAltTimeout = setTimeout(this.startAlt, 1000);
+    });
   }
 
   private startAlt() {
