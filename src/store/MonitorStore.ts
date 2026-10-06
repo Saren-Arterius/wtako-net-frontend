@@ -161,7 +161,9 @@ export type TransformedRealTimeRate = Record<string, {label?: string, interfaces
 
 export class MonitorStore {
   serverUrl: string;
+  serverUrlAlt?: string;
   socket: Socket | null = null;
+  socketAlt: Socket | null = null;
 
   // Data from monitor server (common fields)
   storageInfo: StorageInfo = {};
@@ -255,8 +257,9 @@ export class MonitorStore {
 
   private pollingInterval: NodeJS.Timeout | null = null;
 
-  constructor(serverUrl: string) {
+  constructor(serverUrl: string, serverUrlAlt?: string) {
     this.serverUrl = serverUrl;
+    this.serverUrlAlt = serverUrlAlt;
     makeAutoObservable(this);
     this.connect();
     this.startPolling();
@@ -274,29 +277,37 @@ export class MonitorStore {
 
   connect() {
     console.log('Connecting to', this.serverUrl);
-    this.socket = io(this.serverUrl, {
-      autoConnect: true,
-    });
+    this.socket = io(this.serverUrl, { autoConnect: true });
+    this.bindEvents(this.socket, this.serverUrl);
 
+    if (this.serverUrlAlt) {
+      // Tailscale endpoint: takes over when the internet (and thus serverUrl) is down.
+      // Both push into the same store; saveData is idempotent, so overlap is harmless.
+      this.socketAlt = io(this.serverUrlAlt, { autoConnect: true });
+      this.bindEvents(this.socketAlt, this.serverUrlAlt);
+    }
+  }
+
+  private bindEvents(socket: Socket, url: string) {
     // Current events are exhaustive. AI Agents MUST NOT add events.
 
     // Common events
-    this.socket.on("storageInfo", (data) => this.saveData("storageInfo", data));
-    this.socket.on("initInfo", (data) => this.saveData("initInfo", data));
-    this.socket.on("metrics", (data) => this.saveData("metrics", data));
+    socket.on("storageInfo", (data) => this.saveData("storageInfo", data));
+    socket.on("initInfo", (data) => this.saveData("initInfo", data));
+    socket.on("metrics", (data) => this.saveData("metrics", data));
 
     // WTAKO-specific events
-    this.socket.on("networkMetrics", (data) => this.saveData("networkMetrics", data));
-    this.socket.on("iotMetrics", (data) => this.saveData("iotMetrics", data));
-    this.socket.on("internetMetrics", (data) => this.saveData("internetMetrics", data));
-    this.socket.on("lanInfo", (data) => this.saveData("lanInfo", data));
+    socket.on("networkMetrics", (data) => this.saveData("networkMetrics", data));
+    socket.on("iotMetrics", (data) => this.saveData("iotMetrics", data));
+    socket.on("internetMetrics", (data) => this.saveData("internetMetrics", data));
+    socket.on("lanInfo", (data) => this.saveData("lanInfo", data));
 
     // MAGI-specific events
-    this.socket.on("vllmMetrics", (data) => this.saveData("vllmMetrics", data));
-    this.socket.on("aiHealth", (data) => this.saveData("aiHealth", data));
-    this.socket.on("connect", () => console.log(`Connected to ${this.serverUrl}`));
-    this.socket.on("disconnect", () => console.log(`Disconnected from ${this.serverUrl}`));
-    this.socket.on("connect_error", (error) => console.error(`Connection error to ${this.serverUrl}:`, error));
+    socket.on("vllmMetrics", (data) => this.saveData("vllmMetrics", data));
+    socket.on("aiHealth", (data) => this.saveData("aiHealth", data));
+    socket.on("connect", () => console.log(`Connected to ${url}`));
+    socket.on("disconnect", () => console.log(`Disconnected from ${url}`));
+    socket.on("connect_error", (error) => console.error(`Connection error to ${url}:`, error));
   }
 
   private saveData(label: string, data: unknown) {
@@ -328,9 +339,10 @@ export class MonitorStore {
   }
 
   disconnect() {
-    if (this.socket) {
-      this.socket.disconnect();
-      this.socket = null;
+    for (const s of [this.socket, this.socketAlt]) {
+      if (s) s.disconnect();
     }
+    this.socket = null;
+    this.socketAlt = null;
   }
 }

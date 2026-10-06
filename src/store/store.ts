@@ -216,7 +216,7 @@ export class Store {
     const sws = this.config.servers as ServerWithMonitorStore[];
     for (const server of sws) {
       console.log(server.name, server.monitorUrl)
-      server.store = new MonitorStore(server.monitorUrl);
+      server.store = new MonitorStore(server.monitorUrl, server.monitorUrlAlt);
     }
     return sws;
   }
