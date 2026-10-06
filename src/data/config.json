@@ -140,6 +140,13 @@
       "url": "https://aria2.wtako.net",
       "lanUrl": "https://aria2-direct.wtako.net",
       "type": "PRIVATE"
+    },
+    {
+      "name": "Open WebUI",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/open-webui.svg",
+      "url": "https://openwebui-ts.wtako.net",
+      "lanUrl": "https://openwebui-ts.wtako.net",
+      "type": "PRIVATE"
     }
   ],
   "music": [
