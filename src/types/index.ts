@@ -67,6 +67,7 @@ export interface Server {
   description: string;
   descriptionZH?: string;
   monitorUrl: string;
+  monitorUrlAlt?: string;
 }
 
 export interface Service {

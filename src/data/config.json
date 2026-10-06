@@ -18,12 +18,14 @@
       "name": "WTAKO",
       "description": "Router / Primary Server",
       "monitorUrl": "https://monitor.wtako.net/",
+      "monitorUrlAlt": "https://monitor-ts.wtako.net/",
       "descriptionZH": "路由器 / 主要伺服器"
     },
     {
       "name": "Magi",
       "description": "AI Core",
       "monitorUrl": "https://magi-monitor.wtako.net/",
+      "monitorUrlAlt": "https://magi-monitor-ts.wtako.net/",
       "descriptionZH": "AI 核心"
     }
   ],
