@@ -280,11 +280,25 @@ export class MonitorStore {
     this.socket = io(this.serverUrl, { autoConnect: true });
     this.bindEvents(this.socket, this.serverUrl);
 
-    if (this.serverUrlAlt) {
-      // Tailscale endpoint: takes over when the internet (and thus serverUrl) is down.
-      // Both push into the same store; saveData is idempotent, so overlap is harmless.
-      this.socketAlt = io(this.serverUrlAlt, { autoConnect: true });
-      this.bindEvents(this.socketAlt, this.serverUrlAlt);
+    // Open the tailscale endpoint too; shut it down once the primary (internet) path works.
+    this.startAlt();
+    this.socket.on("connect", () => this.stopAlt());
+    this.socket.on("disconnect", () => this.startAlt());
+  }
+
+  private startAlt() {
+    const altUrl = this.serverUrlAlt;
+    if (!altUrl || this.socketAlt) return;
+    console.log('Connecting to alt', altUrl);
+    this.socketAlt = io(altUrl, { autoConnect: true });
+    this.bindEvents(this.socketAlt, altUrl);
+  }
+
+  private stopAlt() {
+    if (this.socketAlt) {
+      console.log('Primary connected, disconnecting alt');
+      this.socketAlt.disconnect();
+      this.socketAlt = null;
     }
   }
 
