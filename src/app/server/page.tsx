@@ -188,7 +188,7 @@ export const ServerDashboard = observer(() => {
       <SystemHealth />
 
       {/* Network Configuration Diagram */}
-      <div className="bg-white/4 rounded-lg backdrop-blur-md p-6 border border-white/10">
+      <div className="bg-white/4 rounded-none sm:rounded-lg backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
           <h2 className="text-lg text-highlight font-medium">{store.t('WTAKO Network Configuration')}</h2>
           <a

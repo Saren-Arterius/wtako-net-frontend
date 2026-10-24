@@ -47,7 +47,7 @@ export const AboutSection = observer(() => {
       </div>
 
       {/* Site Owner */}
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10">
         <div className={`flex items-start gap-6 ${store.innerWidth < 768 ? 'flex-col' : ''}`}>
           {store.config?.siteOwner.avatarUrl && (
             <FadeInImage
@@ -94,7 +94,7 @@ export const AboutSection = observer(() => {
           sortedCharacters.map((char) => (
             <div
               key={char.name}
-              className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 hover:border-highlight/30 transition-all"
+              className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10 hover:border-highlight/30 transition-all"
             >
               <div className="flex items-start gap-4 mb-4">
                 <div
@@ -137,7 +137,7 @@ export const AboutSection = observer(() => {
         }
       </div>
 
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10">
         <blockquote className="border-l-2 border-highlight/50 pl-4 mt-2 mb-4">
           <p className="text-subtitle text-sm">{store.t('I don\'t know if it\'s a good idea to mix up a server\'s home page and a furry\'s home page.')}<br /><br />
             {store.t('But by the way, when I was young, I was intoxicated by many anime aired on TV. I was most affected by American Dragon: Jake Long, Legendz, and Onmyou Taisenki. The animators definitely knew what they were doing, and they won.')}<br /><br />
@@ -152,7 +152,7 @@ export const AboutSection = observer(() => {
       </div>
 
       {/* Contact */}
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10">
         <h3 className="text-lg text-highlight mb-4">{store.t('Get in Touch')}</h3>
         <div className="flex items-center gap-6">
           <a

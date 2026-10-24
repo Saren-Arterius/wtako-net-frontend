@@ -257,7 +257,7 @@ export const SystemHealth = observer(({ homePage }: SystemHealthProps) => {
       </div>
       <div className={`grid grid-cols-${ms.innerWidth > 900 ? 2 : 1} gap-4`}>
         {servers.length === 0 ? (
-          <div className="col-span-1 md:col-span-2 bg-white/4 rounded-lg backdrop-blur-md p-4 border border-white/10">
+          <div className="col-span-1 md:col-span-2 bg-white/4 rounded-none sm:rounded-lg backdrop-blur-md p-4 -mx-6 sm:mx-0 border border-white/10">
             <div className="flex items-center gap-2 text-content/65">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
@@ -294,7 +294,7 @@ export const SystemHealth = observer(({ homePage }: SystemHealthProps) => {
             }>)['storageSSD'];
 
             return (
-              <div key={name} className="bg-white/4 rounded-lg backdrop-blur-md p-4 border border-white/10">
+              <div key={name} className="bg-white/4 rounded-none sm:rounded-lg backdrop-blur-md p-4 -mx-6 sm:mx-0 border border-white/10">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
                     <span className="text-subtitle font-medium">{name}</span>
@@ -533,7 +533,7 @@ export const SystemHealthSkeleton = ({ homePage }: SystemHealthProps) => (
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {[1, 2].map((i) => (
-        <div key={i} className="bg-white/4 rounded-lg backdrop-blur-md p-4 border border-white/10">
+        <div key={i} className="bg-white/4 rounded-none sm:rounded-lg backdrop-blur-md p-4 -mx-6 sm:mx-0 border border-white/10">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <div className="h-4 w-24 bg-white/10 rounded" />

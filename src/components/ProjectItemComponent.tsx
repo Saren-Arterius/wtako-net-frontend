@@ -39,7 +39,7 @@ export const ProjectItemComponent = observer((props: ProjectItemComponentProps) 
   const isGithubUrl = project.url.includes("github.com");
 
   return (
-    <div className={`${compact ? "rounded-lg p-4" : "rounded-xl p-4"} backdrop-blur-md border border-white/10 hover:border-highlight/30 transition-colors bg-white/4`}>
+    <div className={`${compact ? "rounded-none sm:rounded-lg p-4" : "rounded-none sm:rounded-xl p-4"} -mx-6 sm:mx-0 backdrop-blur-md border border-white/10 hover:border-highlight/30 transition-colors bg-white/4`}>
       <div className="flex gap-4">
         <div className={`w-16 h-16 ${!compact ? 'md:w-32 md:h-32' : ''} rounded-lg bg-white/5 backdrop-blur-md flex items-center justify-center flex-shrink-0`}>
           {project.cover?.imageUrl ? (

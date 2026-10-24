@@ -21,7 +21,7 @@ const Page = observer(() => {
         <p className="text-subtitle mt-1">HTTP API for querying AUR package security-audit results</p>
       </div>
 
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 space-y-4">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10 space-y-4">
         <h2 className="text-xl text-highlight font-medium">Base URL</h2>
         <code className="block bg-black/30 rounded-lg p-4 text-sm text-green-300">
           https://aur-audit.wtako.net
@@ -29,7 +29,7 @@ const Page = observer(() => {
         <p className="text-subtitle text-sm">All responses are JSON. No authentication required.</p>
       </div>
 
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 space-y-4">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10 space-y-4">
         <h2 className="text-xl text-highlight font-medium">GET /packages</h2>
         <p className="text-subtitle">Paginated feed of audit results, newest first.</p>
 
@@ -107,7 +107,7 @@ curl 'https://aur-audit.wtako.net/packages?before=12345'`}</code>
         </div>
       </div>
 
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 space-y-4">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10 space-y-4">
         <h2 className="text-xl text-highlight font-medium">GET /package-analysis</h2>
         <p className="text-subtitle">Fetch the latest analysis for specific packages by name.</p>
 
@@ -156,7 +156,7 @@ curl 'https://aur-audit.wtako.net/package-analysis?names=codex-native-git,seanim
         </div>
       </div>
 
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 space-y-4">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10 space-y-4">
         <h2 className="text-xl text-highlight font-medium">PackageResult Schema</h2>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -218,7 +218,7 @@ curl 'https://aur-audit.wtako.net/package-analysis?names=codex-native-git,seanim
         </div>
       </div>
 
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 space-y-4">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10 space-y-4">
         <h2 className="text-xl text-highlight font-medium">GET /health</h2>
         <p className="text-subtitle">Liveness probe.</p>
         <pre className="bg-black/30 rounded-lg p-4 overflow-x-auto text-sm">

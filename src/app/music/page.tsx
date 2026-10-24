@@ -32,7 +32,7 @@ export const MusicGallery = observer(() => {
         {sortedMusic.map((item, index) => (
           <div
             key={index}
-            className="bg-white/4 rounded-xl backdrop-blur-md p-4 border border-white/10"
+            className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-4 -mx-6 sm:mx-0 border border-white/10"
           >
             <div className="flex gap-4">
               <div

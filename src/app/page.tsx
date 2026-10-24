@@ -45,7 +45,7 @@ const WelcomeSection = observer(() => {
       <div className="space-y-3 mt-4">
 
         <div>
-          <div className="bg-white/4 rounded-xl backdrop-blur-md p-4 border border-white/10">
+          <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-4 -mx-6 sm:mx-0 border border-white/10">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-3 flex-shrink-0">
                 {store.config?.siteOwner.avatarUrl && (
@@ -90,7 +90,7 @@ const CharactersSection = observer(() => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {
           store.characters.map((char) => (
-            <div key={char.name} className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 hover:border-highlight/30 transition-colors" style={{ minHeight: 360 }}>
+            <div key={char.name} className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10 hover:border-highlight/30 transition-colors" style={{ minHeight: 360 }}>
               <div className="flex flex-col items-center text-center">
                 <FadeInImage style={{ cursor: 'pointer' }}
                   onClick={() => {
@@ -151,7 +151,7 @@ const ArtGallery = observer(() => {
         {artCategories.map((category) => {
           const categoryArt = getTypeArt(category.type);
           return (
-            <div key={category.type} className="bg-white/4 rounded-xl backdrop-blur-md p-5 border border-white/10 text-center">
+            <div key={category.type} className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-5 -mx-6 sm:mx-0 border border-white/10 text-center">
               <p className="text-sm text-content/65 font-medium">{category.title}</p>
               <p className="text-xs text-content/65 mt-0.5">{category.description}</p>
               <div className="mt-3">
