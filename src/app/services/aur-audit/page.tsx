@@ -75,7 +75,7 @@ const Page = observer(() => {
         hideSortButton={true}
       />
 
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 space-y-4">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10 space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex flex-wrap gap-4 text-sm text-subtitle">
             <div>⚫ <strong>{store.t("Black")}:</strong> {store.t("Confirmed malicious")}</div>
@@ -117,7 +117,7 @@ const Page = observer(() => {
         {filteredPackages.map((pkg) => (
           <div
             key={pkg.guid}
-            className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10 h-40 overflow-y-auto"
+            className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10 h-40 overflow-y-auto"
           >
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1 min-w-0">
@@ -190,7 +190,7 @@ const Page = observer(() => {
       </div>
 
       {!isLoading && packages.length === 0 && !error && (
-        <div className="bg-white/4 rounded-xl backdrop-blur-md p-12 border border-white/10 text-center w-full">
+        <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-12 -mx-6 sm:mx-0 border border-white/10 text-center w-full">
           <p className="text-subtitle">{store.t("No packages found")}</p>
         </div>
       )}

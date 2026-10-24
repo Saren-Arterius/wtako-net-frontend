@@ -39,7 +39,7 @@ const YtdlpForm = observer(() => {
       </div>
 
       {/* Download Form */}
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <input
@@ -105,7 +105,7 @@ const YtdlpForm = observer(() => {
       </div>
 
       {/* How to Use */}
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10">
         <h2 className="text-xl text-highlight mb-4">{store.t("How to Use")}</h2>
         <div className="space-y-2">
           <p className="text-subtitle">{store.t("1. Paste a YouTube or Bilibili URL")}</p>
@@ -115,7 +115,7 @@ const YtdlpForm = observer(() => {
       </div>
 
       {/* Supported Sites */}
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10">
         <h2 className="text-xl text-highlight mb-4">{store.t("Supported Sites")}</h2>
         <div className="flex flex-wrap gap-3">
           <span className="text-subtitle text-sm bg-highlight/10 px-4 py-1.5 rounded-full">{store.t("YouTube")}</span>
@@ -124,7 +124,7 @@ const YtdlpForm = observer(() => {
       </div>
 
       {/* Limitations */}
-      <div className="bg-white/4 rounded-xl backdrop-blur-md p-6 border border-white/10">
+      <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10">
         <h2 className="text-xl text-highlight mb-4">{store.t("Limitations")}</h2>
         <div className="space-y-2">
           <p className="text-subtitle text-sm">{store.t("Maximum video duration: 1 hour")}</p>

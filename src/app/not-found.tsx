@@ -30,7 +30,7 @@ export const NotFoundSection = observer(() => {
   }, []);
 
   return (
-    <div className="bg-white/4 rounded-xl backdrop-blur-md p-12 border border-white/10 flex flex-col items-center justify-center text-center">
+    <div className="bg-white/4 rounded-none sm:rounded-xl backdrop-blur-md sm:p-12 p-6 -mx-6 sm:mx-0 border border-white/10 flex flex-col items-center justify-center text-center">
       <FadeInImage src={`/404-${stickerIndex + 1}.webp`} width={256} height={256} alt="Sticker"></FadeInImage>
       <h1 className="text-6xl text-highlight font-light mt-2">404</h1>
       <h2 className="text-xl text-highlight font-light mb-4">{store.t('Not Found')}</h2>
