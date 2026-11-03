@@ -5,22 +5,27 @@
 import { observer } from "mobx-react-lite";
 import { Canvas, Chip, Dev, Wl } from "./Diagram";
 import { store } from "@/store/store";
-import { formatBps, getBPS, getStrokeColor } from "@/components/traffic";
+import { formatBps, getBPS, getColorAtPercent, getStrokeColor, TEXT_STOPS } from "@/components/traffic";
 import styles from "./diagram.module.css";
 
 const t = (s: string) => store.t(s);
 
 // live ↑tx ↓rx readout, two rows to the right of a cable's speed label
-const Bps = ({ host, nif, reversed }: { host: string; nif: string; reversed?: boolean }) => {
+const Bps = ({ host, nif, reversed, max, maxTx }: { host: string; nif: string; reversed?: boolean; max: number; maxTx?: number }) => {
   let [rx, tx] = getBPS(host, nif);
   if (rx == null && tx == null) return null;
   if (reversed) [rx, tx] = [tx ?? 0, rx ?? 0];
-  // idle link: keep the divider + the readout's space, hide the digits
-  const idle = !rx && !tx;
+  // digits take the edge's pressure color, same ramp as the wire's stroke
+  const num = (v: number | null, m: number) => (
+    <span style={{ color: getColorAtPercent(((v ?? 0) / (m * 1024 * 1024)) * 100, TEXT_STOPS) }}>{formatBps(v ?? 0)}</span>
+  );
+  // an idle direction's arrow is greyed
+  const up = tx ? "rgb(255, 168, 175)" : "rgb(138, 143, 152)";
+  const down = rx ? "rgb(163, 203, 179)" : "rgb(138, 143, 152)";
   return (
     <span className={styles.bps} style={{ display: "flex", flexDirection: "column", fontWeight: 400, lineHeight: 1.25 }}>
-      <span style={{ color: "rgb(255, 168, 175)", visibility: idle ? "hidden" : undefined }}>↑{formatBps(tx ?? 0)}</span>
-      <span style={{ color: "rgb(163, 203, 179)", visibility: idle ? "hidden" : undefined }}>↓{formatBps(rx ?? 0)}</span>
+      <span>{num(tx, maxTx ?? max)}{" "}<span style={{ color: up }}>↑</span></span>
+      <span>{num(rx, max)}{" "}<span style={{ color: down }}>↓</span></span>
     </span>
   );
 };
@@ -88,7 +93,7 @@ export const NetworkDiagram = observer(() => {
     </>
   );
   return (
-  <Canvas mapBottom={188}
+  <Canvas mapBottom={178} mapBottomNarrow={193}
     renderNarrow={() => (
       <>
         <div className={styles.statsFlow}>{statItems}</div>
@@ -279,18 +284,18 @@ export const NetworkDiagram = observer(() => {
     />
 
     {/* cable labels + live traffic readout */}
-    <Wl pos={{ left: "89mm", top: "62mm" }}><span>10G</span><Bps host="192.168.0.1" nif="ext1" /></Wl>
-    <Wl pos={{ left: "132mm", top: "55mm" }}><span>1G</span><Bps host="192.168.0.208" nif="ether1" /></Wl>
-    <Wl pos={{ left: "134mm", top: "43mm" }}>{t("USB backup")}<Bps host="192.168.0.1" nif="enp0s20f0u4" /></Wl>
-    <Wl pos={{ left: "137mm", top: "90mm" }}><span>10G</span><Bps host="192.168.0.1" nif="int1" reversed /></Wl>
-    <Wl pos={{ left: "62mm", top: "105.5mm" }}><span>40G</span><Bps host="192.168.0.1" nif="int3" reversed /></Wl>
-    <Wl pos={{ left: "100mm", top: "105.5mm" }}><span>100G</span><Bps host="192.168.0.1" nif="int2" /></Wl>
-    <Wl pos={{ left: "167mm", top: "105.5mm" }}><span>10G</span><Bps host="192.168.0.208" nif="sfp-sfpplus2" reversed /></Wl>
-    <Wl pos={{ left: "148mm", top: "147mm" }}><span>10G</span><Bps host="192.168.0.208" nif="sfp-sfpplus4" reversed /></Wl>
-    <Wl pos={{ left: "190mm", top: "147mm" }} className={styles.edgeR}><span>100M</span><Bps host="192.168.0.208" nif="sfp-sfpplus3" reversed /></Wl>
-    <Wl pos={{ left: "108mm", top: "147mm" }}><span>10G</span><Bps host="192.168.0.106" nif="port4" reversed /></Wl>
-    <Wl pos={{ left: "67mm", top: "147mm" }}><span>2.5G</span><Bps host="192.168.0.106" nif="port2" reversed /></Wl>
-    <Wl pos={{ left: "26mm", top: "147mm" }}><span>2.5G</span><Bps host="192.168.0.106" nif="port1" reversed /></Wl>
+    <Wl pos={{ left: "89mm", top: "62mm" }}><span>10G</span><Bps max={4000} maxTx={2000} host="192.168.0.1" nif="ext1" /></Wl>
+    <Wl pos={{ left: "132mm", top: "55mm" }}><span>1G</span><Bps max={1000} host="192.168.0.208" nif="ether1" /></Wl>
+    <Wl pos={{ left: "134mm", top: "43mm" }}>{t("USB backup")}<Bps max={48} maxTx={6} host="192.168.0.1" nif="enp0s20f0u4" /></Wl>
+    <Wl pos={{ left: "137mm", top: "90mm" }}><span>10G</span><Bps max={10000} host="192.168.0.1" nif="int1" reversed /></Wl>
+    <Wl pos={{ left: "62mm", top: "105.5mm" }}><span>40G</span><Bps max={26000} host="192.168.0.1" nif="int3" reversed /></Wl>
+    <Wl pos={{ left: "100mm", top: "105.5mm" }}><span>100G</span><Bps max={100000} host="192.168.0.1" nif="int2" /></Wl>
+    <Wl pos={{ left: "167mm", top: "105.5mm" }}><span>10G</span><Bps max={10000} host="192.168.0.208" nif="sfp-sfpplus2" reversed /></Wl>
+    <Wl pos={{ left: "148mm", top: "147mm" }}><span>10G</span><Bps max={10000} host="192.168.0.208" nif="sfp-sfpplus4" reversed /></Wl>
+    <Wl pos={{ left: "190mm", top: "147mm" }} className={styles.edgeR}><span>100M</span><Bps max={100} host="192.168.0.208" nif="sfp-sfpplus3" reversed /></Wl>
+    <Wl pos={{ left: "108mm", top: "147mm" }}><span>10G</span><Bps max={10000} host="192.168.0.106" nif="port4" reversed /></Wl>
+    <Wl pos={{ left: "67mm", top: "147mm" }}><span>2.5G</span><Bps max={1000} host="192.168.0.106" nif="port2" reversed /></Wl>
+    <Wl pos={{ left: "26mm", top: "147mm" }}><span>2.5G</span><Bps max={2500} host="192.168.0.106" nif="port1" reversed /></Wl>
 
     {services}
 
