@@ -1,0 +1,505 @@
+/* Shared look for the A4-landscape diagram canvases (converted from
+   homelab-infograph/*.html). Geometry (mm positions) lives inline in the JSX;
+   all colors/borders/typography are here, restyled from black-on-white to the
+   wtako dark theme: olive highlight ink on the glass background. */
+
+.page {
+  position: relative;
+  width: 297mm;
+  height: 179.5mm;
+  overflow: hidden;
+  color: rgba(231, 212, 184, 0.85);
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+}
+
+/* content keeps the original 210mm page coordinates; the removed header
+   (top ~20.5mm) and footer margins are cut by shifting and clipping the page */
+.shift {
+  position: absolute;
+  top: -20.5mm;
+  left: 0;
+  width: 297mm;
+  height: 210mm;
+}
+
+.wires {
+  position: absolute;
+  inset: 0;
+  width: 297mm;
+  height: 210mm;
+  z-index: 1;
+  color: rgba(153, 163, 126, 0.65);
+}
+
+/* device cards — opaque background so the wires underneath stay hidden */
+.dev {
+  position: absolute;
+  z-index: 2;
+  border-radius: 1.5mm;
+  background: #171b20;
+  border: 0.4mm solid rgba(153, 163, 126, 0.45);
+  padding: 1.3mm 1.5mm 1.1mm;
+  text-align: center;
+}
+.key {
+  border-width: 0.7mm;
+  border-color: rgba(153, 163, 126, 0.7);
+}
+.img {
+  height: 11mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ic {
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icDev {
+  height: 10.5mm;
+  width: 10.5mm;
+}
+.name {
+  font-size: 3.2mm;
+  font-weight: 700;
+  margin-top: 0.6mm;
+  color: rgb(233, 223, 207);
+}
+.sub {
+  font-size: 2.65mm;
+  color: rgba(231, 212, 184, 0.6);
+  line-height: 1.3;
+}
+.role {
+  position: absolute;
+  top: -2.1mm;
+  left: 2mm;
+  background: rgb(153, 163, 126);
+  color: #0f1316;
+  font-size: 3.2mm;
+  font-weight: 700;
+  padding: 0.3mm 1.6mm;
+  border-radius: 1mm;
+  letter-spacing: 0.2mm;
+}
+/* UPS-backed */
+.ups {
+  outline: 0.45mm dotted rgb(233, 223, 207);
+  outline-offset: 0.5mm;
+}
+
+.chip {
+  position: absolute;
+  z-index: 2;
+  border-radius: 8mm;
+  padding: 1.3mm 4mm;
+  font-size: 3.2mm;
+  font-weight: 600;
+  text-align: center;
+  background: #171b20;
+  border: 0.4mm solid rgba(153, 163, 126, 0.45);
+  color: rgb(233, 223, 207);
+  white-space: nowrap;
+}
+.chip small {
+  display: block;
+  font-weight: 400;
+  font-size: 2.65mm;
+  color: rgba(231, 212, 184, 0.6);
+}
+
+/* cable labels */
+.wl {
+  position: absolute;
+  z-index: 2;
+  font-size: 3.2mm;
+  font-weight: 700;
+  color: rgb(233, 223, 207);
+  transform: translate(-50%, -50%);
+  padding: 0.2mm 1.3mm;
+  border-radius: 1.5mm;
+  background: rgba(23, 27, 32, 0.72);
+  border: 0.2mm solid rgba(153, 163, 126, 0.4);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  column-gap: 1.5mm;
+}
+
+.note {
+  position: absolute;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  font-size: 2.65mm;
+  color: rgba(231, 212, 184, 0.6);
+  white-space: nowrap;
+}
+
+/* block headings */
+.bh {
+  position: absolute;
+  z-index: 3;
+  font-size: 3.2mm;
+  font-weight: 800;
+  letter-spacing: 0.5mm;
+  text-transform: uppercase;
+  color: rgb(153, 163, 126);
+  white-space: nowrap;
+}
+/* scenario sub-heading (backup page) */
+.scn {
+  text-transform: none;
+  letter-spacing: 0.05mm;
+  font-weight: 700;
+  font-style: italic;
+  color: rgba(233, 223, 207, 0.85);
+}
+/* the failed nodes all share a left edge: ✗ + icon + label left-aligned */
+.chipL {
+  text-align: left;
+}
+/* a .bh that stays in the narrow canvas (e.g. between map sections): --inv
+   undoes the canvas scale so it renders at the same size and left edge (the
+   flow's 4mm padding) as the flow HTML titles */
+.narrow .bh.mapbh {
+  font-size: calc(3.2mm * var(--inv, 1));
+  left: calc(4mm * var(--inv, 1)) !important;
+}
+
+/* column divider */
+.divider {
+  position: absolute;
+  z-index: 3;
+  border-left: 0.4mm solid rgba(153, 163, 126, 0.45);
+}
+
+/* description blocks */
+.dsc {
+  position: absolute;
+  z-index: 3;
+}
+.dsc ul {
+  list-style: none;
+}
+.dsc li {
+  font-size: 2.65mm;
+  color: rgba(231, 212, 184, 0.75);
+  line-height: 1.35;
+  padding-left: 2.6mm;
+  position: relative;
+  margin-bottom: 0.8mm;
+}
+.dsc li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.3mm;
+  width: 1.05mm;
+  height: 1.05mm;
+  background: rgb(153, 163, 126);
+}
+.dsc li b {
+  color: rgb(233, 223, 207);
+}
+.bh3 {
+  font-size: 3.2mm;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5mm;
+  color: rgb(153, 163, 126);
+  border-bottom: 0.2mm solid rgba(153, 163, 126, 0.35);
+  padding-bottom: 0.7mm;
+  margin: 2.8mm 0 1.6mm;
+}
+
+/* "what it runs" services column (network page) */
+.svc {
+  position: absolute;
+  left: 208mm;
+  top: 28mm;
+  width: 79mm;
+  z-index: 3;
+  border-left: 0.4mm solid rgba(153, 163, 126, 0.45);
+  padding-left: 4mm;
+}
+.svcTitle {
+  font-size: 3.2mm;
+  font-weight: 800;
+  color: rgb(153, 163, 126);
+  border-bottom: 0.5mm solid rgba(153, 163, 126, 0.5);
+  padding-bottom: 1.2mm;
+  margin-bottom: 2.5mm;
+  white-space: nowrap;
+}
+.svc h3 {
+  font-size: 3.2mm;
+  text-transform: uppercase;
+  letter-spacing: 0.5mm;
+  color: rgb(153, 163, 126);
+  border-bottom: 0.2mm solid rgba(153, 163, 126, 0.35);
+  padding-bottom: 0.7mm;
+  margin: 2.8mm 0 1.1mm;
+}
+.svc h3:first-of-type {
+  margin-top: 0;
+}
+.svc ul {
+  list-style: none;
+}
+.svc li {
+  font-size: 2.65mm;
+  color: rgba(231, 212, 184, 0.75);
+  line-height: 1.35;
+  padding-left: 2.6mm;
+  position: relative;
+}
+.svc li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.3mm;
+  width: 1.05mm;
+  height: 1.05mm;
+  background: rgb(153, 163, 126);
+}
+.svc li b {
+  color: rgb(233, 223, 207);
+}
+
+/* mobile: the side column leaves the canvas (re-rendered as plain HTML
+   below, see renderNarrow) and the poster strips fit the map width */
+.narrow .side,
+.narrow .svc {
+  display: none;
+}
+.narrow .legend {
+  right: auto;
+  /* margins ∝ mapW so the row has the same on-screen room in every tab */
+  left: calc(var(--mapwn, 205) * 10mm / 205);
+  width: calc(var(--mapw, 205mm) - var(--mapwn, 205) * 20mm / 205);
+  flex-wrap: wrap;
+  /* the statsFlow divider below is the section line; keep just the band top */
+  border-bottom: none;
+}
+/* the key points + divider move out of the canvas into full-width HTML flow */
+.narrow .stats,
+.narrow .rule {
+  display: none;
+}
+/* narrow mode: bigger type than the desktop poster (same +15% on both
+   base sizes so the map stays proportional) */
+/* live traffic readout inside a .wl label */
+.bps {
+  font-size: 2.4mm;
+  /* vertical divider between the link-speed label and the live numbers */
+  border-left: 0.2mm solid rgba(153, 163, 126, 0.45);
+  /* fixed track for the live numbers: the pill width never changes as
+     digits tick, and tabular digits stop wobble */
+  display: inline-block;
+  min-width: calc(7ch + 1.6mm); /* digits' 7ch track + divider padding (border-box) */
+  padding-left: 1.6mm;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+/* right-edge labels in narrow mode: the crop ends at mapW, pull them in */
+.narrow .edgeR {
+  left: 190mm !important;
+}
+.narrow .bps {
+  font-size: 2.75mm;
+}
+.narrow .name,
+.narrow .chip,
+.narrow .wl,
+.narrow .role,
+.narrow .bh {
+  font-size: 3.7mm;
+}
+.narrow .sub,
+.narrow .chip small,
+.narrow .note {
+  font-size: 2.8mm;
+}
+/* the map packs up in narrow mode: park the note right of the NAS card,
+   above the Gaming PC chip */
+.narrow .note {
+  left: 131mm !important;
+  top: 99mm !important;
+}
+.narrow .legend {
+  font-size: 3mm;
+}
+/* wrapper inside the canvas whose children keep their absolute mm positions
+   but can be hidden/moved as one unit */
+.side {
+  display: contents;
+}
+
+/* the side column re-rendered as plain flow HTML under the map on mobile */
+.sideFlow {
+  padding: 4mm;
+}
+
+/* all flow-HTML sections share the poster's font stack (the app shell uses Geist) */
+.statsFlow,
+.sideFlow,
+.svcFlow {
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+}
+
+/* key points re-rendered as full-width flow HTML under the map on mobile:
+   3 columns x 2 rows, centered, big type — width follows the page, not the map */
+.statsFlow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  border-top: 0.35mm solid rgba(153, 163, 126, 0.35);
+  padding: 0 4mm;
+}
+.statsFlow > div {
+  /* content-sized: wraps to the next row when they don't all fit; uniform
+     4mm gap from the divider lines above/below */
+  flex: 0 1 auto;
+  margin: 4mm 6mm;
+}
+/* type = the poster's true size (5.4mm/2.65mm unscaled = how it renders at
+   100%), identical in every tab and equal to the desktop poster's design size */
+.sideFlow .divider {
+  display: none;
+}
+.sideFlow .bh {
+  position: static;
+  margin: 3mm 0 2mm;
+}
+.sideFlow .chip {
+  position: static;
+  width: auto !important;
+  margin: 0 0 2mm;
+}
+.sideFlow .dsc {
+  position: static;
+  width: auto !important;
+  margin: 3mm 0;
+  padding-left: 0;
+}
+.sideFlow .fcol,
+.sideFlow .fcol2 {
+  float: none;
+  width: auto;
+  margin-left: 0;
+}
+
+/* the security perimeter chain sits mid-page; slide it into the narrow crop */
+.chain {
+  position: absolute;
+  inset: 0;
+}
+.narrow .chain {
+  transform: translateX(-28mm);
+}
+
+/* floated sub-columns inside a .dsc block (the .sideFlow copy un-floats them) */
+.fcol {
+  float: left;
+  width: 60mm;
+}
+.fcol2 {
+  float: left;
+  width: 64mm;
+  margin-left: 8mm;
+}
+
+/* services as plain flow HTML under the map on mobile: same markup as the
+   poster's side column, laid out at real (unscaled) sizes */
+.svcFlow {
+  padding: 4mm 4mm 8mm;
+}
+.svcFlow .svc {
+  position: static;
+  width: auto;
+  border-left: none;
+  border-top: 0.4mm solid rgba(153, 163, 126, 0.45);
+  padding: 4mm 0 0;
+  columns: 2;
+  column-gap: 6mm;
+}
+.svcFlow .svc h3,
+.svcFlow .svc ul {
+  break-inside: avoid;
+}
+/* content at the poster's true sizes (svc base classes): consistent with the map */
+.svcFlow .svcTitle {
+  white-space: normal;
+}
+
+.legend {
+  position: absolute;
+  left: 10mm;
+  right: 10mm;
+  top: 178mm;
+  z-index: 3;
+  display: flex;
+  gap: 5mm;
+  justify-content: center;
+  font-size: 2.65mm;
+  color: rgba(231, 212, 184, 0.7);
+  border-top: 0.2mm solid rgba(153, 163, 126, 0.3);
+  border-bottom: 0.2mm solid rgba(153, 163, 126, 0.3);
+  padding: 1.8mm;
+}
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 1.4mm;
+}
+/* divider band for tabs without legend entries: same box as .legend, kept
+   empty; height matches one legend text line so the stats gap is identical */
+.rule {
+  composes: legend;
+  height: 7.2mm;
+  border-top: none;
+}
+.k {
+  display: inline-block;
+  width: 7mm;
+  height: 0;
+  border-top-style: solid;
+  border-color: rgba(153, 163, 126, 0.7);
+}
+.kb {
+  display: inline-block;
+  width: 5mm;
+  height: 3.1mm;
+  border: 0.45mm dotted rgb(233, 223, 207);
+  border-radius: 1mm;
+}
+
+.stats {
+  position: absolute;
+  left: 10mm;
+  right: 10mm;
+  top: 188mm;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.stats div {
+  flex: 1;
+}
+.statB {
+  display: block;
+  font-size: 5.4mm;
+  font-weight: 800;
+  color: rgb(153, 163, 126);
+  line-height: 1.15;
+}
+.statS {
+  font-size: 2.65mm;
+  color: rgba(231, 212, 184, 0.6);
+  letter-spacing: 0.3mm;
+}

@@ -2,15 +2,23 @@
 
 import { Layout } from "@/components/Layout";
 import { observer } from "mobx-react-lite";
+import { useState } from "react";
 import { SystemHealth } from "@/components/SystemHealth";
-// import { useEffect, useState } from "react";
-// import mermaid from "mermaid";
 import { store } from "@/store/store";
-// import { TransformedRealTimeRate } from "@/store/MonitorStore";
-import { NetworkGraphCache } from "@/components/NetworkGraphCache";
+import { FilterTabs } from "@/components/ContentPageHeader";
+import { NetworkDiagram } from "@/components/diagram/NetworkDiagram";
+import { BackupDiagram } from "@/components/diagram/BackupDiagram";
+import { SecurityDiagram } from "@/components/diagram/SecurityDiagram";
+
+const DIAGRAM_TABS = [
+  { key: "network", label: "Network" },
+  { key: "backup", label: "Backup" },
+  { key: "security", label: "Security" },
+];
 
 
 export const ServerDashboard = observer(() => {
+  const [diagramTab, setDiagramTab] = useState<string>("network");
 //   const [svgCode, setSvgCode] = useState("");
 //   const [inited, setInited] = useState(false);
 
@@ -189,22 +197,15 @@ export const ServerDashboard = observer(() => {
 
       {/* Network Configuration Diagram */}
       <div className="bg-white/4 rounded-none sm:rounded-lg backdrop-blur-md p-6 -mx-6 sm:mx-0 border border-white/10">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
-          <h2 className="text-lg text-highlight font-medium">{store.t('WTAKO Network Configuration')}</h2>
-          <a
-            className="self-start md:self-auto text-sm text-link hover:text-highlight transition-colors flex items-center gap-2"
-            href="https://saren.wtako.net/wtako-network-diagram.html?a2"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {store.t('Full Diagram View')}
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
+        <h2 className="text-lg text-highlight font-medium mb-2">{store.t('WTAKO Network Configuration')}</h2>
+        <div className="border-b border-white/10 pb-3 mb-3">
+          <FilterTabs options={DIAGRAM_TABS} value={diagramTab} onChange={setDiagramTab} />
         </div>
-        <div className="flex justify-center overflow-x-auto" >
-          <NetworkGraphCache/>
+        {/* bleed to card edges so the canvas aligns with the tabs and uses max width */}
+        <div className="-mx-6 lg:-mx-10">
+          {diagramTab === "network" && <NetworkDiagram />}
+          {diagramTab === "backup" && <BackupDiagram />}
+          {diagramTab === "security" && <SecurityDiagram />}
         </div>
       </div>
     </div>
