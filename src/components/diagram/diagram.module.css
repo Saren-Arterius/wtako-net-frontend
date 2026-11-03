@@ -277,6 +277,9 @@
 }
 .narrow .legend {
   right: auto;
+  /* English card names wrap a line taller in narrow mode: drop the legend
+     band clear of them */
+  top: 186mm;
   /* margins ∝ mapW so the row has the same on-screen room in every tab */
   left: calc(var(--mapwn, 205) * 10mm / 205);
   width: calc(var(--mapw, 205mm) - var(--mapwn, 205) * 20mm / 205);

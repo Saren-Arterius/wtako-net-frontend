@@ -16,6 +16,14 @@ const COLOR_STOPS = [
   { color: "#A63D40", position: 90 },
   { color: "#A63D40", position: 100 },
 ];
+// text variant: zero pressure reads as the plain label color, then joins the
+// wire ramp
+export const TEXT_STOPS = [
+  { color: "#E9DFCF", position: 0 },
+  { color: "#F7EE7F", position: 50 },
+  { color: "#A63D40", position: 90 },
+  { color: "#A63D40", position: 100 },
+];
 
 function hexToRGB(hex: string) {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -36,17 +44,17 @@ function rgbToHex(r: number, g: number, b: number) {
   );
 }
 
-export function getColorAtPercent(percent: number) {
+export function getColorAtPercent(percent: number, stops: { color: string; position: number }[] = COLOR_STOPS) {
   if (percent > 100) percent = 100;
   if (percent < 0) percent = 0;
 
-  let start = COLOR_STOPS[0];
-  let end = COLOR_STOPS[1];
+  let start = stops[0];
+  let end = stops[1];
 
-  for (let i = 1; i < COLOR_STOPS.length; i++) {
-    if (percent <= COLOR_STOPS[i].position) {
-      start = COLOR_STOPS[i - 1];
-      end = COLOR_STOPS[i];
+  for (let i = 1; i < stops.length; i++) {
+    if (percent <= stops[i].position) {
+      start = stops[i - 1];
+      end = stops[i];
       break;
     }
   }
