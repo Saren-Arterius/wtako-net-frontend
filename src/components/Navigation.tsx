@@ -49,7 +49,10 @@ const NavText = observer(({ mobile = false }: { mobile?: boolean } = {}) => {
       }
     }, 30)
 
-    const activeTab = navItems.find(n => pathname === n.path || pathname.replace(/\/$/, "") === n.path);
+    const activeTab = navItems.find(n =>
+      pathname === n.path ||
+      pathname.replace(/\/$/, "") === n.path ||
+      (n.path !== "/" && pathname.startsWith(n.path + "/")));
 
     store.updateTabIdx(activeTab ? navItems.indexOf(activeTab) : servicesIdx)
     // eslint-disable-next-line react-hooks/exhaustive-deps
