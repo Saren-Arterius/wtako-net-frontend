@@ -332,7 +332,7 @@
     },
     {
       "title": "Qwen3.8-Flash-Next on DGX Spark",
-      "description": "Recipe for running Qwen3.8-Flash-Next (~176B params, 6B active) on a single NVIDIA DGX Spark with vLLM, using Intel's W4A16 AutoRound int4 checkpoint plus int8 lm_head and fp8 side layers, and an fp8 n-gram PLE table served from local NVMe via mmap, or from another machine's RAM over one-sided RDMA READ. Achieves ~49 tok/s decode with MTP=3 speculative decoding, working prefix caching, and never-evict KV pinning for system prompts. Fork of blazux/qwen3.8-Flash-DGX.",
+      "description": "Production serving stack for Qwen3.8-Flash-Next (~176B params, 6B active) on a single NVIDIA DGX Spark (GB10). vLLM 0.32 with native Qwen4Exp support plus DFlash2 speculative decoding (3 draft tokens) hits 57-71 tok/s decode on a table-stripped hybrid checkpoint: INT4 routed experts, blockwise-FP8 side layers and INT8 lm_head. The fp8 n-gram PLE table (320M rows) is served from local SSD through a graph-capturable mmap host func, so CUDA graphs stay whole, with one-sided RDMA READ still available via PLE_RDMA. 262k context, 16 streams, prefix cache + chunked prefill, never-evict KV pinning for system prompts, and an fp8 KV path that reaches 1.1M tokens for 1M-token requests. OpenAI-compatible API on :8000 as `qwen` with tool calling and reasoning parsers. magi-v5 branch of blazux/qwen3.8-Flash-DGX.",
       "status": "WIP",
       "tags": [
         "Python",
@@ -347,7 +347,7 @@
       },
       "date": "20260909",
       "order": 17,
-      "descriptionZH": "在單一 NVIDIA DGX Spark 上用 vLLM 運行 Qwen3.8-Flash-Next（約 176B 參數，活躍 6B）的方案，採用 Intel W4A16 AutoRound int4 檢查點，加上 int8 lm_head 與 fp8 邊側層，並以 mmap 從本地 NVMe、或透過單邊 RDMA READ 從另一臺機器的記憶體提供 fp8 n-gram PLE 表。透過 MTP=3 投機解碼達到約 49 tok/s 的生成速度，具備可用的前綴快取，以及系統提示詞的永不淘汰 KV 釘選。為 blazux/qwen3.8-Flash-DGX 的 fork。"
+      "descriptionZH": "在單一 NVIDIA DGX Spark（GB10）上正式服務 Qwen3.8-Flash-Next（約 176B 參數，活躍 6B）的堆疊。vLLM 0.32 原生支援 Qwen4Exp，加上 DFlash2 投機解碼（3 個草稿 token），在去除表格的混合檢查點（INT4 路由專家、blockwise-FP8 邊側層、INT8 lm_head）上達到 57-71 tok/s 的生成速度。fp8 n-gram PLE 表（3.2 億列）透過可擷取進 CUDA 圖形的 mmap host func 從本地 SSD 提供，讓圖形保持完整，單邊 RDMA READ 仍可用（PLE_RDMA）。支援 262k 上下文、16 條串流、前綴快取與分段 prefill、系統提示詞的永不淘汰 KV 釘選，另有 fp8 KV 路徑可容納 110 萬 token 以處理百萬 token 請求。在 :8000 提供 OpenAI 相容 API，模型名 `qwen`，啟用工具呼叫與推理解析器。為 blazux/qwen3.8-Flash-DGX 的 magi-v5 分支。"
     },
     {
       "title": "Home Assistant Cantonese LLM Voice Assistant",
