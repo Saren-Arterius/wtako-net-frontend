@@ -16,7 +16,7 @@ const Bps = ({ host, nif, reversed, max, maxTx }: { host: string; nif: string; r
   if (rx == null && tx == null) return null;
   if (reversed) [rx, tx] = [tx ?? 0, rx ?? 0];
   // digits take the edge's pressure color, same ramp as the wire's stroke
-  const num = (v: number | null, m: number) => (
+  const num = (v: number | null | undefined, m: number) => (
     <span style={{ color: getColorAtPercent(((v ?? 0) / (m * 1024 * 1024)) * 100, TEXT_STOPS) }}>{formatBps(v ?? 0)}</span>
   );
   // an idle direction's arrow is greyed
